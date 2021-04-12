@@ -26,7 +26,8 @@ export default function DownloadPage(props) {
         />
       </div>
       <DownloadButton
-        url={"https://ardi-test.000webhostapp.com/live.jpg"}
+        // url={"https://ardi-test.000webhostapp.com/live.jpg"}
+        url={"https://ardi-test.000webhostapp.com/ardi-49.msi"}
         fileName={downloadData.fileName}
       />
 
@@ -46,6 +47,7 @@ export async function getServerSideProps() {
   console.log("________________");
   console.log("________________");
   console.log("________________");
+
   console.log("________________");
 
   // const response = await fetch("https://ardi-test.000webhostapp.com/text.json");
@@ -62,9 +64,9 @@ export async function getServerSideProps() {
       return {
         props: {
           downloadData: response.data,
-          revalidate: 5,
-          fallback: true,
         },
+        revalidate: 30,
+        // fallback: true,
       };
     })
     .catch(function (error) {
