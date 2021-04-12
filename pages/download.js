@@ -42,7 +42,7 @@ export default function DownloadPage(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   console.log("________________");
   console.log("________________");
   console.log("________________");
