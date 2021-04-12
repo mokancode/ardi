@@ -28,7 +28,8 @@ export default function DownloadButton(props) {
   return (
     // <a className={styles.btn} href={props.url} download={props.fileName}>
     // <a className={styles.btn} href={props.url} download>
-    <a className={styles.btn} href={"https://ardi-test.000webhostapp.com/ardi6-49.msi"} download>
+    // <a className={styles.btn} href={"https://ardi-test.000webhostapp.com/ardi6-49.msi"} download>
+    <a className={styles.btn} href={"https://ardi-test.000webhostapp.com/live.jpg"} download>
       {/* //{" "}
       <div className={styles.btn} onClick={() => downloadStuff(props.url)}> */}
       Download Now

@@ -7,23 +7,28 @@ import StylesContext from "../store/styles-context";
 import axios from "axios";
 
 export default function DownloadPage(props) {
-  const { downloadData } = props;
+  const { downloadData, hasError } = props;
   const stylesContext = useContext(StylesContext);
   const styles = stylesContext.styles.find(
     (styleSheet) => styleSheet.name === "DownloadPage"
   ).styles;
 
+  console.log("downloadData", downloadData);
+  console.log("hasError", hasError);
+
   return (
     <div className="pageWrapper">
       <div className={styles.paragraphWithHeaderWrapper}>
         <ParagraphWithHeader
-          style={{ marginTop: "40px !important" }}
           headerText={`Ardi ${downloadData.version} for Windows`}
           paragraphText="32 or 64 bit Windows 7, 10"
           icon={"/images/win7-logo.png"}
         />
       </div>
-      <DownloadButton url={"https://ardi-test.000webhostapp.com/live.jpg"} fileName={downloadData.fileName}/>
+      <DownloadButton
+        url={"https://ardi-test.000webhostapp.com/live.jpg"}
+        fileName={downloadData.fileName}
+      />
 
       {/* <div className={styles.paragraphWithHeaderWrapper}>
         <ParagraphWithHeader
