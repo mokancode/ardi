@@ -62,7 +62,7 @@ export async function getStaticProps() {
       return {
         props: {
           downloadData: response.data,
-          revalidate: 60,
+          revalidate: 5,
           fallback: true,
         },
       };
