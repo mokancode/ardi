@@ -1,0 +1,44 @@
+.btn {
+  background: linear-gradient(to top, grey, rgb(199, 199, 199));
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.arrowDown {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowDown .line {
+  width: 4px;
+  height: 10px;
+  background-color: grey;
+  position: relative;
+}
+
+.arrowDown .line::before {
+  position: absolute;
+  content: "";
+  right: -1.9px;
+  bottom: 0px;
+  transform: rotate(45deg);
+  width: 5px;
+  height: 5px;
+  border-right: 3px solid grey;
+  border-bottom: 3px solid grey;
+}

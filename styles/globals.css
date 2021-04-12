@@ -4,13 +4,123 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* border: 2px solid red; */
+  /* background-color: rgb(214, 227, 236); */
+  background-color: rgb(203, 222, 236);
+  overflow-x: hidden;
+}
+
+.mainDiv {
+  display: flex;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding-top: 70px;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  width: 100%;
+  padding-bottom: 40px;
+  /* border: 5px solid black; */
 }
 
 a {
   color: inherit;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 * {
   box-sizing: border-box;
+}
+
+.textAlignLeft {
+  text-align: left;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.center {
+  margin: auto;
+}
+
+.extend {
+  width: 100vw;
+}
+
+.centerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid red; */
+}
+
+.pageWrapper {
+  max-width: 60%;
+  max-width: 900px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-bottom: 30px;
+  /* border: 1px solid grey; */
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateX(-5px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: unset;
+  transition: opacity 300ms, transform 300ms;
+}
+.page-exit {
+  opacity: 1;
+  transform: unset;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(5px);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* Custom Scrollbar */
+/* width */
+.mainDiv::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.mainDiv::-webkit-scrollbar-track {
+  background: rgb(107, 137, 155);
+}
+
+/* Handle */
+.mainDiv::-webkit-scrollbar-thumb {
+  background: rgb(60, 117, 150);
+}
+
+/* Handle on hover */
+.mainDiv::-webkit-scrollbar-thumb:hover {
+  background: rgb(49, 95, 122);
+}
+
+.transition-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  overflow: hidden;
+  top: 0px;
+  /* z-index: 2; */
+  width: 100%;
+  height: 100vh;
+  /* border: 5px solid red; */
+  /* display: none; */
 }

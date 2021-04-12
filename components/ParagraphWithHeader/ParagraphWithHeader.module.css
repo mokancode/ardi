@@ -1,0 +1,52 @@
+.wrapper {
+  /* border: 1px solid black; */
+  margin-bottom: 30px;
+}
+
+.headerWithIconWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* border: 1px solid blue; */
+  margin-bottom: 5px;
+}
+
+.headerWithIconWrapper::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  background: linear-gradient(to right, black, transparent);
+}
+
+.headerWithIconWrapper.alignCenter::before {
+  background: linear-gradient(to right, transparent, black, transparent);
+}
+
+.paragraph {
+  /* border: 1px solid red; */
+  width: fit-content;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.header {
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  /* border-bottom: 1px solid black; */
+  position: relative;
+}
+
+.header.marginLeft {
+    margin-left: 10px;
+}

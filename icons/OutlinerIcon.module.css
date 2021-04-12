@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: scale(.7);
+    /* border: 1px solid red; */
+}
+
+.topic {
+    /* width: ; */
+    flex-grow: 1;
+    max-height: 3px;
+    background-color: black;
+    margin-top: 5px;
+    border-radius: 50px;
+}
+
+.mainTopic {
+    width: 75%;
+}
+
+.subTopic {
+    margin-left: 14px;
+}
+
+.branches {
+    position: absolute;
+    top: 10px;
+    margin-left: 5px;
+    background-color: black;
+    height: 22px;
+    width: 3px;
+}
+
+.branch {
+    width: 6px;
+    height: 3px;
+    margin-left: 0px;
+    background-color: black;
+    margin-top: 3px;
+}
+
+.branch:not(:first-of-type) {
+    margin-top: 5px;
+}
