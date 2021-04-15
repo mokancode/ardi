@@ -1,3 +1,13 @@
 .paragraphWithHeaderWrapper > div {
   margin-bottom: 5px;
 }
+
+.downloadButtonsWrapper {
+  display: flex;
+  /* border: 2px solid red; */
+}
+
+.downloadBtnWrapper {
+  /* border: 2px solid blue; */
+  flex-basis: 50%;
+}

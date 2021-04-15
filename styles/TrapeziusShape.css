@@ -1,0 +1,109 @@
+.trapeziusSVGWrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid red; */
+}
+
+.trapeziusSVGWrapper .bubblesWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trapeziusSVGWrapper .bubblesWrapper .bubble {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  opacity: 0.7;
+}
+
+.trapeziusSVGWrapper .bubblesWrapper .bubble:nth-of-type(1) {
+  left: -30px;
+  margin-top: -10px;
+}
+
+.trapeziusSVGWrapper .bubblesWrapper .bubble:nth-of-type(2) {
+  right: -25px;
+  margin-top: 40px;
+  opacity: 0.3;
+}
+
+.trapeziusSVGWrapper .bubblesWrapper.type2 .bubble:nth-of-type(1) {
+  left: -25px;
+  margin-top: 10px;
+}
+
+.trapeziusSVGWrapper .bubblesWrapper.type2 .bubble:nth-of-type(2) {
+  right: -25px;
+  margin-top: -30px;
+  opacity: 0.3;
+}
+
+.trapeziusSVG {
+  position: relative;
+  width: 80px;
+  height: 100px;
+  z-index: 1;
+  /* fill: black; */
+  /* fill: transparent; */
+  height: auto;
+  stroke-width: 5px;
+  overflow: visible !important;
+  /* border: 2px solid black; */
+  /* display: none; */
+}
+
+.trapeziusSVG path {
+}
+
+.trapPath {
+  /* fill: url(#trapeziusShapeRadialGradient); */
+  /* fill: url(#trapeziusShapeLinearGradient); */
+  /* fill: red; */
+  /* opacity: .2; */
+}
+
+.gradientShape {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  background: linear-gradient(-0deg, rgb(12, 19, 97) 20%, rgb(8, 120, 218));
+  width: 100vw;
+  height: 100vh;
+  /* display: none; */
+}
+
+#trapeziusShapeLinearGradient {
+  /* --color-stop-1: rgb(187, 185, 255);
+  --color-stop-2: rgb(159, 124, 255); */
+
+  /* --color-stop-1: rgb(117, 166, 221);
+  --color-stop-2: rgb(36, 129, 184); */
+
+  /* --color-stop-1: rgb(117, 221, 139);
+  --color-stop-2: rgb(23, 172, 97); */
+
+  /* --color-stop-1: rgb(245, 141, 58);
+  --color-stop-2: rgb(230, 92, 21); */
+
+  --color-stop-1: rgb(130, 180, 255);
+  --color-stop-2: rgb(35, 118, 173);
+
+  /* --color-stop-1: rgb(51, 209, 230);
+  --color-stop-2: rgb(33, 168, 203); */
+
+  /* --color-stop-1: rgb(39, 115, 206);
+  --color-stop-2: rgb(18, 63, 155); */
+}
+
+#trapeziusShapeRadialGradient {
+  --color-stop-1: blue;
+  --color-stop-2: red;
+}

@@ -2,102 +2,136 @@ import DownloadButton from "../components/DownloadButton/DownloadButton";
 import ParagraphWithHeader from "../components/ParagraphWithHeader/ParagraphWithHeader";
 // import styles from "../styles/DownloadPage.module.css";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import StylesContext from "../store/styles-context";
-import axios from "axios";
+
+import { v4 as uuidv4 } from "uuid";
+// import axios from "axios";
+
+// import downloadData from "./text.json";
 
 export default function DownloadPage(props) {
-  const { downloadData, hasError } = props;
   const stylesContext = useContext(StylesContext);
   const styles = stylesContext.styles.find(
     (styleSheet) => styleSheet.name === "DownloadPage"
   ).styles;
 
-  console.log("downloadData", downloadData);
-  console.log("hasError", hasError);
+  const { downloadData } = props;
+  if (!downloadData) return <h1>Loading...</h1>;
+
+  const [changelog, setChangelog] = useState([]);
+  useEffect(() => {
+    let tempArray = downloadData.changelog.map((item) => {
+      return (
+        <p key={uuidv4()} style={{ margin: "0px" }}>
+          {item}
+        </p>
+      );
+    });
+    setChangelog(tempArray);
+  }, downloadData);
+
+  // console.log("downloadData", downloadData);
 
   return (
     <div className="pageWrapper">
-      <div className={styles.paragraphWithHeaderWrapper}>
-        <ParagraphWithHeader
-          headerText={`Ardi ${downloadData.version} for Windows`}
-          paragraphText="32 or 64 bit Windows 7, 10"
-          icon={"/images/win7-logo.png"}
-        />
-      </div>
-      <DownloadButton
-        // url={"https://ardi-test.000webhostapp.com/live.jpg"}
-        url={"https://ardi-test.000webhostapp.com/ardi6-49.msi"}
-        fileName={downloadData.fileName}
-      />
+      <div className={styles.downloadButtonsWrapper}>
+        <div className={styles.downloadBtnWrapper}>
+          <div className={styles.paragraphWithHeaderWrapper}>
+            <ParagraphWithHeader
+              headerText={`Ardi ${downloadData.windows.version} for Windows`}
+              paragraphText={`${downloadData.windows.windowsOS}`}
+              icon={"/images/win7-logo.png"}
+            />
+          </div>
+          <DownloadButton
+            url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
+            fileName={downloadData.windows.fileName}
+          />
+        </div>
 
-      {/* <div className={styles.paragraphWithHeaderWrapper}>
-        <ParagraphWithHeader
-          headerText=" Ardi 6.48 beta for MacOS"
-          paragraphText="Requires MacOS 10.14 or better"
-          icon={"/images/apple-logo.png"}
-        />
+        <div className={styles.downloadBtnWrapper}>
+          <div className={styles.paragraphWithHeaderWrapper}>
+            <ParagraphWithHeader
+              headerText={`Ardi ${downloadData.mac.version} for MacOS`}
+              paragraphText={`${downloadData.mac.macOS}`}
+              icon={"/images/apple-logo.png"}
+            />
+          </div>
+          <DownloadButton
+            url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
+            fileName={downloadData.mac.fileName}
+          />
+        </div>
       </div>
-      <DownloadButton url={"ardi-installer/live_v1.jpg"} /> */}
+
+      <h4>Changelog</h4>
+      {changelog}
     </div>
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   console.log("________________");
   console.log("________________");
   console.log("________________");
-
   console.log("________________");
 
   // const response = await fetch("https://ardi-test.000webhostapp.com/text.json");
   // const jsonData = await response.json();
-
   // console.log("jsonData", jsonData);
 
-  return await axios
-    .get("https://ardi-test.000webhostapp.com/text.json")
-    .then(function (response) {
-      // handle success
-      console.log("res", response.data);
+  // return await axios
+  //   .get("https://ardi-test.000webhostapp.com/text.json")
+  //   .then(function (response) {
+  //     // handle success
+  //     console.log("res", response.data);
 
-      return {
-        props: {
-          downloadData: response.data,
-          // revalidate: 30,
-          // fallback: true,
-        },
-      };
-    })
-    .catch(function (error) {
-      // handle error
-      console.log("err", error);
+  //     return {
+  //       props: {
+  //         downloadData: response.data,
+  //       },
+  //       revalidate: 60,
+  //     };
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log("err", error);
 
-      return {
-        props: {
-          hasError: true,
-        },
-      };
-    });
+  //     return {
+  //       props: {
+  //         hasError: true,
+  //       },
+  //     };
+  //   });
 
-  // const installerDirectory = path.join(
-  //   process.cwd(),
-  //   "public",
-  //   "ardi-installer"
-  // );
-  // const filenames = await fs.readdir(installerDirectory);
-  // let jsonFile, installerFile;
-  // const files = filenames.map(async (filename, index) => {
-  //   const filePath = path.join(installerDirectory, filename);
-  //   if (filename.split(".").pop() === "json") {
-  //     let jsonData = await fs.readFile(filePath, "utf8");
-  //     jsonFile = await (async function () {
-  //       return JSON.parse(jsonData);
-  //     })();
-  //   } else installerFile = filename;
-  // });
-  // await Promise.all(files);
+  const path = require("path");
+  const fs = require("fs").promises;
 
-  // // console.log("jsonFile", jsonFile);
-  // console.log("installerFile", installerFile);
+  const installerDirectory = path.join(
+    process.cwd(),
+    "public"
+    // "ardi-installer"
+  );
+  const filenames = await fs.readdir(installerDirectory);
+  let jsonData;
+  const files = filenames.map(async (filename, index) => {
+    const filePath = path.join(installerDirectory, filename);
+    // console.log("filename", filename);
+    // if (filename.split(".").pop() === "json") {
+    if (filename === "downloadData.json") {
+      let jsonFile = await fs.readFile(filePath, "utf8");
+      jsonData = await (async function () {
+        return JSON.parse(jsonFile);
+      })();
+    }
+  });
+  await Promise.all(files);
+
+  return {
+    props: {
+      downloadData: jsonData,
+    },
+    revalidate: 60, // will not be used in static HTML export
+  };
 }

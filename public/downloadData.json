@@ -1,0 +1,16 @@
+{
+  "windows": {
+    "version": "6.49 beta",
+    "windowsOS": "32 or 64 bit Windows 7, 10",
+    "fileName": "ardi6-49.msi"
+  },
+  "mac": {
+    "version": "6.48 beta",
+    "macOS": "Requires MacOS 10.14 or better",
+    "fileName": "ardi6-48.dmg"
+  },
+  "changelog": [
+    "Improved user interface, fixed few gmail reader issues and syncronization bug. The set of program features was reviewed to adjust to Google API Services User Data Policy",
+    "This was major upgrade and completes 1 year of development cycle during which we decided to return to the original AriadneOrganizer interface wich manged popup windows with Selector positioned on right side of screen. We normalized item types that are placed in Selector and new feature called Blackboard. We still consider Blackboard and Gmail modules as experimental features but decided to give them run in current release. If there will be new issue discovered in gmail module they will be fixed in next updates."
+  ]
+}

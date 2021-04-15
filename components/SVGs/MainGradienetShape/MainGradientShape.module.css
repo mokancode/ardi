@@ -1,0 +1,27 @@
+.trapeziusSVG {
+  position: absolute;
+  top: -1100px;
+  left: -50px;
+  width: 100%;
+  z-index: 1;
+  fill: black;
+  /* fill: transparent; */
+  height: auto;
+  transform: rotate(40deg) scaleX(1.1);
+  /* filter: drop-shadow(0 0 20px rgb(108, 146, 179)); */
+  transition: 3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.trapeziusSVG.animate {
+  transform: rotate(85deg) scaleX(1) scaleY(1.1);
+}
+
+.gradientShape {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  background: linear-gradient(-0deg, rgb(12, 19, 97) 20%, rgb(8, 120, 218));
+  width: 100vw;
+  height: 100vh;
+  /* display: none; */
+}

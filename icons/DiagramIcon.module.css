@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   transform: scale(.8);
+  position: relative;
 }
 
 .item {
@@ -20,7 +21,7 @@
 
 .item:nth-of-type(2) {
     bottom: 0px;
-    left: 0px;
+    left: -5px;
 }
 
 .item:nth-of-type(2)::before {
@@ -36,6 +37,7 @@
 .item:nth-of-type(3) {
     bottom: 8px;
     right: 2px;
+    /* opacity: .2; */
 }
 
 .item:nth-of-type(3)::before {
@@ -44,6 +46,7 @@
     height: 14px;
     width: 2px;
     bottom: 5px;
+    left: 0px;
     transform: rotate(-20deg) translateX(0px) translateY(-2px);
     background-color: black;
 }

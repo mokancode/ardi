@@ -1,10 +1,11 @@
 // module.exports = {
-//     trailingSlash: true,
+//   // trailingSlash: true,
 //   exportPathMap() {
 //     return {
 //       "/": { page: "/" },
 //       "/download": { page: "/download" },
-//       "/support": { page: "/support" },
+//       "/support.html": { page: "/support" },
+//       "/demo.html": { page: "/demo" },
 //     };
 //   },
 // };

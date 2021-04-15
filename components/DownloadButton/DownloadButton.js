@@ -9,7 +9,6 @@ export default function DownloadButton(props) {
   ).styles;
 
   function downloadStuff(url) {
-    console.log("download stuff");
     var link = document.createElement("a");
     link.setAttribute("download", "test.jpg");
     // link.href = makeTextFile(textbox.value);
@@ -26,18 +25,11 @@ export default function DownloadButton(props) {
   }
 
   return (
-    // <a className={styles.btn} href={props.url} download={props.fileName}>
-    // <a className={styles.btn} href={props.url} download>
-    <a className={styles.btn} href={"https://ardi-test.000webhostapp.com/ardi6-49.msi"} download>
-    {/* // <a className={styles.btn} href={"https://ardi-test.000webhostapp.com/live.jpg"} download> */}
-      {/* //{" "}
-      <div className={styles.btn} onClick={() => downloadStuff(props.url)}> */}
+    <a className={styles.btn} href={props.url} download={props.fileName}>
       Download Now
       <div className={styles.arrowDown}>
         <div className={styles.line}></div>
       </div>
-      {/* //{" "}
-      </div> */}
     </a>
   );
 }

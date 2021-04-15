@@ -8,7 +8,7 @@ import SyncIcon from "../icons/SyncIcon";
 import DiagramIcon from "../icons/DiagramIcon";
 import Link from "next/link";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import StylesContext from "../store/styles-context";
 
 export default function Home(props) {
@@ -17,17 +17,98 @@ export default function Home(props) {
     (styleSheet) => styleSheet.name === "Home"
   ).styles;
 
+  useEffect(() => {
+    // console.log("scroll", window.scrollY);
+    // window.addEventListener("scroll", () => {
+    //   console.log("scroll", window.scrollY);
+    // });
+  }, []);
+
   return (
     <div className={styles.homePage}>
-      <p className="textAlignCenter">
-        Ardi - The Organizer. An Gmail client and Notes manager. Personal
-        information manager and Outliner for Notes, Emails, Tasks and more.
-      </p>
+      <ParagraphWithHeader
+        noUnderline={true}
+        extraLarge={true}
+        color="white"
+        headerText="Ardi - The Organizer. A Gmail Client and Notes Manager."
+        paragraphText="Manage notes, emails, contacts, tasks and images."
+        visibleReveal={true}
+      />
+
+      <div className={styles.threeDivSplit}>
+        <ParagraphWithHeader
+          first={true}
+          centerHeader={true}
+          background={true}
+          noUnderline={true}
+          headerText="Outliner"
+          paragraphText="Brings structure into set of data, allowing hierarhichal organization and natural selection. Everything in Ardi is topic-related. It could be topic by itself, note, sentence, image or other item."
+          iconBgColor1={"rgb(39, 115, 206)"}
+          iconBgColor2={"rgb(18, 63, 155)"}
+          icon={<OutlinerIcon />}
+        />
+        <ParagraphWithHeader
+          centerHeader={true}
+          background={true}
+          noUnderline={true}
+          headerText="ToDo manager"
+          paragraphText="Items can be categorized and prioritised according to some rule. ToDo properties controlled by single click on right positioned column in Outline or on rectangular structures in Graph."
+          iconBgColor1={"rgb(51, 209, 230)"}
+          iconBgColor2={"rgb(33, 168, 203)"}
+          icon={<ToDoManagerIcon />}
+          index={1}
+        />
+        <ParagraphWithHeader
+          centerHeader={true}
+          background={true}
+          noUnderline={true}
+          headerText="Notes"
+          paragraphText="Notes can contain formatted text as seen in the browser. Also it is easy to maintain several notes in one bundle, secondary notes becomes comments. Notes can be further extended and include images and albums."
+          iconBgColor1={"rgb(245, 141, 58)"}
+          iconBgColor2={"rgb(230, 92, 21)"}
+          icon={<NotesIcon />}
+        />
+      </div>
+
+      <div className={styles.threeDivSplit}>
+        <ParagraphWithHeader
+          centerHeader={true}
+          background={true}
+          noUnderline={true}
+          headerText="Blackboards"
+          paragraphText="Blackboard is a 2D space divided in shaded columns. It works just like real life blackboard were you can write note, small diagram or big category of objects, pin down email and layout workflow. Blackboards are designed to bring notes and topics in context - connect them with arrows, arrange into columns and graphs."
+          iconBgColor1={"rgb(117, 221, 139)"}
+          iconBgColor2={"rgb(23, 172, 97)"}
+          icon={<CameraIcon />}
+        />
+
+        <ParagraphWithHeader
+          centerHeader={true}
+          background={true}
+          noUnderline={true}
+          headerText="Synchronization"
+          paragraphText="Ardi was designed to run offline and don't need internet connection to maintain data. Some times it is convenient and safe for personal information. But it could be easily configured to share topics and synchronize all changes to the cloud storage - Dropbox."
+          iconBgColor1={"rgb(117, 166, 221)"}
+          iconBgColor2={"rgb(36, 129, 184)"}
+          icon={<SyncIcon />}
+          index={1}
+        />
+        <ParagraphWithHeader
+          centerHeader={true}
+          background={true}
+          noUnderline={true}
+          headerText={"Diagrams & Graphs"}
+          paragraphText="Any outline can be presented as graph in the program and there are several ways to generate graph, depending on number of items and their relation to each other. Graph is intuitive and convenient way to display different connections between topics."
+          iconBgColor1={"rgb(187, 185, 255)"}
+          iconBgColor2={"rgb(159, 124, 255)"}
+          icon={<DiagramIcon />}
+        />
+      </div>
 
       <ParagraphWithHeader
         centerHeader={true}
         headerText="Ardi - GMail client and organizer for notes, tasks, contacts, emails. Ardi can manage notes, emails, contacts, tasks and images."
-        paragraphText="Ardi is Gmail companion with organizer features for notes and topics. 
+        paragraphText="Ardi is a Gmail companion with organizer features for notes and topics. 
         It supports Getting Things Done workflow, has built-in project management with Gantt, Critical Path, and 
         others plan-oriented views. The basic data management is outline based but supports also graphs and tables. 
         Ardi manages data by grouping emails, notes and topics using labels and folders. The program can work offline with local 
@@ -35,43 +116,6 @@ export default function Home(props) {
          so work with downloaded messages also possible offline. Ardi is native Desktop application that is optimized to work efficiently on various 
          platforms - Windows, OSX, Ubuntu."
       />
-
-      <div className={styles.threeDivSplit}>
-        <ParagraphWithHeader
-          headerText="Outliner"
-          paragraphText="Brings structure into set of data, allowing hierarhichal organization and natural selection. Everything in Ardi is topic-related. It could be topic by itself, note, sentence, image or other item."
-          icon={<OutlinerIcon />}
-        />
-        <ParagraphWithHeader
-          headerText="ToDo manager"
-          paragraphText="Items can be categorized and prioritised according to some rule. ToDo properties controlled by single click on right positioned column in Outline or on rectangular structures in Graph."
-          icon={<ToDoManagerIcon />}
-        />
-        <ParagraphWithHeader
-          headerText="Notes"
-          paragraphText="Notes can contain formatted text as seen in the browser. Also it is easy to maintain several notes in one bundle, secondary notes becomes comments. Notes can be further extended and include images and albums."
-          icon={<NotesIcon />}
-        />
-      </div>
-
-      <div className={styles.threeDivSplit}>
-        <ParagraphWithHeader
-          headerText="Blackboards"
-          paragraphText="Blackboard is a 2D space divided in shaded columns. It works just like real life blackboard were you can write note, small diagram or big category of objects, pin down email and layout workflow. Blackboards are designed to bring notes and topics in context - connect them with arrows, arrange into columns and graphs."
-          icon={<CameraIcon />}
-        />
-
-        <ParagraphWithHeader
-          headerText="Synchronization"
-          paragraphText="Ardi was designed to run offline and don't need internet connection to maintain data. Some times it is convenient and safe for personal information. But it could be easily configured to share topics and synchronize all changes to the cloud storage - Dropbox."
-          icon={<SyncIcon />}
-        />
-        <ParagraphWithHeader
-          headerText={"Diagrams & Graphs"}
-          paragraphText="Any outline can be presented as graph in the program and there are several ways to generate graph, depending on number of items and their relation to each other. Graph is intuitive and convenient way to display different connections between topics."
-          icon={<DiagramIcon />}
-        />
-      </div>
 
       <ParagraphWithHeader
         headerText={
