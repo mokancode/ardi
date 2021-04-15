@@ -54,45 +54,54 @@ export default function ParagraphWithHeader(props) {
   // set scroll event listener on mainDiv
   const [eventListenerSet, setEventListenerSet] = useState(false);
   useEffect(() => {
-    // console.log("window", window.scrollY);
     if (!eventListenerSet && mainDivRefState) {
       setEventListenerSet(true);
-      console.log("event listener set");
       mainDivRefState.current.addEventListener("scroll", (e) => {
         // console.log("scroll", mainDivRefState.current.scrollTop);
-        // if (offsetTopState)
-        // console.log("offset top", offsetTopState);
-        // if (props.first) console.log(e.target.scrollTop);
-        //   console.log("abs", Math.abs(e.target.scrollTop - offsetTopState));
+
+        const offset = 550;
 
         if (
           // props.first &&
-          // Math.abs(e.target.scrollTop - offsetTopState) < 1500 &&
-
-          // offsetTopState - e.target.scrollTop < 500 &&
-          e.target.scrollTop <=
-            (offsetTopState - 480 < 0 ? 0 : offsetTopState - 480) &&
+          (e.target.scrollTop <=
+            (offsetTopState - offset < 0 ? 0 : offsetTopState - offset) ||
+            e.target.scrollTop >= offsetTopState - offset) &&
           !props.visibleReveal
           // && !showComponent
         ) {
           // console.log("scroll", mainDivRefState.current.scrollTop);
           let opacityEquation =
-            1.2 - Math.abs(e.target.scrollTop - offsetTopState + 480) / 50;
-          if (opacityEquation < 0) opacityEquation = 0;
-          else if (opacityEquation > 1) opacityEquation = 1;
-          // console.log("abs", opacityEquation);
+            1.2 - Math.abs(e.target.scrollTop - offsetTopState + offset) / 50;
+
+          console.log(
+            "scroll relative",
+            `${e.target.scrollTop} > ${offsetTopState - offset}`,
+            e.target.scrollTop > offsetTopState - offset
+          );
+
+          if (
+            opacityEquation > 1 ||
+            e.target.scrollTop > offsetTopState - offset
+          )
+            opacityEquation = 1;
+          else if (opacityEquation < 0) opacityEquation = 0;
+
           paragraphWithHeaderRef.current.style.opacity = `${opacityEquation}`;
           // console.log("show component");
           // setShowComponent(true);
 
-          let translateYEquation =
-            Math.abs(e.target.scrollTop - offsetTopState + 480) / 50;
-          if (translateYEquation < 0) translateYEquation = 0;
-          else if (translateYEquation > 1) translateYEquation = 1;
-          paragraphWithHeaderRef.current.style.transform = `translateY(${
-            50 * translateYEquation
-          }px)`;
-          // console.log("abs", -10 * translateYEquation);
+          // let translateYEquation =
+          //   Math.abs(e.target.scrollTop - offsetTopState + offset) / 50;
+          // if (translateYEquation < 0) translateYEquation = 0;
+          // else if (
+          //   translateYEquation > 1 ||
+          //   offsetTopState + paragraphWithHeaderRef.current.offsetHeight
+          // )
+          //   translateYEquation = 1;
+          // paragraphWithHeaderRef.current.style.transform = `translateY(${
+          //   50 * translateYEquation
+          // }px)`;
+          // console.log("translate", 50 * translateYEquation);
         }
       });
     }

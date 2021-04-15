@@ -37,7 +37,6 @@ export default function Home(props) {
 
       <div className={styles.threeDivSplit}>
         <ParagraphWithHeader
-          first={true}
           centerHeader={true}
           background={true}
           noUnderline={true}
@@ -72,6 +71,7 @@ export default function Home(props) {
 
       <div className={styles.threeDivSplit}>
         <ParagraphWithHeader
+          first={true}
           centerHeader={true}
           background={true}
           noUnderline={true}

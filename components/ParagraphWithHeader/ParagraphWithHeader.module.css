@@ -1,7 +1,8 @@
 .wrapper {
   margin-bottom: 30px;
-  transition: 1s, .4s opacity;
+  transition: 1s, 0.2s opacity;
   opacity: 0;
+  /* opacity: 1 !important; */
   transform: translateY(-10px);
   position: relative;
   /* border: 1px solid black; */
