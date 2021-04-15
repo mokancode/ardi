@@ -31,7 +31,7 @@ export default function Layout(props) {
   }, [router.pathname]);
 
   return (
-    <Fragment>
+    <div className="appContainer">
       <Navbar detach={detachNavbar} />
 
       {/* <TransitionGroup className="transition-group">
@@ -81,6 +81,6 @@ export default function Layout(props) {
         </CSSTransition>
         {/* </SwitchTransition> */}
       </TransitionGroup>
-    </Fragment>
+      </div>
   );
 }

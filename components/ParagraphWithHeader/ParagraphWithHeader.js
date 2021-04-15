@@ -6,6 +6,7 @@ import StylesContext from "../../store/styles-context";
 import RefsContext from "../../store/refs-context";
 
 import ReactVisibilitySensor from "react-visibility-sensor";
+import calculateScrollProgression from "../../utils/CalculateScrollProgression";
 
 export default function ParagraphWithHeader(props) {
   const paragraphWithHeaderRef = useRef();
@@ -56,6 +57,9 @@ export default function ParagraphWithHeader(props) {
   useEffect(() => {
     if (!eventListenerSet && mainDivRefState) {
       setEventListenerSet(true);
+      if (props.first) {
+        // console.log(window.innerHeight, window.innerWidth);
+      }
       mainDivRefState.current.addEventListener("scroll", (e) => {
         // console.log("scroll", mainDivRefState.current.scrollTop);
 
@@ -63,44 +67,34 @@ export default function ParagraphWithHeader(props) {
 
         if (
           // props.first &&
-          (e.target.scrollTop <=
-            (offsetTopState - offset < 0 ? 0 : offsetTopState - offset) ||
-            e.target.scrollTop >= offsetTopState - offset) &&
+          // (e.target.scrollTop <=
+          //   (offsetTopState - offset < 0 ? 0 : offsetTopState - offset) ||
+          //   e.target.scrollTop >= offsetTopState - offset) &&
+
+          // (e.target.scrollTop <= offsetTopState - offset < 0
+          //   ? 0
+          //   : offsetTopState - offset) &&
+          e.target.scrollTop <= offsetTopState + offset &&
+          // paragraphWithHeaderRef.current.offsetHeight +
+
           !props.visibleReveal
-          // && !showComponent
         ) {
           // console.log("scroll", mainDivRefState.current.scrollTop);
-          let opacityEquation =
-            1.2 - Math.abs(e.target.scrollTop - offsetTopState + offset) / 50;
 
-          console.log(
-            "scroll relative",
-            `${e.target.scrollTop} > ${offsetTopState - offset}`,
-            e.target.scrollTop > offsetTopState - offset
+          let opacityEquation = calculateScrollProgression(
+            e.target.scrollTop,
+            offsetTopState,
+            offset
           );
 
-          if (
-            opacityEquation > 1 ||
-            e.target.scrollTop > offsetTopState - offset
-          )
-            opacityEquation = 1;
-          else if (opacityEquation < 0) opacityEquation = 0;
-
           paragraphWithHeaderRef.current.style.opacity = `${opacityEquation}`;
-          // console.log("show component");
-          // setShowComponent(true);
+          // // console.log("show component");
+          // // setShowComponent(true);
 
-          // let translateYEquation =
-          //   Math.abs(e.target.scrollTop - offsetTopState + offset) / 50;
-          // if (translateYEquation < 0) translateYEquation = 0;
-          // else if (
-          //   translateYEquation > 1 ||
-          //   offsetTopState + paragraphWithHeaderRef.current.offsetHeight
-          // )
-          //   translateYEquation = 1;
-          // paragraphWithHeaderRef.current.style.transform = `translateY(${
-          //   50 * translateYEquation
-          // }px)`;
+          let translateYEquation = 1 - opacityEquation;
+          paragraphWithHeaderRef.current.style.transform = `translateY(${
+            50 * translateYEquation
+          }px)`;
           // console.log("translate", 50 * translateYEquation);
         }
       });
