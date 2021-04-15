@@ -7,7 +7,7 @@
   position: relative;
   transition: 0.5s;
   /* border: 1px solid cyan; */
-  display: none;
+  /* display: none; */
 }
 
 .navbar::before {
