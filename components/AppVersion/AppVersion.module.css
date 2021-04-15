@@ -1,0 +1,37 @@
+.appVersion {
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  z-index: 1000;
+  /* border: 1px solid black; */
+  /* width: fit-content; */
+  padding: 5px;
+  user-select: none;
+}
+
+.textSkewWrapper {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 5);
+  transform: skewX(20deg);
+  transform-origin: bottom;
+}
+
+.appVersion p {
+  margin: 0px;
+  /* font-weight: bold; */
+  transition: 0.5s;
+  transform: translateX(-200%);
+  background: -webkit-linear-gradient(90deg, blue, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.appVersion:hover p {
+  transform: unset;
+}
+
+.appVersion:hover .textSkewWrapper {
+  transition-duration: 0.5s;
+  transition-delay: 0.1s;
+  transform: unset;
+}

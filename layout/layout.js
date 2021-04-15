@@ -9,6 +9,9 @@ import Navbar from "../components/Navbar/Navbar";
 import { useRouter } from "next/router";
 import MainGradientShape from "../components/SVGs/MainGradienetShape/MainGradientShape";
 import RefsContext from "../store/refs-context";
+import AppVersion from "../components/AppVersion/AppVersion";
+
+const appVersion = "1.0.0";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -32,6 +35,8 @@ export default function Layout(props) {
 
   return (
     <div className="appContainer">
+      <AppVersion version={appVersion}/>
+
       <Navbar detach={detachNavbar} />
 
       {/* <TransitionGroup className="transition-group">
@@ -81,6 +86,6 @@ export default function Layout(props) {
         </CSSTransition>
         {/* </SwitchTransition> */}
       </TransitionGroup>
-      </div>
+    </div>
   );
 }
