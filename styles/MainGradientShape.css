@@ -7,7 +7,7 @@
   height: 100vh;
   position: absolute;
   top: 0px;
-  transition: 1s ease-in-out;
+  /* transition: 1s ease-in-out; */
 }
 
 /* .mainGradientShapeWrapper {
