@@ -7,8 +7,11 @@
   height: 100vh;
   position: absolute;
   top: 0px;
-  /* transition: .2s ease-in-out; */
+  transition: 1s ease-in-out;
 }
+
+/* .mainGradientShapeWrapper {
+} */
 
 .mainGradientShape {
   position: absolute;
@@ -19,9 +22,9 @@
   fill: black;
   /* fill: transparent; */
   height: auto;
-  transform: rotate(40deg) scaleX(1.1);
+  transform: rotate(30deg) scaleX(1.1);
   /* filter: drop-shadow(0 0 20px rgb(108, 146, 179)); */
-  transition: 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transition: 2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 /* .page-enter .mainGradientShape {

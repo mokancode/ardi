@@ -36,7 +36,23 @@ export default function Layout(props) {
 
   useEffect(() => {
     setDetachNavbar(false);
-    mainGradientShapeRef.current.style.transform = `translateY(0px)`;
+
+    switch (router.pathname) {
+      case "/":
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scaleX(1.1)`;
+        break;
+      case "/download":
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(50deg) scaleX(1.1)`;
+        break;
+      case "/support":
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(30deg) scaleX(1.1)`;
+        break;
+      case "/demo":
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scaleX(1.1)`;
+
+      default:
+        break;
+    }
   }, [router.pathname]);
 
   return (
