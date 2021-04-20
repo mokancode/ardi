@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import RefsContext from "../../store/refs-context";
 import calculateScrollProgression from "../../utils/CalculateScrollProgression";
 import { v4 as uuidv4 } from "uuid";
+import StylesContext from "../../store/styles-context";
 
 export default function ParallaxTrapezius(props) {
   const stylesContext = useContext(StylesContext);
