@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 import ParagraphWithHeaderStyles from "../components/ParagraphWithHeader/ParagraphWithHeader.module.css";
 import NavbarStyles from "../components/Navbar/Navbar.module.css";
 import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.module.css";
+import ParallaxTrapeziusStyles from "../components/ParallaxTrapezius/ParallaxTrapezius.module.css";
 
 import HomeStyles from "../styles/Home.module.css";
 import DownloadPageStyles from "../styles/DownloadPage.module.css";
@@ -27,6 +28,7 @@ export function StylesContextProvider(props) {
     { name: "ParagraphWithHeader", styles: ParagraphWithHeaderStyles },
     { name: "Navbar", styles: NavbarStyles },
     { name: "DownloadButton", styles: DownloadButtonStyles },
+    { name: "ParallaxTrapezius", styles: ParallaxTrapeziusStyles },
 
     { name: "Home", styles: HomeStyles },
     { name: "DownloadPage", styles: DownloadPageStyles },

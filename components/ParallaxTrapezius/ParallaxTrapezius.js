@@ -1,10 +1,15 @@
-import styles from "./ParallaxTrapezius.module.css";
+// import styles from "./ParallaxTrapezius.module.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import RefsContext from "../../store/refs-context";
 import calculateScrollProgression from "../../utils/CalculateScrollProgression";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ParallaxTrapezius(props) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find(
+    (styleSheet) => styleSheet.name === "ParallaxTrapezius"
+  ).styles;
+  
   const [mainDivRefState, setMainDivRef] = useState(null);
   const [id, setId] = useState(null);
   const parallaxRef = useRef();
