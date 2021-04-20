@@ -48,13 +48,30 @@ export default function TutorialViewer() {
           ref={imgRef}
           onLoad={() => {
             console.log("load");
+            let horizontalPos = 0.9;
+            if (horizontalPos >= 0.5) {
+              pointerInstructionRef.current.style.left = "-240px";
+              pointerInstructionRef.current.style.right = "unset";
+            } else if (horizontalPos < 0.5) {
+              pointerInstructionRef.current.style.right = "-240px";
+              pointerInstructionRef.current.style.left = "unset";
+            }
+
             pointerRef.current.style.transform = `translate(${
-              imgContainerRef.current.offsetWidth * 0.5 -
+              imgContainerRef.current.offsetWidth * horizontalPos -
               pointerRef.current.offsetWidth / 2
             }px, ${
-              imgContainerRef.current.offsetHeight * 0.5 -
+              imgContainerRef.current.offsetHeight * 0.1 -
               pointerRef.current.offsetHeight / 2
             }px)`;
+
+            // pointerRef.current.style.transform = `translate(${
+            //   imgContainerRef.current.offsetWidth * 0.5 -
+            //   pointerRef.current.offsetWidth / 2
+            // }px, ${
+            //   imgContainerRef.current.offsetHeight * 0.5 -
+            //   pointerRef.current.offsetHeight / 2
+            // }px)`;
           }}
           src="/images/image1.jpg"
           alt="img"
