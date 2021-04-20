@@ -142,7 +142,7 @@ export default function Home(props) {
         <Link href="/terms-of-service">Terms of Service</Link>
       </div>
 
-      {/* <div className={styles.parallaxTrapeziusWrapper}>
+      <div className={styles.parallaxTrapeziusWrapper}>
         <div className={styles.regularFill}>
           <ParallaxTrapezius bgFill={true} />
           <ParallaxTrapezius bgFill={true} />
@@ -161,7 +161,7 @@ export default function Home(props) {
         </div>
       </div>
 
-     */}
+    
     </div>
   );
 }
