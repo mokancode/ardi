@@ -1,44 +1,91 @@
 .btn {
-  background: linear-gradient(to top, grey, rgb(199, 199, 199));
+  background: linear-gradient(rgb(243, 243, 243), rgb(230, 230, 230));
   padding: 10px 20px;
-  color: white;
+  padding-right: 50px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(47, 79, 79, 0.2);
   border-radius: 5px;
   border: 1px solid grey;
   display: flex;
   align-items: center;
+  /* justify-content: flex-start; */
   position: relative;
+  margin-top: 15px;
   margin-bottom: 30px;
   cursor: pointer;
   text-decoration: none;
   width: fit-content;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 0.5s 0.5s;
 }
 
-.arrowDown {
-  width: 20px;
+.btn.show {
+  opacity: 1;
+  transform: unset;
+}
+
+.separatingLine {
   height: 20px;
-  background-color: white;
-  border-radius: 50px;
+  width: 1px;
   margin-left: 10px;
+  background-color: rgb(206, 206, 206);
+  box-shadow: 1px 0 1px 0px white;
+}
+
+.btn p {
+  animation-duration: 0.8s;
+  color: darkslategrey;
+  margin: 0px;
+}
+
+.btn p.animate {
+  animation-name: downloadBtnTextAnim;
+}
+
+@keyframes downloadBtnTextAnim {
+  0% {
+    color: darkslategrey;
+  }
+  50% {
+    color: white;
+    text-shadow: 0 0 1px grey, 0 0 10px white;
+  }
+  100% {
+    color: darkslategrey;
+  }
+}
+
+.downloadTextWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.downloadText {
+  display: flex;
+}
+
+.fileNameAndSizeWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 1s 2.4s;
+  overflow: hidden;
+  max-height: 0px;
 }
 
-.arrowDown .line {
-  width: 4px;
-  height: 10px;
-  background-color: grey;
-  position: relative;
+.btn.show .fileNameAndSizeWrapper {
+  max-height: 20px;
 }
 
-.arrowDown .line::before {
-  position: absolute;
-  content: "";
-  right: -1.9px;
-  bottom: 0px;
-  transform: rotate(45deg);
-  width: 5px;
-  height: 5px;
-  border-right: 3px solid grey;
-  border-bottom: 3px solid grey;
+.fileNameAndSizeWrapper p {
+  font-size: 11px;
+  font-weight: normal;
+  color: rgb(124, 140, 148);
+  text-shadow: 0.5px 0.5px 0.5px rgb(219, 219, 219);
+}
+
+.fileNameAndSizeWrapper .hyphen {
+  margin-left: 5px;
+  margin-right: 5px;
 }

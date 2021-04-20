@@ -8,6 +8,7 @@ import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.mo
 import HomeStyles from "../styles/Home.module.css";
 import DownloadPageStyles from "../styles/DownloadPage.module.css";
 import PrivacyPolicyStyles from "../styles/PrivacyPolicy.module.css";
+import DemoStyles from "../styles/Demo.module.css";
 
 import IconContainerStyles from "../icons/IconContainer.module.css";
 import DiagramIconStyles from "../icons/DiagramIcon.module.css";
@@ -26,9 +27,12 @@ export function StylesContextProvider(props) {
     { name: "ParagraphWithHeader", styles: ParagraphWithHeaderStyles },
     { name: "Navbar", styles: NavbarStyles },
     { name: "DownloadButton", styles: DownloadButtonStyles },
+
     { name: "Home", styles: HomeStyles },
     { name: "DownloadPage", styles: DownloadPageStyles },
     { name: "PrivacyPolicyPage", styles: PrivacyPolicyStyles },
+    { name: "DemoPage", styles: DemoStyles },
+
     { name: "IconContainer", styles: IconContainerStyles },
     { name: "DiagramIcon", styles: DiagramIconStyles },
     { name: "OutlinerIcon", styles: OutlinerIconStyles },

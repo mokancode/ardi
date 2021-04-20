@@ -10,6 +10,7 @@ import Link from "next/link";
 
 import { useContext, useEffect } from "react";
 import StylesContext from "../store/styles-context";
+import ParallaxTrapezius from "../components/ParallaxTrapezius/ParallaxTrapezius";
 
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
@@ -32,12 +33,13 @@ export default function Home(props) {
         color="white"
         headerText="Ardi - The Organizer. A Gmail Client and Notes Manager."
         paragraphText="Manage notes, emails, contacts, tasks and images."
-        visibleReveal={true}
+        visibilitySensorReveal={true}
       />
 
       <div className={styles.threeDivSplit}>
         <ParagraphWithHeader
           first={true}
+          visibilitySensorReveal={true}
           centerHeader={true}
           background={true}
           noUnderline={true}
@@ -48,6 +50,7 @@ export default function Home(props) {
           icon={<OutlinerIcon />}
         />
         <ParagraphWithHeader
+          visibilitySensorReveal={true}
           centerHeader={true}
           background={true}
           noUnderline={true}
@@ -59,6 +62,7 @@ export default function Home(props) {
           index={1}
         />
         <ParagraphWithHeader
+          visibilitySensorReveal={true}
           centerHeader={true}
           background={true}
           noUnderline={true}
@@ -136,6 +140,25 @@ export default function Home(props) {
       <div className={styles.links}>
         <Link href="/privacy-policy">Privacy Policy</Link>
         <Link href="/terms-of-service">Terms of Service</Link>
+      </div>
+
+      <div className={styles.parallaxTrapeziusWrapper}>
+        <div className={styles.regularFill}>
+          <ParallaxTrapezius bgFill={true} />
+          <ParallaxTrapezius bgFill={true} />
+          <ParallaxTrapezius bgFill={true} />
+        </div>
+
+        <div className={styles.gradientFill}>
+          <ParallaxTrapezius
+            gradientColor1={"rgb(35, 175, 220)"}
+            gradientColor2={"rgb(46, 211, 255)"}
+          />
+          <ParallaxTrapezius
+            gradientColor1={"rgb(35, 175, 220)"}
+            gradientColor2={"rgb(46, 211, 255)"}
+          />
+        </div>
       </div>
     </div>
   );

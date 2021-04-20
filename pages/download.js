@@ -34,39 +34,57 @@ export default function DownloadPage(props) {
   // console.log("downloadData", downloadData);
 
   return (
-    <div className="pageWrapper">
+    <div className={["", styles.pageWrapper].join(" ")}>
       <div className={styles.downloadButtonsWrapper}>
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.paragraphWithHeaderWrapper}>
             <ParagraphWithHeader
+              visibilitySensorReveal={true}
+              background={true}
+              headerWithIconDirection="horizontal"
               headerText={`Ardi ${downloadData.windows.version} for Windows`}
               paragraphText={`${downloadData.windows.windowsOS}`}
               icon={"/images/win7-logo.png"}
             />
           </div>
           <DownloadButton
+            visibilitySensorReveal={true}
             url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
             fileName={downloadData.windows.fileName}
+            fileSize={downloadData.windows.fileSize}
           />
         </div>
 
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.paragraphWithHeaderWrapper}>
             <ParagraphWithHeader
+              visibilitySensorReveal={true}
+              background={true}
+              headerWithIconDirection="horizontal"
               headerText={`Ardi ${downloadData.mac.version} for MacOS`}
               paragraphText={`${downloadData.mac.macOS}`}
               icon={"/images/apple-logo.png"}
             />
           </div>
           <DownloadButton
+            visibilitySensorReveal={true}
             url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
             fileName={downloadData.mac.fileName}
+            fileSize={downloadData.mac.fileSize}
+            stripColor="green"
           />
         </div>
       </div>
 
-      <h4>Changelog</h4>
-      {changelog}
+      <ParagraphWithHeader
+        visibilitySensorReveal={true}
+        background={true}
+        headerWithIconDirection="horizontal"
+        headerText={`Changelog`}
+        paragraphText={changelog}
+        paragraphAlignLeft={true}
+        // icon={"/images/.png"}
+      />
     </div>
   );
 }

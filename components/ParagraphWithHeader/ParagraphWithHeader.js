@@ -24,8 +24,8 @@ export default function ParagraphWithHeader(props) {
 
   const { iconBgColor1, iconBgColor2, index } = props;
 
-  const [mainDivRefState, setMainDivRef] = useState(null);
   const [showComponent, setShowComponent] = useState(false);
+  const [mainDivRefState, setMainDivRef] = useState(null);
 
   // Calculate distance from top of document (not the viewport -- the entire document/window).
   const [offsetTopState, setOffsetTop] = useState(null);
@@ -77,7 +77,7 @@ export default function ParagraphWithHeader(props) {
           e.target.scrollTop <= offsetTopState + offset &&
           // paragraphWithHeaderRef.current.offsetHeight +
 
-          !props.visibleReveal
+          !props.visibilitySensorReveal
         ) {
           // console.log("scroll", mainDivRefState.current.scrollTop);
 
@@ -108,7 +108,8 @@ export default function ParagraphWithHeader(props) {
   return (
     <ReactVisibilitySensor
       onChange={(isVisible) => {
-        if (isVisible && props.visibleReveal) setShowComponent(true);
+        if (isVisible && props.visibilitySensorReveal){
+           setShowComponent(true);}
         // else setShowComponent(false);
       }}
       partialVisibility={true}
@@ -140,6 +141,7 @@ export default function ParagraphWithHeader(props) {
             styles.headerWithIconWrapper,
             props.centerHeader && styles.alignCenter,
             props.noUnderline && styles.noUnderline,
+            props.headerWithIconDirection && styles[props.headerWithIconDirection]
           ].join(" ")}
         >
           {props.icon ? (
@@ -150,6 +152,7 @@ export default function ParagraphWithHeader(props) {
                 iconBgColor1={iconBgColor1}
                 iconBgColor2={iconBgColor2}
                 index={index}
+                // showComponent={showComponent}
               >
                 {props.icon}
               </IconContainer>
@@ -171,6 +174,7 @@ export default function ParagraphWithHeader(props) {
           className={[
             styles.paragraph,
             props.color && styles[props.color],
+            props.paragraphAlignLeft && styles.paragraphAlignLeft,
           ].join(" ")}
         >
           {props.paragraphText}

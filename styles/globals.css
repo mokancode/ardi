@@ -13,6 +13,17 @@ body {
   /* border: 5px solid green; */
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0px;
+  margin: 0px;
+}
+
 .appContainer {
   /* border: 5px solid black; */
   height: 100vh;

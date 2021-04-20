@@ -2,12 +2,14 @@
   "windows": {
     "version": "6.49 beta",
     "windowsOS": "32 or 64 bit Windows 7, 10",
-    "fileName": "ardi6-49.msi"
+    "fileName": "ardi6-52.msi",
+    "fileSize": "50.8 MB"
   },
   "mac": {
     "version": "6.48 beta",
     "macOS": "Requires MacOS 10.14 or better",
-    "fileName": "ardi6-48.dmg"
+    "fileName": "ardi6-52.dmg",
+    "fileSize": "50.8 MB"
   },
   "changelog": [
     "Improved user interface, fixed few gmail reader issues and syncronization bug. The set of program features was reviewed to adjust to Google API Services User Data Policy",

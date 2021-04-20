@@ -7,6 +7,14 @@
   position: relative;
   margin-bottom: 30px;
   /* border: 2px solid black; */
+  transition: 0.5s;
+  transform: rotate(-45deg) scale(0.9);
+  opacity: 0;
+}
+
+.containerWrapper.show {
+  transform: unset;
+  opacity: 1;
 }
 
 .container {

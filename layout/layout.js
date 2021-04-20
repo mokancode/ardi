@@ -11,7 +11,7 @@ import MainGradientShape from "../components/SVGs/MainGradienetShape/MainGradien
 import RefsContext from "../store/refs-context";
 import AppVersion from "../components/AppVersion/AppVersion";
 
-const appVersion = "1.0.0";
+const appVersion = "1.0.1";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -27,15 +27,21 @@ export default function Layout(props) {
       name: "mainDivRef",
       ref: mainDivRef,
     });
+
+    setTimeout(() => {
+      // mainDivRef.current.scrollTop = 400;
+      // console.log("scroll top", mainDivRef.current.scrollTop);
+    }, 2000);
   }, []);
 
   useEffect(() => {
     setDetachNavbar(false);
+    mainGradientShapeRef.current.style.transform = `translateY(0px)`;
   }, [router.pathname]);
 
   return (
     <div className="appContainer">
-      <AppVersion version={appVersion}/>
+      <AppVersion version={appVersion} />
 
       <Navbar detach={detachNavbar} />
 
@@ -58,7 +64,7 @@ export default function Layout(props) {
           key={router.pathname}
           classNames="page"
           // timeout={{ enter: 800, exit: 300 }}
-          timeout={4000}
+          timeout={300}
         >
           <main
             id="mainDiv"
@@ -72,10 +78,13 @@ export default function Layout(props) {
                 e.target.scrollTop / 2
               }px)`;
 
-              if (!detachNavbar && e.target.scrollTop > 0)
+              if (!detachNavbar && e.target.scrollTop > 0) {
                 setDetachNavbar(true);
-              else if (detachNavbar && e.target.scrollTop === 0)
+                // console.log("attach");
+              } else if (detachNavbar && e.target.scrollTop === 0) {
+                // console.log("detach");
                 setDetachNavbar(false);
+              }
             }}
           >
             {/* <SwitchTransition 

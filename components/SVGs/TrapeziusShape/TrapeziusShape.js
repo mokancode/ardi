@@ -8,15 +8,21 @@ export default function TrapeziusShape(props) {
 
   const [id, setId] = useState(uuidv4());
 
+  const { showComponent } = props;
+
   return (
     <div className="trapeziusSVGWrapper">
       <div
         className={classnames("bubblesWrapper", {
           type2: index && index % 2 !== 0,
+          show: showComponent,
         })}
       >
         <div className="bubble" style={{ backgroundColor: iconBgColor1 }}></div>
         <div className="bubble" style={{ backgroundColor: iconBgColor2 }}></div>
+
+        <div className="bubble fireWork" style={{ backgroundColor: iconBgColor1 }}></div>
+        <div className="bubble fireWork" style={{ backgroundColor: iconBgColor2 }}></div>
       </div>
       <svg
         className="trapeziusSVG"
