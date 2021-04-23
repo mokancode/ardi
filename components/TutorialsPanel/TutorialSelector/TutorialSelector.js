@@ -2,47 +2,41 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./TutorialSelector.module.css";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../../../utils/validation/is-empty";
+import classNames from "classnames";
 
-export default function TutorialSelector({ tutorials, currentTutorial }) {
+export default function TutorialSelector({
+  tutorials,
+  currentCategory,
+  currentTutorial,
+  selectTutorial,
+}) {
   const tutorialsListRefs = useRef([]);
   const [tutorialsListOpen, setTutorialListOpen] = useState(null);
-
-  const [categoryIDs, setCategoryIDs] = useState([]);
-  const [tutorialIDs, setTutorialIDs] = useState([]);
-  useEffect(() => {
-    let tempCategoryIDs = [];
-    let tempTutorialIDs = [];
-    for (var c = 0; c < tutorials.length; c++) {
-      tempCategoryIDs.push(uuidv4());
-
-      if (tutorials[c].tutorials) {
-        let tempTutorials = tutorials[c].tutorials;
-        for (var t = 0; t < tempTutorials.length; t++) {
-          tempTutorialIDs.push(uuidv4());
-        }
-      }
-    }
-    setCategoryIDs(tempCategoryIDs);
-    setTutorialIDs(tempTutorialIDs);
-  }, []);
-
-  if (isEmpty(categoryIDs) && isEmpty(tutorialIDs)) return <h1>Loading...</h1>;
 
   return (
     <div className={styles.container}>
       <ul className={styles.categoriesList}>
         {tutorials.map((category, categoryIndex) => {
           return (
-            <div
-              className={styles.categoryContainer}
-              key={categoryIDs[categoryIndex]}
-            >
+            <div className={styles.categoryContainer} key={category.id}>
               <p
-                className={[
-                  styles.categoryName,
-                  category.tutorials && styles.hasList,
-                  tutorialsListOpen === categoryIndex && styles.listIsOpen,
-                ].join(" ")}
+                className={
+                  classNames(styles.categoryName, {
+                    [styles.hasList]: category.tutorials,
+                    [styles.listIsOpen]: tutorialsListOpen === categoryIndex,
+                    [styles.selected]:
+                      currentCategory && category.id === currentCategory.id,
+                  })
+
+                  //     [
+                  //   styles.categoryName,
+                  //   category.tutorials && styles.hasList,
+                  //   tutorialsListOpen === categoryIndex && styles.listIsOpen,
+                  //   currentCategory &&
+                  //     category.id === currentCategory.id &&
+                  //     styles.selected,
+                  // ].join(" ")
+                }
                 name={category.categoryName}
                 ref={(list) =>
                   (tutorialsListRefs.current[categoryIndex] = list)
@@ -75,14 +69,24 @@ export default function TutorialSelector({ tutorials, currentTutorial }) {
                         "";
                 }}
               >
-                {/* <span></span> */}
                 {category.categoryName}
+                <span className={styles.arrow}></span>
               </p>
               {category.tutorials && (
                 <ul className={styles.tutorialsList}>
                   {category.tutorials.map((tutorial, tutorialIndex) => {
                     return (
-                      <p key={tutorialIDs[categoryIndex + tutorialIndex]}>
+                      <p
+                        className={
+                          currentTutorial && tutorial.id === currentTutorial.id
+                            ? styles.selected
+                            : undefined
+                        }
+                        key={tutorial.id}
+                        onClick={() => {
+                          selectTutorial(category.id, tutorial.id);
+                        }}
+                      >
                         {tutorial.name}
                       </p>
                     );

@@ -1,11 +1,9 @@
-.pageWrapper {
+/* .pageWrapper {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: space-around;
-  /* border: 2px solid red; */
   max-width: 60%;
-}
+} */
 
 .downloadButtonsWrapper {
   display: flex;

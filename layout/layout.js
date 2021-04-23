@@ -10,8 +10,9 @@ import { useRouter } from "next/router";
 import MainGradientShape from "../components/SVGs/MainGradienetShape/MainGradientShape";
 import RefsContext from "../store/refs-context";
 import AppVersion from "../components/AppVersion/AppVersion";
+import Footer from "../components/Footer/Footer";
 
-const appVersion = "1.0.1";
+const appVersion = "1.0.2";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -28,14 +29,17 @@ export default function Layout(props) {
       ref: mainDivRef,
     });
 
-    setTimeout(() => {
-      // mainDivRef.current.scrollTop = 400;
-      // console.log("scroll top", mainDivRef.current.scrollTop);
-    }, 2000);
+    mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
+
+    console.log(
+      "Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/"
+    );
   }, []);
 
   useEffect(() => {
     setDetachNavbar(false);
+
+    // console.log("route", router.pathname);
 
     switch (router.pathname) {
       case "/":
@@ -53,6 +57,7 @@ export default function Layout(props) {
       default:
         break;
     }
+    mainGradientShapeRef.current.style.transform = `translateY(0px)`;
   }, [router.pathname]);
 
   return (
@@ -106,7 +111,10 @@ export default function Layout(props) {
             {/* <SwitchTransition 
         // mode="out-in"
         > */}
-            <div className="mainChildrenWrapper">{props.children}</div>
+            <div className="mainChildrenWrapper">
+              <div className="pagesWrapper">{props.children}</div>
+              <Footer />
+            </div>
           </main>
         </CSSTransition>
         {/* </SwitchTransition> */}

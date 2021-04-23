@@ -1,3 +1,4 @@
+import Head from "next/head";
 import DownloadButton from "../components/DownloadButton/DownloadButton";
 import ParagraphWithHeader from "../components/ParagraphWithHeader/ParagraphWithHeader";
 // import styles from "../styles/DownloadPage.module.css";
@@ -34,7 +35,15 @@ export default function DownloadPage(props) {
   // console.log("downloadData", downloadData);
 
   return (
-    <div className={["", styles.pageWrapper].join(" ")}>
+    <div className={["pageWrapper", styles.pageWrapper].join(" ")}>
+      <Head>
+        <title>Download Ardi</title>
+        <meta
+          name="description"
+          content="Download the latest version of Ardi for Windows or Mac"
+        ></meta>
+      </Head>
+
       <div className={styles.downloadButtonsWrapper}>
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.paragraphWithHeaderWrapper}>
@@ -52,6 +61,7 @@ export default function DownloadPage(props) {
             url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
             fileName={downloadData.windows.fileName}
             fileSize={downloadData.windows.fileSize}
+            stripColor="green"
           />
         </div>
 
@@ -71,7 +81,6 @@ export default function DownloadPage(props) {
             url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
             fileName={downloadData.mac.fileName}
             fileSize={downloadData.mac.fileSize}
-            stripColor="green"
           />
         </div>
       </div>

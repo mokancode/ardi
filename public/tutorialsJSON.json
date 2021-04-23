@@ -1,7 +1,7 @@
 [
   {
     "categoryName": "Sortbox",
-    "tutorials": [{ "name": "Arranging items" }]
+    "tutorials": [{ "name": "Arranging items", "images": [] }]
   },
   {
     "categoryName": "Boards",

@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 // import styles from "../styles/Home.module.css";
 import ParagraphWithHeader from "../components/ParagraphWithHeader/ParagraphWithHeader";
 import OutlinerIcon from "../icons/OutlinerIcon";
@@ -27,6 +29,14 @@ export default function Home(props) {
 
   return (
     <div className={styles.homePage}>
+      <Head>
+        <title>Ardi - The Organizer</title>
+        <meta
+          name="description"
+          content="Ardi - The Organizer. A Gmail Client and Notes Manager"
+        ></meta>
+      </Head>
+
       <ParagraphWithHeader
         noUnderline={true}
         extraLarge={true}
@@ -144,24 +154,27 @@ export default function Home(props) {
 
       <div className={styles.parallaxTrapeziusWrapper}>
         <div className={styles.regularFill}>
+          <ParallaxTrapezius bgFill={true} climb={50} blockTopBoundary={true} />
+
           <ParallaxTrapezius bgFill={true} />
-          <ParallaxTrapezius bgFill={true} />
-          <ParallaxTrapezius bgFill={true} />
+          <ParallaxTrapezius bgFill={true} climb={50} blockTopBoundary={true} />
         </div>
 
         <div className={styles.gradientFill}>
           <ParallaxTrapezius
-            gradientColor1={"rgb(35, 175, 220)"}
+            gradientColor1={"rgb(35, 175, 220, .3)"}
             gradientColor2={"rgb(46, 211, 255)"}
+            climb={90}
+            blockTopBoundary={true}
           />
           <ParallaxTrapezius
-            gradientColor1={"rgb(35, 175, 220)"}
+            gradientColor1={"rgb(35, 175, 220, .3)"}
             gradientColor2={"rgb(46, 211, 255)"}
+            climb={300}
+            blockTopBoundary={true}
           />
         </div>
       </div>
-
-    
     </div>
   );
 }

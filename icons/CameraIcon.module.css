@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: black;
+  background-color: whitesmoke;
   width: 100%;
   height: 60%;
   border-radius: 5px;
@@ -11,7 +11,8 @@
 }
 
 .circle {
-  background-color: whitesmoke;
+  background-color: rgb(219, 219, 219);
+  background-color: rgb(98, 189, 98);
   width: 13px;
   height: 13px;
   border-radius: 50px;
@@ -31,7 +32,7 @@
 
 .controls div {
   /* background-color: red; */
-  background-color: black;
+  background-color: whitesmoke;
   width: 10px;
   height: 10px;
   position: absolute;

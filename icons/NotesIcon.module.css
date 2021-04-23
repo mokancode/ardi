@@ -1,43 +1,48 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 95%;
-    height: 95%;
-    border: 2px solid black;
-    border-radius: 3px;
-    margin-bottom: 5px;
-    transform: scale(.8);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 95%;
+  height: 95%;
+  border: 2px solid white;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  transform: scale(0.8);
 }
 
 .square {
-    background-color: whitesmoke;
-    width: 20px;
-    height: 18px;
-    position: absolute;
-    padding-left: 2px;
-    padding-top: 2px;
-}
-
-.innerSquare {
-    width: 10px;
-    height: 10px;
-    border: 2.5px solid black;
-    padding: 5px;
-    background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  width: 13px;
+  height: 13px;
+  margin-left: 3px;
+  margin-top: 2px;
+  position: absolute;
+  /* display: none; */
+  border: 2px solid white;
 }
 
 .lines {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .line {
-    background-color: black;
-    width: 85%;
-    height: 2px;
-    flex-shrink: 0;
-    margin-top: 4px;
-    margin-left: 2px;
-    display: flex;
+  background-color: white;
+  width: 85%;
+  height: 2px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  margin-right: 2px;
+  display: flex;
+  /* display: none; */
+}
+
+.line:nth-of-type(1),
+.line:nth-of-type(2) {
+  width: 35%;
+}
+
+.line:nth-of-type(3) {
+  margin-top: 6px;
 }

@@ -6,10 +6,10 @@
   justify-content: center;
   position: relative;
   margin-bottom: 30px;
-  /* border: 2px solid black; */
   transition: 0.5s;
   transform: rotate(-45deg) scale(0.9);
   opacity: 0;
+  /* border: 2px solid black; */
 }
 
 .containerWrapper.show {
@@ -26,4 +26,10 @@
   align-items: center;
   justify-content: center;
   /* border: 2px solid red; */
+  /* background-color: white; */
+  /* border-radius: 50px; */
+}
+
+.container > * {
+  /* transform: scale(0.8) !important; */
 }

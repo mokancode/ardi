@@ -64,7 +64,7 @@
   line-height: 30px;
 }
 
-.paragraph.paragraphAlignLeft {
+.paragraph.paragraphAlignLeft, .paragraph.paragraphAlignLeft p {
   text-align: left;
 }
 

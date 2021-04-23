@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 // import all css modules
 import ParagraphWithHeaderStyles from "../components/ParagraphWithHeader/ParagraphWithHeader.module.css";
 import NavbarStyles from "../components/Navbar/Navbar.module.css";
+import FooterStyles from "../components/Footer/Footer.module.css";
 import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.module.css";
 import ParallaxTrapeziusStyles from "../components/ParallaxTrapezius/ParallaxTrapezius.module.css";
 
@@ -27,6 +28,7 @@ export function StylesContextProvider(props) {
   const [contextStyles, setContextStyles] = useState([
     { name: "ParagraphWithHeader", styles: ParagraphWithHeaderStyles },
     { name: "Navbar", styles: NavbarStyles },
+    { name: "Footer", styles: FooterStyles },
     { name: "DownloadButton", styles: DownloadButtonStyles },
     { name: "ParallaxTrapezius", styles: ParallaxTrapeziusStyles },
 

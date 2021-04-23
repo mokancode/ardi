@@ -38,7 +38,6 @@ export default function ParagraphWithHeader(props) {
       parent = parent.parentNode;
     }
     setOffsetTop(totalOffsetTop);
-    // console.log("total offset set", totalOffsetTop);
   }, []);
 
   // Retrieve the ref of mainDiv from layout.js
@@ -79,8 +78,6 @@ export default function ParagraphWithHeader(props) {
 
           !props.visibilitySensorReveal
         ) {
-          // console.log("scroll", mainDivRefState.current.scrollTop);
-
           let opacityEquation = calculateScrollProgression(
             e.target.scrollTop,
             offsetTopState,
@@ -88,22 +85,15 @@ export default function ParagraphWithHeader(props) {
           );
 
           paragraphWithHeaderRef.current.style.opacity = `${opacityEquation}`;
-          // // console.log("show component");
-          // // setShowComponent(true);
-
+          
           let translateYEquation = 1 - opacityEquation;
           paragraphWithHeaderRef.current.style.transform = `translateY(${
             50 * translateYEquation
           }px)`;
-          // console.log("translate", 50 * translateYEquation);
         }
       });
     }
   }, [eventListenerSet, mainDivRefState]);
-
-  useEffect(() => {
-    // console.log("offsetTop", paragraphWithHeaderRef.current.offsetHeight);
-  }, []);
 
   return (
     <ReactVisibilitySensor

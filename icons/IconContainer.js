@@ -32,6 +32,7 @@ export default function IconContainer(props) {
           iconBgColor1={iconBgColor1}
           iconBgColor2={iconBgColor2}
           index={index}
+          isIconContainer={true}
         />
         <div className={styles.container}>{props.children}</div>
       </div>

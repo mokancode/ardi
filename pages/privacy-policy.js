@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 // import styles from "../styles/PrivacyPolicy.module.css";
 import Link from "next/link";
 
@@ -40,7 +42,15 @@ export default function PrivacyPolicyPage() {
   ]);
 
   return (
-    <div className={styles.pageWrapper}>
+    <div className={[styles.pageWrapper, "bg"].join(" ")}>
+      <Head>
+        <title>Ardi - Privacy Policy</title>
+        <meta
+          name="description"
+          content="Ardi privacy policy "
+        ></meta>
+      </Head>
+
       <h3 className={"textAlignCenter"}>Privacy Policy</h3>
 
       <p>Effective date: September 26, 2018</p>

@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -12,7 +14,12 @@ export default function TermsOfService() {
   ]);
 
   return (
-    <div className={"pageWrapper"}>
+    <div className={"pageWrapper bg"} style={{ backgroundColor: "whitesmoke" }}>
+      <Head>
+        <title>Ardi - Terms of Service</title>
+        <meta name="description" content="Terms of service"></meta>
+      </Head>
+
       <h1 className="textAlignCenter">Ardi - The Organizer (Ardi)</h1>
       <p className="textAlignCenter">License for use and distribution</p>
       <p>The Ardi is shareware. This means:</p>

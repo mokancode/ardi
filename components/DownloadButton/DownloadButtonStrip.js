@@ -16,7 +16,6 @@ export function DownloadButtonStrip(props) {
       onTransitionEnd={(e) => {
         if (stripRef.current === e.target && !showChildComponents) {
           setShowChildComponents(true);
-          console.log("trans end");
         }
       }}
     >

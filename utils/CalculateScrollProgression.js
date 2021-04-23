@@ -1,7 +1,9 @@
 export default function calculateScrollProgression(
   currentScrollPosition,
   componentOffsetTop,
-  offset
+  offset,
+  finishWithin,
+  block
 ) {
   /* 
       @param    {number}        currentScrollPosition   The current scroll position / distance from the top of the document.
@@ -11,15 +13,18 @@ export default function calculateScrollProgression(
       @return {number}  Percentagle decimal between 0.0 and 1.0 representing the progression.
     */
 
-  let finishWithin = 100;
-
+  finishWithin = finishWithin ? finishWithin : 100;
+  block = block ? block : false;
   let progression =
     1 -
     Math.abs(currentScrollPosition - componentOffsetTop + offset) /
       finishWithin;
-  if (progression > 1 || currentScrollPosition > componentOffsetTop - offset)
+  if (
+    progression > 1 ||
+    (currentScrollPosition > componentOffsetTop - offset && !block)
+  )
     progression = 1;
-  else if (progression < 0) progression = 0;
+  else if (progression < 0 && !block) progression = 0;
 
   return progression;
 }

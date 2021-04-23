@@ -10,32 +10,8 @@ export default function MainGradientShape(props) {
   const [extractedRoutes, setRouteName] = useState(["/"]);
   const [animateShape, setAnimateShape] = useState(false);
 
-  // useEffect(() => {
-  //   // console.log("animate", animateShape);
-  //   if (animateShape) {
-  //     console.log("is on");
-  //   } else if (!animateShape) {
-  //     console.log("setting true");
-  //     setAnimateShape(true);
-  //   }
-  //   // console.log("router", router);
-  //   // switch (router.pathname) {
-  //   //   case "/":
-  //   //     // String(router.pathname).match(/\/([^\/]+)\./)
-  //   //     break;
-  //   //   default:
-  //   //     break;
-  //   // }
-  // }, [router.pathname, animateShape]);
-
-  // useEffect(() => {
-  //   console.log("aniamteshape", animateShape);
-  // }, [animateShape]);
-
   return (
     <svg
-      // className={[styles.trapeziusSVG, animateShape && styles.animate].join(
-      // " "
       className={classnames("mainGradientShape", {
         animate: animateShape,
       })}
@@ -43,9 +19,8 @@ export default function MainGradientShape(props) {
       y="0px"
       viewBox="0 0 552 619"
       style={{ enableBackground: "new 0 0 552 619" }}
+      preserveAspectRatio="none"
       onTransitionEnd={() => {
-        // console.log("transition end");
-        // if (animateShape) setAnimateShape(false);
       }}
     >
       <g>

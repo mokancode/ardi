@@ -10,11 +10,11 @@ export default function ParallaxTrapezius(props) {
   const styles = stylesContext.styles.find(
     (styleSheet) => styleSheet.name === "ParallaxTrapezius"
   ).styles;
-  
+
   const [mainDivRefState, setMainDivRef] = useState(null);
   const [id, setId] = useState(null);
   const parallaxRef = useRef();
-
+  const wrapperRef = useRef();
   // Calculate distance from top of document (not the viewport -- the entire document/window).
   const [offsetTopState, setOffsetTop] = useState(null);
   useEffect(() => {
@@ -26,7 +26,6 @@ export default function ParallaxTrapezius(props) {
       parent = parent.parentNode;
     }
     setOffsetTop(totalOffsetTop);
-    // console.log("total offset set", totalOffsetTop);
 
     setId(uuidv4());
   }, []);
@@ -48,24 +47,47 @@ export default function ParallaxTrapezius(props) {
     if (!eventListenerSet && mainDivRefState) {
       setEventListenerSet(true);
       mainDivRefState.current.addEventListener("scroll", (e) => {
-        const offset = 550;
+        const transformOffset = 550;
+        const opacityOffset = 550;
         if (
-          e.target.scrollTop <= offsetTopState + offset &&
+          e.target.scrollTop <= offsetTopState + opacityOffset &&
           !props.visibilitySensorReveal
         ) {
           let opacityEquation = calculateScrollProgression(
             e.target.scrollTop,
             offsetTopState,
-            offset
+            opacityOffset
+            // 300
           );
 
           parallaxRef.current.style.opacity = `${opacityEquation}`;
 
-          let transformEquation = 1 - opacityEquation;
+          let transformEquation = calculateScrollProgression(
+            e.target.scrollTop,
+            offsetTopState,
+            transformOffset,
+            500, // finishWithin
+            props.blockTopBoundary
+          );
+
+          let rotateEquation =
+            1 -
+            calculateScrollProgression(
+              e.target.scrollTop,
+              offsetTopState,
+              transformOffset,
+              props.gradientColor1 ? 600 : null,
+              props.gradientColor1 && props.blockTopBoundary
+            );
+
           parallaxRef.current.style.transform = `rotate(${
-            100 * transformEquation + 20
+            100 * rotateEquation + 20
           }deg)`;
-          // console.log("translate", 50 * transformEquation);
+
+          wrapperRef.current.style.transform = `translateY(${
+            // 100 * transformEquation
+            (props.climb ? props.climb : 100) * transformEquation
+          }px)`;
         }
       });
     }
@@ -75,6 +97,7 @@ export default function ParallaxTrapezius(props) {
 
   return (
     <div
+      ref={wrapperRef}
       className={[
         styles.wrapper,
         props.bgFill && styles.lowerOpacity,

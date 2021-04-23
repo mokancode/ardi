@@ -12,7 +12,7 @@
     /* width: ; */
     flex-grow: 1;
     max-height: 3px;
-    background-color: black;
+    background-color: white;
     margin-top: 5px;
     border-radius: 50px;
 }
@@ -29,7 +29,7 @@
     position: absolute;
     top: 10px;
     margin-left: 5px;
-    background-color: black;
+    background-color: white;
     height: 22px;
     width: 3px;
 }
@@ -38,7 +38,7 @@
     width: 6px;
     height: 3px;
     margin-left: 0px;
-    background-color: black;
+    background-color: white;
     margin-top: 3px;
 }
 
