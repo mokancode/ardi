@@ -42,3 +42,10 @@
   width: 100vw;
   height: 100vh;
 }
+
+@media screen and (min-width: 1600px) {
+  .mainGradientShapeWrapper {
+    width: 105vw;
+    left: -3vw;
+  }
+}
