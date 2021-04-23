@@ -12,7 +12,7 @@ import RefsContext from "../store/refs-context";
 import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 
-const appVersion = "1.0.2";
+const appVersion = "1.0.3";
 
 export default function Layout(props) {
   const router = useRouter();
