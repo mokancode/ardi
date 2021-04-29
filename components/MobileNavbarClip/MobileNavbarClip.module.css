@@ -1,0 +1,129 @@
+.container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 500px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  border: 4px solid black;
+  transform: rotateY(180deg);
+  z-index: 3;
+}
+
+.hamburgerSVG {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border: 2px solid red;
+}
+
+.hamburgerSVG rect {
+  fill: transparent;
+
+  width: 100%;
+  height: 100%;
+
+  height: 4px;
+  width: 30px;
+  transition: 1s;
+  y: 31px;
+  x: 20px;
+  rx: 3px;
+
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+#clipPath {
+  transition: 1s;
+}
+
+@keyframes rotateAnim {
+  0% {
+    y: 31px;
+    x: 20px;
+    rx: 3px;
+    height: 5px;
+    width: 30px;
+  }
+  50% {
+    rx: 40px;
+    transform: rotateX(20deg) rotateY(10deg);
+  }
+  100% {
+    y: 0%;
+    x: 0%;
+    rx: 0px;
+    width: 100%;
+    height: 100%;
+    transform: rotateX(0) rotateY(0deg);
+  }
+}
+
+.container .hamburgerTopTwoLines {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  padding: 0px;
+  padding-bottom: 6px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 3;
+  /* border: 1px solid red; */
+}
+
+.container .hamburgerTopTwoLines .line {
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
+  /* background-color: red; */
+  /* rgb(195, 223, 245), rgb(135, 180, 206) */
+  background-color: rgb(160, 204, 229);
+  margin-bottom: 5px;
+  transition-duration: 0.5s;
+}
+
+.container .hamburgerTopTwoLines.open .line {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px 0 white;
+}
+
+.hamburgerTopTwoLines.open > .line:nth-of-type(1) {
+  transform: translateY(10px) scaleX(0) scaleY(0);
+}
+.hamburgerTopTwoLines.open > .line:nth-of-type(2) {
+  transform: scaleX(0) scaleY(0);
+}
+
+.hamburgerTopTwoLines:not(.open) > .line {
+  transition-delay: 0.2s;
+}
+
+.openLines {
+  position: absolute;
+  padding-bottom: inherit;
+  /* border: 1px solid cyan; */
+}
+
+.hamburgerTopTwoLines.open .openLines .line {
+  transition-delay: 0.2s;
+}
+
+.hamburgerTopTwoLines .openLine:nth-of-type(1) {
+  transform: rotate(-45deg) translateX(-7px) translateY(7px) scaleX(0);
+}
+.hamburgerTopTwoLines .openLine:nth-of-type(2) {
+  transform: rotate(45deg) translateX(0px) translateY(0px) scaleX(0);
+}
+
+.hamburgerTopTwoLines.open .openLine:nth-of-type(1) {
+  transform: rotate(-45deg) translateX(-7px) translateY(7px);
+}
+.hamburgerTopTwoLines.open .openLine:nth-of-type(2) {
+  transform: rotate(45deg) translateX(0px) translateY(0px);
+}

@@ -6,9 +6,7 @@ import StylesContext from "../store/styles-context";
 
 export default function IconContainer(props) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find(
-    (styleSheet) => styleSheet.name === "IconContainer"
-  ).styles;
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "IconContainer").styles;
 
   const [showComponent, setShowComponent] = useState(false);
 
@@ -20,13 +18,9 @@ export default function IconContainer(props) {
         if (isVisible && !showComponent) setShowComponent(true);
       }}
       partialVisibility={false}
-      offset={{ top: 200, bottom: 200 }}
+      offset={{ bottom: 200 }}
     >
-      <div
-        className={[styles.containerWrapper, showComponent && styles.show].join(
-          " "
-        )}
-      >
+      <div className={[styles.containerWrapper, showComponent && styles.show].join(" ")}>
         <TrapeziusShape
           showComponent={showComponent}
           iconBgColor1={iconBgColor1}

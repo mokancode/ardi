@@ -41,6 +41,7 @@
 
 .btn p.animate {
   animation-name: downloadBtnTextAnim;
+  /* animation-iteration-count: infinite; */
 }
 
 @keyframes downloadBtnTextAnim {
@@ -48,8 +49,8 @@
     color: darkslategrey;
   }
   50% {
-    color: white;
-    text-shadow: 0 0 1px grey, 0 0 10px white;
+    color: rgb(86, 137, 150);
+    /* text-shadow: 0 0 1px grey, 0 0 10px white; */
   }
   100% {
     color: darkslategrey;
@@ -71,12 +72,12 @@
   justify-content: center;
   transition: 1s 2.4s;
   overflow: hidden;
-  max-height: 0px;
+  /* max-height: 0px; */
 }
 
-.btn.show .fileNameAndSizeWrapper {
+/* .btn.show .fileNameAndSizeWrapper {
   max-height: 20px;
-}
+} */
 
 .fileNameAndSizeWrapper p {
   font-size: 11px;

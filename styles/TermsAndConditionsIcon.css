@@ -1,0 +1,31 @@
+.termsAndConditionsSVG {
+  width: 20px;
+  height: auto;
+  transform: scale(1.4);
+  /* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2)); */
+  transition: 1s;
+  /* stroke-dasharray: 1000;
+  stroke-dashoffset: 1000; */
+}
+
+.termsAndConditionsSVG path {
+  transition: 1s;
+}
+
+.termsAndConditionsSVG path:nth-of-type(10) {
+  /* display: none; */
+  /* stroke-dasharray: 1000;
+  stroke-dashoffset: 1000; */
+}
+
+.termsAndConditionsSVG #outline path {
+  fill: rgb(46, 85, 158);
+  fill: transparent;
+  stroke: black;
+  stroke-width: 12px;
+}
+
+.path0 {
+  fill: whitesmoke;
+  display: none;
+}

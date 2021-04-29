@@ -1,0 +1,45 @@
+.homeIcon {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 45px;
+  height: 70px;
+  margin-right: 2.5px;
+  position: relative;
+  /* border: 2px solid red; */
+  transform: scale(0.8);
+}
+
+.homeIcon::before {
+  position: absolute;
+  content: "";
+  width: 80%;
+  height: 25%;
+  border: 5px solid black;
+  border-top: none;
+  border-radius: 5px;
+}
+
+.homeIcon::after {
+  position: absolute;
+  content: "";
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  transform: rotate(-45deg);
+  margin-top: -5px;
+  width: 40px;
+  height: 40px;
+}
+
+.homeIcon::before,
+.homeIcon::after {
+  transition: 0.3s;
+}
+.homeIcon.active {
+  filter: drop-shadow(0 0 5px white);
+}
+
+.homeIcon.active::before,
+.homeIcon.active::after {
+  border-color: white;
+}

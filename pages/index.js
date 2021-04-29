@@ -10,34 +10,124 @@ import SyncIcon from "../icons/SyncIcon";
 import DiagramIcon from "../icons/DiagramIcon";
 import Link from "next/link";
 
-import { useContext, useEffect } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import StylesContext from "../store/styles-context";
 import ParallaxTrapezius from "../components/ParallaxTrapezius/ParallaxTrapezius";
+import LinkButton from "../components/LinkButton/LinkButton";
+import PrivacyPolicyIcon from "../components/SVGs/PrivacyPolicyIcon/PrivacyPolicyIcon";
+import TermsAndConditionsIcon from "../components/SVGs/TermsAndConditionsIcon/TermsAndConditionsIcon";
+import SwiperContainer from "../components/SwiperContainer/SwiperContainer";
 
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find(
-    (styleSheet) => styleSheet.name === "Home"
-  ).styles;
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "Home").styles;
+
+  const [mobileMode, setMobileMode] = useState(false);
+  const mobileModeRef = useRef(false);
+
+  function updateMobileMode(isMobileMode) {
+    setMobileMode(isMobileMode);
+    mobileModeRef.current = isMobileMode;
+  }
 
   useEffect(() => {
-    // console.log("scroll", window.scrollY);
-    // window.addEventListener("scroll", () => {
-    //   console.log("scroll", window.scrollY);
-    // });
+    if (window.innerWidth <= 800) {
+      updateMobileMode(true);
+    }
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 800 && !mobileModeRef.current) {
+        console.log("mobile mode", mobileModeRef.current);
+        updateMobileMode(true);
+      } else if (window.innerWidth > 800 && mobileModeRef.current) {
+        console.log("mobile mode", mobileModeRef.current);
+        updateMobileMode(false);
+      }
+    });
   }, []);
 
+  const firstThreeParagraphs = [
+    <ParagraphWithHeader
+      // first={true}
+      // visibilitySensorReveal={true}
+      centerHeader={true}
+      background={true}
+      noUnderline={true}
+      headerText="Outliner"
+      paragraphText="Brings structure into set of data, allowing hierarhichal organization and natural selection. Everything in Ardi is topic-related. It could be topic by itself, note, sentence, image or other item."
+      iconBgColor1={"rgb(39, 115, 206)"}
+      iconBgColor2={"rgb(18, 63, 155)"}
+      icon={<OutlinerIcon />}
+    />,
+    <ParagraphWithHeader
+      // visibilitySensorReveal={true}
+      centerHeader={true}
+      background={true}
+      noUnderline={true}
+      headerText="ToDo manager"
+      paragraphText="Items can be categorized and prioritised according to some rule. ToDo properties controlled by single click on right positioned column in Outline or on rectangular structures in Graph."
+      iconBgColor1={"rgb(51, 209, 230)"}
+      iconBgColor2={"rgb(33, 168, 203)"}
+      icon={<ToDoManagerIcon />}
+      index={1}
+    />,
+    <ParagraphWithHeader
+      // visibilitySensorReveal={true}
+      centerHeader={true}
+      background={true}
+      noUnderline={true}
+      headerText="Notes"
+      paragraphText="Notes can contain formatted text as seen in the browser. Also it is easy to maintain several notes in one bundle, secondary notes becomes comments. Notes can be further extended and include images and albums."
+      iconBgColor1={"rgb(245, 141, 58)"}
+      iconBgColor2={"rgb(230, 92, 21)"}
+      icon={<NotesIcon />}
+    />,
+  ];
+
+  const secondThreeParagraphs = [
+    <ParagraphWithHeader
+      // first={true}
+      centerHeader={true}
+      background={true}
+      noUnderline={true}
+      headerText="Blackboards"
+      paragraphText="Blackboard is a 2D space divided in shaded columns. It works just like real life blackboard were you can write note, small diagram or big category of objects, pin down email and layout workflow. Blackboards are designed to bring notes and topics in context - connect them with arrows, arrange into columns and graphs."
+      iconBgColor1={"rgb(117, 221, 139)"}
+      iconBgColor2={"rgb(23, 172, 97)"}
+      icon={<CameraIcon />}
+    />,
+    <ParagraphWithHeader
+      centerHeader={true}
+      background={true}
+      noUnderline={true}
+      headerText="Synchronization"
+      paragraphText="Ardi was designed to run offline and don't need internet connection to maintain data. Some times it is convenient and safe for personal information. But it could be easily configured to share topics and synchronize all changes to the cloud storage - Gdrive."
+      iconBgColor1={"rgb(117, 166, 221)"}
+      iconBgColor2={"rgb(36, 129, 184)"}
+      icon={<SyncIcon />}
+      index={1}
+    />,
+    <ParagraphWithHeader
+      centerHeader={true}
+      background={true}
+      noUnderline={true}
+      headerText={"Diagrams & Graphs"}
+      paragraphText="Any outline can be presented as graph in the program and there are several ways to generate graph, depending on number of items and their relation to each other. Graph is intuitive and convenient way to display different connections between topics."
+      iconBgColor1={"rgb(187, 185, 255)"}
+      iconBgColor2={"rgb(159, 124, 255)"}
+      icon={<DiagramIcon />}
+    />,
+  ];
+
   return (
-    <div className={styles.homePage}>
+    <div className={["pageWrapper", styles.homePage].join(" ")}>
       <Head>
         <title>Ardi - The Organizer</title>
-        <meta
-          name="description"
-          content="Ardi - The Organizer. A Gmail Client and Notes Manager"
-        ></meta>
+        <meta name="description" content="Ardi - The Organizer. A Gmail Client and Notes Manager"></meta>
       </Head>
 
       <ParagraphWithHeader
+        forceNoBackground={true}
         noUnderline={true}
         extraLarge={true}
         color="white"
@@ -46,80 +136,20 @@ export default function Home(props) {
         visibilitySensorReveal={true}
       />
 
-      <div className={styles.threeDivSplit}>
-        <ParagraphWithHeader
-          first={true}
-          visibilitySensorReveal={true}
-          centerHeader={true}
-          background={true}
-          noUnderline={true}
-          headerText="Outliner"
-          paragraphText="Brings structure into set of data, allowing hierarhichal organization and natural selection. Everything in Ardi is topic-related. It could be topic by itself, note, sentence, image or other item."
-          iconBgColor1={"rgb(39, 115, 206)"}
-          iconBgColor2={"rgb(18, 63, 155)"}
-          icon={<OutlinerIcon />}
-        />
-        <ParagraphWithHeader
-          visibilitySensorReveal={true}
-          centerHeader={true}
-          background={true}
-          noUnderline={true}
-          headerText="ToDo manager"
-          paragraphText="Items can be categorized and prioritised according to some rule. ToDo properties controlled by single click on right positioned column in Outline or on rectangular structures in Graph."
-          iconBgColor1={"rgb(51, 209, 230)"}
-          iconBgColor2={"rgb(33, 168, 203)"}
-          icon={<ToDoManagerIcon />}
-          index={1}
-        />
-        <ParagraphWithHeader
-          visibilitySensorReveal={true}
-          centerHeader={true}
-          background={true}
-          noUnderline={true}
-          headerText="Notes"
-          paragraphText="Notes can contain formatted text as seen in the browser. Also it is easy to maintain several notes in one bundle, secondary notes becomes comments. Notes can be further extended and include images and albums."
-          iconBgColor1={"rgb(245, 141, 58)"}
-          iconBgColor2={"rgb(230, 92, 21)"}
-          icon={<NotesIcon />}
-        />
-      </div>
-
-      <div className={styles.threeDivSplit}>
-        <ParagraphWithHeader
-          centerHeader={true}
-          background={true}
-          noUnderline={true}
-          headerText="Blackboards"
-          paragraphText="Blackboard is a 2D space divided in shaded columns. It works just like real life blackboard were you can write note, small diagram or big category of objects, pin down email and layout workflow. Blackboards are designed to bring notes and topics in context - connect them with arrows, arrange into columns and graphs."
-          iconBgColor1={"rgb(117, 221, 139)"}
-          iconBgColor2={"rgb(23, 172, 97)"}
-          icon={<CameraIcon />}
-        />
-
-        <ParagraphWithHeader
-          centerHeader={true}
-          background={true}
-          noUnderline={true}
-          headerText="Synchronization"
-          paragraphText="Ardi was designed to run offline and don't need internet connection to maintain data. Some times it is convenient and safe for personal information. But it could be easily configured to share topics and synchronize all changes to the cloud storage - Dropbox."
-          iconBgColor1={"rgb(117, 166, 221)"}
-          iconBgColor2={"rgb(36, 129, 184)"}
-          icon={<SyncIcon />}
-          index={1}
-        />
-        <ParagraphWithHeader
-          centerHeader={true}
-          background={true}
-          noUnderline={true}
-          headerText={"Diagrams & Graphs"}
-          paragraphText="Any outline can be presented as graph in the program and there are several ways to generate graph, depending on number of items and their relation to each other. Graph is intuitive and convenient way to display different connections between topics."
-          iconBgColor1={"rgb(187, 185, 255)"}
-          iconBgColor2={"rgb(159, 124, 255)"}
-          icon={<DiagramIcon />}
-        />
-      </div>
+      {mobileMode ? (
+        <Fragment>
+          <SwiperContainer visibilitySensorReveal={true}>{firstThreeParagraphs}</SwiperContainer>
+          <SwiperContainer visibilitySensorReveal={true}>{secondThreeParagraphs}</SwiperContainer>
+        </Fragment>
+      ) : (
+        <div className={styles.paragraphsWrapper}>
+          {firstThreeParagraphs}
+          {secondThreeParagraphs}
+        </div>
+      )}
 
       <ParagraphWithHeader
+        // first={true}
         centerHeader={true}
         headerText="Ardi - GMail client and organizer for notes, tasks, contacts, emails. Ardi can manage notes, emails, contacts, tasks and images."
         paragraphText="Ardi is a Gmail companion with organizer features for notes and topics. 
@@ -132,9 +162,7 @@ export default function Home(props) {
       />
 
       <ParagraphWithHeader
-        headerText={
-          "Outliner with project-management & GTD time-management methods."
-        }
+        headerText={"Outliner with project-management & GTD time-management methods."}
         paragraphText={
           "Ardi blends best methods popular in data management software, techniques described by David Allen and known as Getting Things Done (GTD) and classic outline sofware.\n" +
           "Program gives the user leverage to work with day-to-day data processing routines and managing complex depth projects with scalable toolset that allows to look at the big picture or focus on details if needed.\n" +
@@ -143,13 +171,14 @@ export default function Home(props) {
       />
 
       <ParagraphWithHeader
+        // first={true}
         headerText="System requirements"
         paragraphText="Program is based on cross platform code and was designed to run natively on various systems, including OSX, Windows, Linux(X11), IOS. The main target platforms currently are limited to MacOS and Windows 10, available from download page. Ocasinally we run autotest procedured on Ubuntu machines and IOS but these builds are considered for internal use only."
       />
 
       <div className={styles.links}>
-        <Link href="/privacy-policy">Privacy Policy</Link>
-        <Link href="/terms-of-service">Terms of Service</Link>
+        <LinkButton url="/privacy-policy" text="Privacy Policy" icon={<PrivacyPolicyIcon />} />
+        <LinkButton url="/terms-of-service" text="Terms of Service" icon={<TermsAndConditionsIcon />} />
       </div>
 
       <div className={styles.parallaxTrapeziusWrapper}>
@@ -170,7 +199,7 @@ export default function Home(props) {
           <ParallaxTrapezius
             gradientColor1={"rgb(35, 175, 220, .3)"}
             gradientColor2={"rgb(46, 211, 255)"}
-            climb={300}
+            climb={200}
             blockTopBoundary={true}
           />
         </div>

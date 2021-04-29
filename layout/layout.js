@@ -1,8 +1,4 @@
-import {
-  CSSTransition,
-  SwitchTransition,
-  TransitionGroup,
-} from "react-transition-group";
+import { CSSTransition, SwitchTransition, TransitionGroup } from "react-transition-group";
 
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
@@ -11,6 +7,7 @@ import MainGradientShape from "../components/SVGs/MainGradienetShape/MainGradien
 import RefsContext from "../store/refs-context";
 import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
+import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 
 const appVersion = "1.0.3";
 
@@ -29,11 +26,17 @@ export default function Layout(props) {
       ref: mainDivRef,
     });
 
-    mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
+    if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
+    else mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
 
-    console.log(
-      "Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/"
-    );
+    console.log("Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/");
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 1400) {
+        mainGradientShapeRef.current.style.left = `${-window.innerWidth / 20}px`;
+        mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -43,16 +46,36 @@ export default function Layout(props) {
 
     switch (router.pathname) {
       case "/":
-        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scaleX(1.1)`;
+        if (window.innerWidth <= 800)
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
+        else
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
+            window.innerWidth > 1400 ? "1" : "3"
+          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
         break;
       case "/download":
-        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scaleX(1.1)`;
+        if (window.innerWidth <= 800)
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.2, 1.2) translateY(-100px)`;
+        else
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.${
+            window.innerWidth > 1400 ? "1" : "3"
+          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
         break;
       case "/support":
-        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scaleX(1.1)`;
+        if (window.innerWidth <= 800)
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.2, 1.2) translateY(-100px)`;
+        else
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.${
+            window.innerWidth > 1400 ? "1" : "3"
+          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
         break;
       case "/demo":
-        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scaleX(1.1)`;
+        if (window.innerWidth <= 800)
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
+        else
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
+            window.innerWidth > 1400 ? "1" : "3"
+          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
 
       default:
         break;
@@ -60,11 +83,36 @@ export default function Layout(props) {
     mainGradientShapeRef.current.style.transform = `translateY(0px)`;
   }, [router.pathname]);
 
+  // Determine if mobile dimensions
+  const [mobileMode, setMobileMode] = useState(false);
+  const mobileModeRef = useRef(false);
+
+  function updateMobileMode(isMobileMode) {
+    setMobileMode(isMobileMode);
+    mobileModeRef.current = isMobileMode;
+  }
+
+  useEffect(() => {
+    if (window.innerWidth <= 700) {
+      updateMobileMode(true);
+    }
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 700 && !mobileModeRef.current) {
+        console.log("mobile mode", mobileModeRef.current);
+        updateMobileMode(true);
+      } else if (window.innerWidth > 700 && mobileModeRef.current) {
+        console.log("mobile mode", mobileModeRef.current);
+        updateMobileMode(false);
+      }
+    });
+  }, []);
+
   return (
     <div className="appContainer">
       <AppVersion version={appVersion} />
 
-      <Navbar detach={detachNavbar} />
+      {mobileMode ? <MobileNavbarClip /> : <Navbar detach={detachNavbar} />}
 
       {/* <TransitionGroup className="transition-group">
         <CSSTransition
@@ -95,9 +143,7 @@ export default function Layout(props) {
               // console.log(e.target.scrollTop);
               window.scrollY = e.target.scrollTop;
 
-              mainGradientShapeRef.current.style.transform = `translateY(-${
-                e.target.scrollTop / 2
-              }px)`;
+              mainGradientShapeRef.current.style.transform = `translateY(-${e.target.scrollTop / 2}px)`;
 
               if (!detachNavbar && e.target.scrollTop > 0) {
                 setDetachNavbar(true);

@@ -1,11 +1,5 @@
 .homePage {
-  max-width: 70%;
-  /* background-color: rgb(255, 255, 255); */
-  /* border-radius: 20px; */
-  /* padding: 20px; */
-  /* box-shadow:  -10px 10px 20px rgba(0, 0, 0, 0.2); */
   padding-bottom: 30px;
-  /* border: 5px solid black; */
 }
 
 .mainHeader {
@@ -13,24 +7,32 @@
   color: white;
 }
 
-.threeDivSplit {
+.links {
   display: flex;
-}
-
-.threeDivSplit > div {
-  flex-basis: 33%;
-}
-
-.threeDivSplit > div:not(:first-of-type) {
-  margin-left: 30px;
-}
-
-.links a {
-  text-decoration: underline;
+  margin-top: 100px;
+  width: 100%;
+  justify-content: center;
 }
 
 .links a:not(:first-of-type) {
   margin-left: 20px;
+}
+
+@media screen and (max-width: 540px) {
+  .links {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .links a {
+    width: 250px;
+  }
+
+  .links a:not(:first-of-type) {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
 }
 
 .homePage > div:nth-of-type(1) {
@@ -52,4 +54,32 @@
   width: 100%;
   height: 100%;
   position: absolute;
+}
+
+.paragraphsWrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.paragraphsWrapper > div {
+  flex-basis: 33%;
+}
+
+.paragraphsWrapper > div > div {
+  /* opacity: 1 !important;
+  transform: unset !important;
+  margin: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important; */
+}
+
+.paragraphsWrapper > div:not(:first-of-type) > div {
+  /* margin-left: 20px; */
+}
+
+@media screen and (max-width: 1000px) {
+  .paragraphsWrapper > div {
+    flex-basis: 50%;
+  }
 }

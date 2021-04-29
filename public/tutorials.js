@@ -6,13 +6,16 @@ const tutorials = [
         name: "Create a subtopic",
         images: [
           {
-            src:
-              "/images/tutorials/sortbox/subtopic/sortbox-subtopic.jpg",
+            src: "/images/tutorials/sortbox/subtopic/sortbox-subtopic.jpg",
             coordinates: { x: 0.2, y: 0.2 },
             instruction:
-            "Drag and drop a topic into the center of another topic to insert it as a subtopic (make sure the black line aligns with the center of the parent topic)",
+              "Drag and drop a topic into the center of another topic to insert it as a subtopic (make sure the black line aligns with the center of the parent topic)",
           },
-          { src: "/images/tutorials/sortbox/subtopic/sortbox-now-a-subtopic.jpg", coordinates: { x: 0.2, y: 0.2 },instruction:"You now have a nested topic" },
+          {
+            src: "/images/tutorials/sortbox/subtopic/sortbox-now-a-subtopic.jpg",
+            coordinates: { x: 0.2, y: 0.2 },
+            instruction: "You now have a nested topic",
+          },
         ],
       },
     ],
@@ -52,12 +55,6 @@ const tutorials = [
             coordinates: { x: 0.4, y: 0.5 },
             instruction: "This is your new board",
           },
-          // {
-          //   src: "/images/board1.jpg",
-          //   coordinates: { x: 0.305, y: 0.055 },
-          //   pointerSize: "s",
-          //   instruction: "Click here",
-          // },
         ],
       },
       { name: "Drag & Drop" },
@@ -72,4 +69,3 @@ const tutorials = [
 ];
 
 export default tutorials;
-// module.exports = tutorials; // server-side

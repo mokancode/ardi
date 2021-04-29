@@ -1,17 +1,26 @@
-.wrapper {
+.outerWrapper {
   margin-bottom: 30px;
-  transition: 1s, 0.2s opacity;
+  padding: 0px 10px;
+  /* border: 1px solid red; */
+}
+
+.wrapper {
+  transition: 1s, 0.5s opacity;
   opacity: 0;
   /* opacity: 1 !important; */
   transform: translateY(-10px);
   position: relative;
-  /* border: 1px solid black; */
+  /* height: 400px; */
+  height: 100%;
+  /* border: 3px solid black; */
+  /* transform: unset !important; */
+  /* opacity: 1 !important; */
 }
 
-/* .wrapper, .wrapper * {
-  margin: 0px !important;
-  padding: 0px !important;
-} */
+.outerWrapper:not(:nth-of-type(4)) .wrapper {
+  /* border: 4px solid red; */
+  /* transform: unset !important; */
+}
 
 .wrapper.show {
   opacity: 1;
@@ -23,6 +32,18 @@
   padding: 30px;
   box-shadow: 0 0 20px 0 rgba(128, 128, 128, 0.3);
   border-radius: 5px;
+}
+
+.wrapper.forceNoBackground {
+  background-color: transparent !important;
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    background-color: rgba(245, 245, 245, 0.7);
+    padding: 20px;
+    border-radius: 5px;
+  }
 }
 
 .headerWithIconWrapper {
@@ -64,7 +85,8 @@
   line-height: 30px;
 }
 
-.paragraph.paragraphAlignLeft, .paragraph.paragraphAlignLeft p {
+.paragraph.paragraphAlignLeft,
+.paragraph.paragraphAlignLeft p {
   text-align: left;
 }
 

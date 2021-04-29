@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
   /* background-color: rgb(203, 222, 236); */
   background-color: rgb(238, 239, 243);
   overflow: hidden;
@@ -103,19 +105,40 @@ a {
 }
 
 .pageWrapper {
-  max-width: 60%;
-  max-width: 900px;
+  max-width: 80%;
   /* background-color: rgb(255, 255, 255); */
   /* box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.2); */
   border-radius: 20px;
   padding: 20px;
-  padding-top: 0px;
   padding-bottom: 30px;
-  /* border: 1px solid grey; */
+  /* border: 2px solid grey; */
+  padding-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.pageWrapper {
-  padding-top: 20px;
+@media screen and (max-width: 1200px) {
+  .pageWrapper {
+    max-width: 90%;
+    /* border: 5px solid green; */
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .pageWrapper {
+    max-width: 95%;
+    /* border: 5px solid green; */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pageWrapper {
+    max-width: 100%;
+    padding: 0px;
+    /* border: 5px solid green; */
+  }
 }
 
 .bg {
