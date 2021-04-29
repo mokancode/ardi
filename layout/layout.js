@@ -9,7 +9,7 @@ import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 
-const appVersion = "1.0.3";
+const appVersion = "1.0.4";
 
 export default function Layout(props) {
   const router = useRouter();
