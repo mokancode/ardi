@@ -10,7 +10,14 @@ export default function MobileNavbarClip() {
   const [open, setOpenState] = useState(undefined);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  function setOpenHandler() {
+  function setOpenHandler(status) {
+    if (status === false) {
+      setOpenState(false);
+      clipPathRef.current.style.animationDirection = "reverse";
+      clipPathRef.current.style.animationName = "rotateAnim";
+      return;
+    }
+
     setOpenState((prevState) => {
       if (prevState) {
         // console.log("anim closed");

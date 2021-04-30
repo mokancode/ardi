@@ -1,8 +1,7 @@
 import classNames from "classnames";
-import React from "react";
 import styles from "./HomeIcon.module.css";
 
-const HomeIcon = ({ active }) => {
+export default function HomeIcon({ active }) {
   return (
     <div
       className={classNames(styles.homeIcon, {
@@ -10,6 +9,4 @@ const HomeIcon = ({ active }) => {
       })}
     ></div>
   );
-};
-
-export default HomeIcon;
+}

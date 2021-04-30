@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import styles from "./SupportIcon.module.css";
 
-const SupportIcon = ({ active }) => {
+export default function SupportIcon({ active }) {
   return (
     <svg
       className={classNames(styles.supportIconSVG, {
@@ -21,6 +21,4 @@ const SupportIcon = ({ active }) => {
       <path className={styles.st2} d="M157,173.5c-6.87,6.87-13.21,7.88-29.5,7.88s-22.19-0.56-29.5-7.88" />
     </svg>
   );
-};
-
-export default SupportIcon;
+}

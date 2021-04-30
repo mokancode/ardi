@@ -3,51 +3,85 @@ import DownloadButton from "../components/DownloadButton/DownloadButton";
 import ParagraphWithHeader from "../components/ParagraphWithHeader/ParagraphWithHeader";
 // import styles from "../styles/DownloadPage.module.css";
 
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import StylesContext from "../store/styles-context";
 
 import { v4 as uuidv4 } from "uuid";
+import PhoneIcon from "../icons/PhoneIcon/PhoneIcon";
 // import axios from "axios";
 
 // import downloadData from "./text.json";
 
 export default function DownloadPage(props) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find(
-    (styleSheet) => styleSheet.name === "DownloadPage"
-  ).styles;
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "DownloadPage").styles;
 
   const { downloadData } = props;
   if (!downloadData) return <h1>Loading...</h1>;
 
-  const [changelog, setChangelog] = useState([]);
+  const [changelog, setChangelog] = useState(null);
   useEffect(() => {
-    let tempArray = downloadData.changelog.map((item) => {
-      return (
-        <p key={uuidv4()} style={{ margin: "0px" }}>
-          {item}
-        </p>
-      );
-    });
-    setChangelog(tempArray);
-  }, downloadData);
+    setChangelog(
+      downloadData.changelog.map((item) => {
+        return {
+          text: item,
+          id: uuidv4(),
+        };
+      })
+    );
+  }, [downloadData]);
 
   // console.log("downloadData", downloadData);
+
+  const [hideMobileNotification, setHideMobileNotification] = useState(true);
+  useEffect(() => {
+    if (window.innerWidth <= 700) {
+      setTimeout(() => {
+        setHideMobileNotification(false);
+      }, 500);
+    }
+  }, []);
 
   return (
     <div className={["pageWrapper", styles.pageWrapper].join(" ")}>
       <Head>
         <title>Download Ardi</title>
-        <meta
-          name="description"
-          content="Download the latest version of Ardi for Windows or Mac"
-        ></meta>
+        <meta name="description" content="Download the latest version of Ardi for Windows or Mac"></meta>
       </Head>
+
+      <Fragment>
+        <div className={[styles.veil, hideMobileNotification ? styles.hide : undefined].join(" ")}></div>
+        <div className={[styles.mobileNotification, hideMobileNotification ? styles.hide : undefined].join(" ")}>
+          {/* <PhoneIcon /> */}
+          <ParagraphWithHeader
+            visibilitySensorReveal={true}
+            iconShowDelay={1000}
+            // background={true}
+            // headerWithIconDirection="horizontal"
+            centerHeader={true}
+            noUnderline={true}
+            // paragraphAlignLeft={true}
+            headerText="Greetings!"
+            paragraphText="You're browsing on a mobile device. Ardi is currently a Windows and Mac only application"
+            iconBgColor1={"rgb(156, 185, 240)"}
+            iconBgColor2={"rgb(128, 154, 202)"}
+            icon={<PhoneIcon />}
+          />
+          <button
+            onClick={() => {
+              setHideMobileNotification(true);
+            }}
+          >
+            I understand!
+          </button>
+        </div>
+      </Fragment>
 
       <div className={styles.downloadButtonsWrapper}>
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.paragraphWithHeaderWrapper}>
             <ParagraphWithHeader
+              noPadding={true}
               visibilitySensorReveal={true}
               background={true}
               headerWithIconDirection="horizontal"
@@ -68,6 +102,7 @@ export default function DownloadPage(props) {
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.paragraphWithHeaderWrapper}>
             <ParagraphWithHeader
+              noPadding={true}
               visibilitySensorReveal={true}
               background={true}
               headerWithIconDirection="horizontal"

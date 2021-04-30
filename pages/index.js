@@ -18,9 +18,14 @@ import PrivacyPolicyIcon from "../components/SVGs/PrivacyPolicyIcon/PrivacyPolic
 import TermsAndConditionsIcon from "../components/SVGs/TermsAndConditionsIcon/TermsAndConditionsIcon";
 import SwiperContainer from "../components/SwiperContainer/SwiperContainer";
 
+import { v4 as uuidv4 } from "uuid";
+import isEmpty from "../utils/validation/is-empty";
+
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
   const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "Home").styles;
+
+  const [IDs, setIDs] = useState([]);
 
   const [mobileMode, setMobileMode] = useState(false);
   const mobileModeRef = useRef(false);
@@ -31,6 +36,13 @@ export default function Home(props) {
   }
 
   useEffect(() => {
+    // Set IDs for ParagraphWithHeader lists
+    // firstThreeParagraphs + secondThreeParagraphs = 2 lists of 3 = 6 IDs total
+
+    let tempIDs = [];
+    for (var i = 0; i < 6; i++) tempIDs.push(uuidv4());
+    setIDs(tempIDs);
+
     if (window.innerWidth <= 800) {
       updateMobileMode(true);
     }
@@ -58,6 +70,7 @@ export default function Home(props) {
       iconBgColor1={"rgb(39, 115, 206)"}
       iconBgColor2={"rgb(18, 63, 155)"}
       icon={<OutlinerIcon />}
+      key={IDs[0]}
     />,
     <ParagraphWithHeader
       // visibilitySensorReveal={true}
@@ -70,6 +83,7 @@ export default function Home(props) {
       iconBgColor2={"rgb(33, 168, 203)"}
       icon={<ToDoManagerIcon />}
       index={1}
+      key={IDs[1]}
     />,
     <ParagraphWithHeader
       // visibilitySensorReveal={true}
@@ -81,12 +95,13 @@ export default function Home(props) {
       iconBgColor1={"rgb(245, 141, 58)"}
       iconBgColor2={"rgb(230, 92, 21)"}
       icon={<NotesIcon />}
+      key={IDs[2]}
     />,
   ];
 
   const secondThreeParagraphs = [
     <ParagraphWithHeader
-      // first={true}
+      first={true}
       centerHeader={true}
       background={true}
       noUnderline={true}
@@ -95,6 +110,7 @@ export default function Home(props) {
       iconBgColor1={"rgb(117, 221, 139)"}
       iconBgColor2={"rgb(23, 172, 97)"}
       icon={<CameraIcon />}
+      key={IDs[3]}
     />,
     <ParagraphWithHeader
       centerHeader={true}
@@ -106,6 +122,7 @@ export default function Home(props) {
       iconBgColor2={"rgb(36, 129, 184)"}
       icon={<SyncIcon />}
       index={1}
+      key={IDs[4]}
     />,
     <ParagraphWithHeader
       centerHeader={true}
@@ -116,6 +133,7 @@ export default function Home(props) {
       iconBgColor1={"rgb(187, 185, 255)"}
       iconBgColor2={"rgb(159, 124, 255)"}
       icon={<DiagramIcon />}
+      key={IDs[5]}
     />,
   ];
 
@@ -141,12 +159,12 @@ export default function Home(props) {
           <SwiperContainer visibilitySensorReveal={true}>{firstThreeParagraphs}</SwiperContainer>
           <SwiperContainer visibilitySensorReveal={true}>{secondThreeParagraphs}</SwiperContainer>
         </Fragment>
-      ) : (
+      ) : !isEmpty(IDs) ? (
         <div className={styles.paragraphsWrapper}>
           {firstThreeParagraphs}
           {secondThreeParagraphs}
         </div>
-      )}
+      ) : null}
 
       <ParagraphWithHeader
         // first={true}

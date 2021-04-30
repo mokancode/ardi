@@ -10,12 +10,15 @@ export default function IconContainer(props) {
 
   const [showComponent, setShowComponent] = useState(false);
 
-  const { iconBgColor1, iconBgColor2, index } = props;
+  const { iconBgColor1, iconBgColor2, index, showDelay } = props;
 
   return (
     <ReactVisibilitySensor
       onChange={(isVisible) => {
-        if (isVisible && !showComponent) setShowComponent(true);
+        if (isVisible && !showComponent)
+          setTimeout(() => {
+            setShowComponent(true);
+          }, showDelay);
       }}
       partialVisibility={false}
       offset={{ bottom: 200 }}

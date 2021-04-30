@@ -8,6 +8,8 @@ import RefsContext from "../../store/refs-context";
 import ReactVisibilitySensor from "react-visibility-sensor";
 import calculateScrollProgression from "../../utils/CalculateScrollProgression";
 
+import { v4 as uuidv4 } from "uuid";
+
 export default function ParagraphWithHeader(props) {
   const paragraphWithHeaderRef = useRef();
 
@@ -22,29 +24,20 @@ export default function ParagraphWithHeader(props) {
   const { iconBgColor1, iconBgColor2, index } = props;
 
   const [showComponent, setShowComponent] = useState(false);
-  const [mainDivRefState, setMainDivRef] = useState(null);
 
   // Calculate distance from top of document (not the viewport -- the entire document/window).
   const [offsetTopState, setOffsetTop] = useState(null);
   useEffect(() => {
-    var parent = paragraphWithHeaderRef.current.parentNode;
-    var totalOffsetTop = paragraphWithHeaderRef.current.offsetTop;
-    while (parent.parentNode) {
-      if (parent.offsetTop !== totalOffsetTop) totalOffsetTop += parent.offsetTop;
-      parent = parent.parentNode;
-    }
-    setOffsetTop(totalOffsetTop);
+    if (props.visibilitySensorReveal) return;
 
     // Set initial opacity
     let percentage = 1 - paragraphWithHeaderRef.current.getBoundingClientRect().y / window.innerHeight;
-    // console.log("percentage b4", percentage);
     if (percentage > 0.5) percentage *= 5;
     else if (percentage > 0.4) percentage *= 2;
     else if (percentage > 0.2) percentage *= 1.5;
     else if (percentage > 0.05) percentage *= 2;
     else if (percentage < 0.05) percentage = 0;
     if (percentage >= 1) percentage = 1;
-    // console.log("percentage after", percentage);
 
     let opacityEquation = percentage;
     paragraphWithHeaderRef.current.style.opacity = `${opacityEquation}`;
@@ -53,79 +46,74 @@ export default function ParagraphWithHeader(props) {
     paragraphWithHeaderRef.current.style.transform = `translateY(${50 * translateYEquation}px)`;
   }, []);
 
-  // Retrieve the ref of mainDiv from layout.js
-  const refsContext = useContext(RefsContext);
-  useEffect(() => {
-    if (!mainDivRefState && refsContext.refs.length > 0) {
-      const mainDivRef = refsContext.refs.find((ref) => ref.name === "mainDivRef");
-      setMainDivRef(mainDivRef.ref);
-    }
-  }, [refsContext.refs.length]);
-
   // set scroll event listener on mainDiv
-  const [eventListenerSet, setEventListenerSet] = useState(false);
+  const scrollEventListenerSetRef = useRef(false);
+
   useEffect(() => {
-    if (!eventListenerSet && mainDivRefState) {
-      setEventListenerSet(true);
-      if (props.first) {
-        // console.log(window.innerHeight, window.innerWidth);
+    if (!scrollEventListenerSetRef.current) {
+      scrollEventListenerSetRef.current = true;
+
+      if (!paragraphWithHeaderRef || !paragraphWithHeaderRef.current) {
+        console.log("ref doesn't exist", scrollEventListenerSetRef.current, props.first);
+        return;
       }
-      mainDivRefState.current.addEventListener("scroll", (e) => {
-        // console.log("scroll", mainDivRefState.current.scrollTop);
 
-        if (!paragraphWithHeaderRef || !paragraphWithHeaderRef.current) {
-          console.log("ref doesn't exist");
-          return;
+      function scrollFuncHandler() {
+        try {
+          // console.log("scroll", document.querySelector("#mainDiv").scrollTop);
+          if (
+            !props.visibilitySensorReveal
+            // && props.first
+          ) {
+            if (props.headerText === "Blackboards") console.log("scroll");
+            // This was the old function that was dependent on offset:
+            // let opacityEquation = calculateScrollProgression(e.target.scrollTop, offsetTopState, offset);
+
+            // New function:
+            let percentage = 1 - paragraphWithHeaderRef.current.getBoundingClientRect().y / window.innerHeight;
+
+            // console.log("percentage b4", percentage);
+            if (percentage > 0.5) percentage *= 5;
+            else if (percentage > 0.4) percentage *= 2;
+            else if (percentage > 0.3) percentage *= 1.7;
+            else if (percentage > 0.2) percentage *= 1.5;
+            else if (percentage > 0.05) percentage *= 2;
+            else if (percentage < 0.05) percentage = 0;
+            if (percentage >= 1) percentage = 1;
+            // console.log("percentage after", percentage);
+
+            let opacityEquation = percentage;
+            paragraphWithHeaderRef.current.style.opacity = `${opacityEquation}`;
+
+            let translateYEquation = 1 - opacityEquation;
+            paragraphWithHeaderRef.current.style.transform = `translateY(${50 * translateYEquation}px)`;
+          }
+        } catch (err) {
+          console.log("scroll err", err);
         }
-        const offset = 550;
+      }
 
-        if (
-          true
-          // props.first
-          // e.target.scrollTop <= offsetTopState + offset &&
-          // !props.visibilitySensorReveal
-        ) {
-          // This was the old function that was dependent on offset:
-          // let opacityEquation = calculateScrollProgression(e.target.scrollTop, offsetTopState, offset);
+      document.querySelector("#mainDiv").addEventListener("scroll", scrollFuncHandler);
 
-          // New function:
-          let percentage = 1 - paragraphWithHeaderRef.current.getBoundingClientRect().y / window.innerHeight;
-
-          // console.log("percentage b4", percentage);
-
-          if (percentage > 0.5) percentage *= 5;
-          else if (percentage > 0.4) percentage *= 2;
-          else if (percentage > 0.3) percentage *= 1.7;
-          else if (percentage > 0.2) percentage *= 1.5;
-          else if (percentage > 0.05) percentage *= 2;
-          else if (percentage < 0.05) percentage = 0;
-          if (percentage >= 1) percentage = 1;
-
-          // console.log("percentage after", percentage);
-
-          let opacityEquation = percentage;
-          paragraphWithHeaderRef.current.style.opacity = `${opacityEquation}`;
-
-          let translateYEquation = 1 - opacityEquation;
-          paragraphWithHeaderRef.current.style.transform = `translateY(${50 * translateYEquation}px)`;
-        }
-      });
+      return function cleanupListener() {
+        document.querySelector("#mainDiv").removeEventListener("scroll", scrollFuncHandler);
+      };
     }
-  }, [eventListenerSet, mainDivRefState]);
+  }, [scrollEventListenerSetRef.current]);
 
   return (
     <ReactVisibilitySensor
       onChange={(isVisible) => {
         // console.log("isVisible", isVisible, props.headerText);
         if (isVisible && props.visibilitySensorReveal) {
-          setShowComponent(true);
+            setShowComponent(true);
         }
         // else setShowComponent(false);
       }}
       partialVisibility={true}
       offset={{ bottom: 100 }}
     >
-      <div className={styles.outerWrapper}>
+      <div className={[styles.outerWrapper, props.noPadding ? styles.noPadding : undefined].join(" ")}>
         <div
           ref={paragraphWithHeaderRef}
           className={[
@@ -164,6 +152,7 @@ export default function ParagraphWithHeader(props) {
                   iconBgColor1={iconBgColor1}
                   iconBgColor2={iconBgColor2}
                   index={index}
+                  showDelay={props.iconShowDelay}
                   // showComponent={showComponent}
                 >
                   {props.icon}
@@ -182,15 +171,36 @@ export default function ParagraphWithHeader(props) {
               {props.headerText}
             </h1>
           </div>
-          <p
-            className={[
-              styles.paragraph,
-              props.color && styles[props.color],
-              props.paragraphAlignLeft && styles.paragraphAlignLeft,
-            ].join(" ")}
-          >
-            {props.paragraphText}
-          </p>
+
+          {Array.isArray(props.paragraphText) ? (
+            <ul>
+              {props.paragraphText.map((changelogItem) => {
+                return (
+                  <li key={changelogItem.id}>
+                    <p
+                      className={[
+                        styles.paragraph,
+                        props.color && styles[props.color],
+                        props.paragraphAlignLeft && styles.paragraphAlignLeft,
+                      ].join(" ")}
+                    >
+                      {changelogItem.text}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p
+              className={[
+                styles.paragraph,
+                props.color && styles[props.color],
+                props.paragraphAlignLeft && styles.paragraphAlignLeft,
+              ].join(" ")}
+            >
+              {props.paragraphText}
+            </p>
+          )}
         </div>
       </div>
     </ReactVisibilitySensor>

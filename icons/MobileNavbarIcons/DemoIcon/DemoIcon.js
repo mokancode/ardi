@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import styles from "./DemoIcon.module.css";
 
-const DemoIcon = ({ active }) => {
+export default function DemoIcon({ active }) {
   return (
     <svg
       className={classNames(styles.demoIconSVG, {
@@ -19,5 +19,4 @@ const DemoIcon = ({ active }) => {
       </g>
     </svg>
   );
-};
-export default DemoIcon;
+}

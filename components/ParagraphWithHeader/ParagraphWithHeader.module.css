@@ -1,7 +1,11 @@
 .outerWrapper {
   margin-bottom: 30px;
   padding: 0px 10px;
-  /* border: 1px solid red; */
+  /* border: 2px solid red; */
+}
+
+.outerWrapper.noPadding {
+  padding: 0;
 }
 
 .wrapper {
@@ -23,8 +27,8 @@
 }
 
 .wrapper.show {
-  opacity: 1;
-  transform: unset;
+  opacity: 1 !important;
+  transform: unset !important;
 }
 
 .wrapper.background {
@@ -91,6 +95,7 @@
 }
 
 .header {
+  white-space: pre;
   font-size: 20px;
   margin: 0px;
   margin-bottom: 20px;
@@ -99,6 +104,7 @@
   text-align: left;
   width: 100%;
   color: rgb(32, 44, 54);
+  /* border: 1px solid black; */
 }
 
 .headerWithIconWrapper.horizontal .header {
@@ -127,4 +133,33 @@ p.white {
 
 .alignCenter {
   text-align: center;
+}
+
+@media screen and (max-width: 390px) {
+  .header {
+    font-size: 16px;
+  }
+
+  .wrapper {
+    padding: 15px 10px !important;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .header {
+    font-size: 15px;
+  }
+
+  .paragraph {
+    font-size: 15px;
+  }
+
+  .wrapper {
+    padding: 15px 10px !important;
+  }
+
+  .headerWithIconWrapper img {
+      width: 30px;
+      height: 30px;
+  }
 }

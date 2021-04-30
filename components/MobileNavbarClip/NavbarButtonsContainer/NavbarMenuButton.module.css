@@ -2,17 +2,20 @@
   padding: 20px 20px;
   padding-top: 50px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition-duration: 1s;
   transition-property: all;
   /* transform: translateY(-200px) !important; */
   /* border: 3px solid black; */
+  /* opacity: 0; */
+}
+
+.menuListItem:nth-child(1),
+.menuListItem:nth-child(2) {
+  /* opacity: 0; */
 }
 
 .menuListItem:not(:last-child) {
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.75);
 }
 
 .menuListItem.open {
@@ -21,6 +24,20 @@
 /*  */
 .menuListItem:not(:first-of-type) {
   margin-top: -45px;
+}
+
+.link {
+  /* border: 2px solid red; */
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: none;
 }
 
 .iconWrapper {
@@ -38,28 +55,19 @@
 
 @media screen and (max-width: 400px) {
   .iconInnerWrapper {
-    transform: scale(.7) translateX(-20px);
+    transform: scale(0.7) translateX(-20px);
   }
 }
 
 @media screen and (max-width: 300px) {
   .iconInnerWrapper {
-    transform: scale(.7) translateX(-40px);
+    transform: scale(0.7) translateX(-40px);
   }
 }
 
 .menuListItem.open .iconWrapper {
   opacity: 1;
   transform: unset;
-}
-
-.iconInnerWrapper {
-  transition: 0.3s;
-  opacity: 0.2;
-}
-
-.menuListItem.active .iconInnerWrapper {
-  opacity: 1;
 }
 
 /* ABeeZee|Allura|Italiana|Montserrat|Philosopher|Playball|
@@ -121,19 +129,21 @@
 
 .menuListItem:nth-child(2) {
   /* background: linear-gradient(rgb(34, 222, 255), rgb(23, 147, 168)); */
-  background: linear-gradient(rgb(106, 195, 255) 40%, rgb(14, 82, 121));
+  /* background: linear-gradient(rgb(106, 195, 255) 40%, rgb(14, 82, 121)); */
+  background: linear-gradient(rgb(130, 205, 255) 30%, rgb(21, 121, 179) 120%);
   /* background: linear-gradient(rgb(183, 232, 255), rgb(34, 99, 240)); */
   z-index: 3;
 }
 
 .menuListItem:nth-child(3) {
   /* background: linear-gradient(rgb(114, 164, 255), rgb(37, 68, 124)); */
-  background: linear-gradient(rgb(57, 126, 255) 50%, rgb(33, 68, 119));
+  /* background: linear-gradient(rgb(57, 126, 255) 50%, rgb(33, 68, 119)); */
+  background: linear-gradient(rgb(56, 159, 255) 70%, rgb(29, 128, 221) 120%);
   z-index: 2;
 }
 
 .menuListItem:nth-child(4) {
   /* background-color: navy; */
-  background: linear-gradient(rgb(35, 149, 255) 40%, rgb(25, 66, 201));
+  background: linear-gradient(rgb(35, 149, 255) 60%, rgb(25, 66, 201) 120%);
   z-index: 1;
 }

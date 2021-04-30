@@ -3,10 +3,13 @@
   height: 50px;
   margin-top: 12px;
   /* border: 2px solid red; */
-  transition: 0.3s;
 }
 .supportIconSVG.active {
   filter: drop-shadow(0 0 5px white);
+}
+
+.supportIconSVG * {
+  transition: .05s;
 }
 
 .supportIconSVG.active * {
@@ -20,25 +23,26 @@
 
 .st0 {
   fill: transparent;
-  stroke: #000000;
+  stroke: rgba(0, 0, 0, 0.2);
   stroke-width: 15;
   stroke-miterlimit: 10;
 }
 .st1 {
-  fill: black;
-  stroke: #000000;
+  fill: rgba(0, 0, 0, 0.2);
+  stroke: rgba(0, 0, 0, 0.2);
   stroke-width: 10;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
 }
 .st2 {
   fill: none;
-  stroke: #000000;
+  stroke: rgba(0, 0, 0, 0.2);
   stroke-width: 10;
   stroke-miterlimit: 10;
 }
 .st3 {
-  stroke: #000000;
+  stroke: rgba(0, 0, 0, 0.2);
+  fill: rgba(0, 0, 0, 0.2);
   stroke-width: 10;
   stroke-miterlimit: 10;
 }

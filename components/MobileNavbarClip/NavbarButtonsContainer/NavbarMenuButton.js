@@ -1,11 +1,13 @@
-import React, { Component } from "react";
 import classNames from "classnames";
 import styles from "./NavbarMenuButton.module.css";
 import isEmpty from "../../../utils/validation/is-empty";
-import { useState } from "react/cjs/react.development";
+import React, { Fragment, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function NavbarMenuButton({ index, menuItem, open, setOpen }) {
+export default function NavbarMenuButton({ index, menuItem, open, setOpen, link }) {
   const [hovering, setHovering] = useState(false);
+  const router = useRouter();
 
   return (
     <li
@@ -13,7 +15,7 @@ export default function NavbarMenuButton({ index, menuItem, open, setOpen }) {
         setOpen(false);
       }}
       className={classNames(styles.menuListItem, {
-        [styles.active]: hovering,
+        [styles.active]: hovering || router.pathname === link,
         [styles.open]: open,
       })}
       style={{
@@ -36,13 +38,21 @@ export default function NavbarMenuButton({ index, menuItem, open, setOpen }) {
         setHovering(false);
       }}
     >
-      <p style={{ transitionDelay: `${index * 100 + 300}ms` }}>{menuItem.name}</p>
+      <Link href={link}>
+        <a className={styles.link}>
+          <Fragment>
+            <p style={{ transitionDelay: `${index * 100 + 300}ms` }}>{menuItem.name}</p>
 
-      {!isEmpty(menuItem.icon) && (
-        <div className={styles.iconWrapper} style={{ transitionDelay: `${index * 100 + 400}ms` }}>
-          <div className={styles.iconInnerWrapper}>{React.cloneElement(menuItem.icon, { active: hovering })}</div>
-        </div>
-      )}
+            {!isEmpty(menuItem.icon) && (
+              <div className={styles.iconWrapper} style={{ transitionDelay: `${index * 100 + 400}ms` }}>
+                <div className={styles.iconInnerWrapper}>
+                  {React.cloneElement(menuItem.icon, { active: hovering || router.pathname === link })}
+                </div>
+              </div>
+            )}
+          </Fragment>
+        </a>
+      </Link>
     </li>
   );
 }

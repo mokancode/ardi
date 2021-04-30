@@ -35,7 +35,15 @@
   align-items: center;
   z-index: 3;
   height: 5%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: .8s;
   /* border: 2px solid green; */
+}
+
+.radioWrapper.show {
+  opacity: 1;
+  transform: unset;
 }
 
 .radio {

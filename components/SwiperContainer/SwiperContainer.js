@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./SwiperContainer.module.css";
 import { v4 as uuidv4 } from "uuid";
+import isEmpty from "../../utils/validation/is-empty";
+import ReactVisibilitySensor from "react-visibility-sensor";
 
 SwiperCore.use([Navigation, EffectCoverflow]);
 
@@ -11,6 +13,7 @@ export default function SwiperContainer(props) {
 
   const [children, setChildren] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showRadioButtons, setShowRadioButtons] = useState(false);
 
   useEffect(() => {
     let tempChildren = [];
@@ -55,7 +58,7 @@ export default function SwiperContainer(props) {
         }}
         className={styles.swiper}
       >
-        {children &&
+        {!isEmpty(children) &&
           children.map((child) => {
             return (
               <SwiperSlide key={child.id} className={styles.slide}>
@@ -69,23 +72,33 @@ export default function SwiperContainer(props) {
           })}
       </Swiper>
 
-      <div className={styles.radioWrapper}>
-        {children &&
-          children.map((child, index) => {
-            return (
-              <button
-                className={[styles.radio, activeIndex === index && styles.selected].join(" ")}
-                onClick={() => {
-                  try {
-                    swiperRef.current.slideTo(index);
-                  } catch (err) {
-                    console.log("err", err);
-                  }
-                }}
-              ></button>
-            );
-          })}
-      </div>
+      <ReactVisibilitySensor
+        onChange={(isVisible) => {
+          if (isVisible) setShowRadioButtons(true);
+          // else setShowRadioButtons(false);
+        }}
+        // partialVisibility={true}
+        offset={{ bottom: 30 }}
+      >
+        <div className={[styles.radioWrapper, showRadioButtons ? styles.show : undefined].join(" ")}>
+          {!isEmpty(children) &&
+            children.map((child, index) => {
+              return (
+                <button
+                  key={`${child.id}_radiobtn`}
+                  className={[styles.radio, activeIndex === index && styles.selected].join(" ")}
+                  onClick={() => {
+                    try {
+                      swiperRef.current.slideTo(index);
+                    } catch (err) {
+                      console.log("err", err);
+                    }
+                  }}
+                ></button>
+              );
+            })}
+        </div>
+      </ReactVisibilitySensor>
     </div>
   );
 }
