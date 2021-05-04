@@ -59,9 +59,9 @@ export default function ParagraphWithHeader(props) {
       }
 
       function scrollFuncHandler() {
-            if (props.first)
-            //  console.log("scroll first");
-            console.log("visibi", props.visibilitySensorReveal, props.first);
+            // if (props.first)
+            // //  console.log("scroll first");
+            // console.log("visibility", props.visibilitySensorReveal, props.first);
 
         try {
           // console.log("scroll", document.querySelector("#mainDiv").scrollTop);
