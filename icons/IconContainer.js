@@ -19,6 +19,7 @@ export default function IconContainer(props) {
           setTimeout(() => {
             setShowComponent(true);
           }, showDelay);
+        // else setShowComponent(false);
       }}
       partialVisibility={false}
       offset={{ bottom: 200 }}
