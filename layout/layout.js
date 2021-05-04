@@ -26,8 +26,8 @@ export default function Layout(props) {
       ref: mainDivRef,
     });
 
-    if (window.innerWidth > 1700) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
-    else if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
+    // if (window.innerWidth > 1700) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
+    if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
     else mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
 
     console.log("Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/");

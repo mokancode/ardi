@@ -50,6 +50,12 @@
   height: 100%;
 }
 
+@media screen and (max-width: 600px) {
+  .gradientShape {
+    background: linear-gradient(90deg, rgb(12, 19, 97) 15%, rgb(8, 120, 218) 45%);
+  }
+}
+
 @media screen and (min-width: 1600px) {
   .mainGradientShapeWrapper {
     width: 105vw;
