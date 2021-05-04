@@ -13,11 +13,11 @@ import PrivacyPolicyStyles from "../styles/PrivacyPolicy.module.css";
 import DemoStyles from "../styles/Demo.module.css";
 
 import IconContainerStyles from "../icons/IconContainer.module.css";
-import DiagramIconStyles from "../icons/DiagramIcon.module.css";
+import BlackboardIconStyles from "../icons/BlackboardIcon/BlackboardIcon.module.css";
 import OutlinerIconStyles from "../icons/OutlinerIcon.module.css";
 import SyncIconStyles from "../icons/SyncIcon.module.css";
 import NotesIconStyles from "../icons/NotesIcon.module.css";
-import CameraIconStyles from "../icons/CameraIcon.module.css";
+import DiagramIconStyles from "../icons/DiagramIcon/DiagramIcon.module.css";
 import ToDoManagerIconStyles from "../icons/ToDoManagerIcon.module.css";
 
 const StylesContext = createContext({
@@ -38,11 +38,11 @@ export function StylesContextProvider(props) {
     { name: "DemoPage", styles: DemoStyles },
 
     { name: "IconContainer", styles: IconContainerStyles },
-    { name: "DiagramIcon", styles: DiagramIconStyles },
+    { name: "BlackboardIcon", styles: BlackboardIconStyles },
     { name: "OutlinerIcon", styles: OutlinerIconStyles },
     { name: "SyncIcon", styles: SyncIconStyles },
     { name: "NotesIcon", styles: NotesIconStyles },
-    { name: "CameraIcon", styles: CameraIconStyles },
+    { name: "DiagramIcon", styles: DiagramIconStyles },
     { name: "ToDoManagerIcon", styles: ToDoManagerIconStyles },
   ]);
   const context = {

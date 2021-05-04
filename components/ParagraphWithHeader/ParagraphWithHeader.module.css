@@ -2,6 +2,7 @@
   margin-bottom: 30px;
   padding: 0px 10px;
   /* border: 2px solid red; */
+  /* max-width: 700px; */
 }
 
 .outerWrapper.noPadding {
@@ -9,6 +10,9 @@
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: 1s, 0.5s opacity;
   opacity: 0;
   /* opacity: 1 !important; */
@@ -56,6 +60,7 @@
   flex-direction: column;
   position: relative;
   margin-bottom: 5px;
+  width: 100%;
   /* border: 1px solid blue; */
 }
 
@@ -72,21 +77,21 @@
   width: 100%;
   height: 1px;
   bottom: -2px;
-  background: linear-gradient(to right, black, transparent);
+  background: linear-gradient(to right, darkgrey, transparent);
 }
 
 .headerWithIconWrapper.alignCenter::before {
-  background: linear-gradient(to right, transparent, black, transparent);
+  background: linear-gradient(to right, transparent, darkgrey, transparent);
 }
 
 .paragraph {
-  /* border: 1px solid red; */
-  width: fit-content;
   font-size: 15px;
   margin: 0px;
   color: darkslategrey;
   text-align: center;
   line-height: 30px;
+  width: 100%;
+  /* border: 1px solid red; */
 }
 
 .paragraph.paragraphAlignLeft,
@@ -95,7 +100,6 @@
 }
 
 .header {
-  white-space: pre;
   font-size: 20px;
   margin: 0px;
   margin-bottom: 20px;
@@ -105,6 +109,10 @@
   width: 100%;
   color: rgb(32, 44, 54);
   /* border: 1px solid black; */
+}
+
+.header.nonBreakingHeader {
+  white-space: pre;
 }
 
 .headerWithIconWrapper.horizontal .header {
@@ -135,6 +143,35 @@ p.white {
   text-align: center;
 }
 
+.headerWithIconWrapper img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+  /* border: 1px solid red; */
+}
+
+.headerWithIconWrapper.horizontal img {
+  margin-right: 20px;
+  margin-bottom: 3px;
+}
+
+.headerWithIconWrapper img.rotate {
+  animation-duration: 20s;
+  animation-name: rotateIcon;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* border: 2px solid red; */
+}
+
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 390px) {
   .header {
     font-size: 16px;
@@ -159,7 +196,7 @@ p.white {
   }
 
   .headerWithIconWrapper img {
-      width: 30px;
-      height: 30px;
+    width: 30px;
+    height: 30px;
   }
 }

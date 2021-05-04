@@ -14,7 +14,7 @@ export default function NotesIcon() {
     <div className={styles.wrapper}>
       <div className={styles.square}></div>
       <div className={styles.lines}>
-        {new Array(5).fill(undefined).map((item, index) => (
+        {new Array(4).fill(undefined).map((item, index) => (
           <div key={uniqueIDs[index]} className={styles.line} />
         ))}
       </div>

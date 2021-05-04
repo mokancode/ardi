@@ -8,6 +8,7 @@ import StylesContext from "../store/styles-context";
 
 import { v4 as uuidv4 } from "uuid";
 import PhoneIcon from "../icons/PhoneIcon/PhoneIcon";
+import WindowsLogo from "../icons/WindowsLogo/WindowsLogo";
 // import axios from "axios";
 
 // import downloadData from "./text.json";
@@ -81,22 +82,29 @@ export default function DownloadPage(props) {
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.paragraphWithHeaderWrapper}>
             <ParagraphWithHeader
+              centerHeader={true}
+              noUnderline={true}
               noPadding={true}
               visibilitySensorReveal={true}
               background={true}
-              headerWithIconDirection="horizontal"
+              // headerWithIconDirection="horizontal"
+              nonBreakingHeader={true}
               headerText={`Ardi ${downloadData.windows.version} for Windows`}
               paragraphText={`${downloadData.windows.windowsOS}`}
-              icon={"/images/win7-logo.png"}
+              iconBgColor1={"rgb(117, 166, 221)"}
+              iconBgColor2={"rgb(36, 129, 184)"}
+              icon={<WindowsLogo />}
+              button={
+                <DownloadButton
+                  visibilitySensorReveal={true}
+                  url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
+                  fileName={downloadData.windows.fileName}
+                  fileSize={downloadData.windows.fileSize}
+                  color="blue"
+                />
+              }
             />
           </div>
-          <DownloadButton
-            visibilitySensorReveal={true}
-            url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
-            fileName={downloadData.windows.fileName}
-            fileSize={downloadData.windows.fileSize}
-            stripColor="green"
-          />
         </div>
 
         <div className={styles.downloadBtnWrapper}>
@@ -105,18 +113,24 @@ export default function DownloadPage(props) {
               noPadding={true}
               visibilitySensorReveal={true}
               background={true}
-              headerWithIconDirection="horizontal"
+              noUnderline={true}
+              // headerWithIconDirection="horizontal"
+              nonBreakingHeader={true}
               headerText={`Ardi ${downloadData.mac.version} for MacOS`}
               paragraphText={`${downloadData.mac.macOS}`}
-              icon={"/images/apple-logo.png"}
+              icon={<img src="/images/apple-logo.png" alt="appleIcon"></img>}
+              iconBgColor1={"darkgrey"}
+              iconBgColor2={"darkslategrey"}
+              button={
+                <DownloadButton
+                  visibilitySensorReveal={true}
+                  url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
+                  fileName={downloadData.mac.fileName}
+                  fileSize={downloadData.mac.fileSize}
+                />
+              }
             />
           </div>
-          <DownloadButton
-            visibilitySensorReveal={true}
-            url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
-            fileName={downloadData.mac.fileName}
-            fileSize={downloadData.mac.fileSize}
-          />
         </div>
       </div>
 
@@ -124,10 +138,13 @@ export default function DownloadPage(props) {
         visibilitySensorReveal={true}
         background={true}
         headerWithIconDirection="horizontal"
+        extraLarge={true}
         headerText={`Changelog`}
         paragraphText={changelog}
         paragraphAlignLeft={true}
-        // icon={"/images/.png"}
+        // icon={<img src="/images/changelog.png" alt="changelog"></img>}
+        icon={"/images/changelog.png"}
+        rotateIcon={true}
       />
     </div>
   );

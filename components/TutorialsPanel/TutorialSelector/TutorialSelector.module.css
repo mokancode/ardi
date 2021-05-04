@@ -7,7 +7,33 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   box-shadow: -10px 5px 20px 0 rgba(49, 49, 49, 0.3);
-  /* z-index: 2; */
+  z-index: 4;
+  overflow: hidden;
+  /* border: 1px solid red; */
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Custom Scrollbar */
+/* width */
+.container::-webkit-scrollbar {
+  width: 2px;
+  /* display: none; */
+}
+
+/* Track */
+.container::-webkit-scrollbar-track {
+  background: rgb(230, 230, 230);
+}
+
+/* Handle */
+.container::-webkit-scrollbar-thumb {
+  background: rgb(86, 136, 184);
+}
+
+/* Handle on hover */
+.container::-webkit-scrollbar-thumb:hover {
+  background: rgb(49, 95, 122);
 }
 
 .container ul {
@@ -48,6 +74,42 @@
   z-index: 2;
 }
 
+.categoryName.directToMenu {
+  animation-duration: 1s;
+  animation-name: directToMenu;
+  /* animation-iteration-count: infinite; */
+}
+
+.categoryName.directToMenu::before {
+  animation-duration: 1s;
+  animation-name: directToMenuBefore;
+  /* animation-iteration-count: infinite; */
+}
+
+@keyframes directToMenu {
+  0% {
+    background-color: rgba(248, 248, 248, 0.99);
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(248, 248, 248, 0.99);
+  }
+}
+
+@keyframes directToMenuBefore {
+  0% {
+    background-color: rgba(218, 218, 218, 0.9);
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(218, 218, 218, 0.9);
+  }
+}
+
 .categoryName::before {
   position: absolute;
   content: "";
@@ -56,9 +118,8 @@
   width: 100%;
   height: 1px;
   background-color: rgba(218, 218, 218, 0.9);
-  /* opacity: 0.7; */
-  transition: 0.5s;
-  /* display: none; */
+  animation-duration: inherit;
+  animation-delay: inherit;
 }
 
 .categoryName.selected::before {

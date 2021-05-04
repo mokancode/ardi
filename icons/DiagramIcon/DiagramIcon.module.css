@@ -1,0 +1,36 @@
+.container {
+  transform: scale(1.1);
+  opacity: .9;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.st0 {
+  fill: white;
+}
+.st1 {
+  fill: white;
+}
+.st2 {
+  fill: #495867;
+  fill: rgb(255, 255, 255);
+}
+
+#emails .st2 {
+  fill: #495867;
+  stroke: #495867;
+  stroke-width: 1px;
+}
+
+.st3 {
+  fill: #495867;
+  stroke: #495867;
+  stroke-width: 3px;
+}
+
+.st4 {
+  fill: #495867;
+}
+
+#emails rect, #note rect {
+  fill: white;
+}

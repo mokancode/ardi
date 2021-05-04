@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import TickIcon from "../../../../icons/TickIcon/TickIcon";
 import styles from "./TutorialController.module.css";
 
 export default function TutorialController({
@@ -22,11 +23,9 @@ export default function TutorialController({
       </div>
 
       <button
-        className={[
-          styles.showCoordinatesBtnContainer,
-          showCoordinates && styles.show,
-          showCoordinates && styles.active,
-        ].join(" ")}
+        className={[styles.showCoordinatesBtnContainer, showCoordinates && styles.show, showCoordinates && styles.active].join(
+          " "
+        )}
         onClick={() => {
           setShowCoordinates((prevState) => !prevState);
         }}
@@ -35,6 +34,11 @@ export default function TutorialController({
         <p>On</p>
         <div className={[styles.showCoordinatesBtn].join(" ")}>XY</div>
       </button>
+
+      <div className={styles.tickIconsWrapper}>
+        <TickIcon show={currentImgIndex === total - 1} />
+        <TickIcon show={currentImgIndex === total - 1} />
+      </div>
     </div>
   );
 }

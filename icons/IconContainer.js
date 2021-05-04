@@ -1,5 +1,5 @@
 // import styles from "./IconContainer.module.css";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactVisibilitySensor from "react-visibility-sensor";
 import TrapeziusShape from "../components/SVGs/TrapeziusShape/TrapeziusShape";
 import StylesContext from "../store/styles-context";
@@ -31,7 +31,7 @@ export default function IconContainer(props) {
           index={index}
           isIconContainer={true}
         />
-        <div className={styles.container}>{props.children}</div>
+        <div className={styles.container}>{React.cloneElement(props.children, { show: showComponent })}</div>
       </div>
     </ReactVisibilitySensor>
   );

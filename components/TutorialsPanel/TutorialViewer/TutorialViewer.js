@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import isEmpty from "../../../utils/validation/is-empty";
 import TutorialController from "./TutorialController/TutorialController";
+import TutorialPointerInstruction from "./TutorialPointerInstruction/TutorialPointerInstruction";
 import styles from "./TutorialViewer.module.css";
 export default function TutorialViewer(props) {
   const imgContainerRef = useRef();
@@ -12,9 +13,11 @@ export default function TutorialViewer(props) {
   const [currentTutorial, setCurrentTutorial] = useState({});
   const currentTutorialRef = useRef(currentTutorial);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [currentImgSrc, setCurrentImgSrc] = useState("");
   const currentImgIndexRef = useRef(currentImgIndex);
   const [showPointer, setShowPointer] = useState(false);
   const [showCoordinates, setShowCoordinates] = useState(false);
+  const [pointerInPosition, setPointerInPosition] = useState(false);
 
   useEffect(() => {
     if (!isEmpty(props.currentTutorial))
@@ -24,12 +27,23 @@ export default function TutorialViewer(props) {
       });
     setCurrentImgIndex(0);
     currentImgIndexRef.current = 0;
-    setShowPointer(false);
+
+    // setCurrentImgSrc(currentTutorial.images[currentImgIndex].src);
+
+    if (!isEmpty(props.currentTutorial) && !isEmpty(props.currentTutorial.images)) {
+      setCurrentImgSrc(props.currentTutorial.images[0].src);
+    }
+
+    // if (
+    //   !isEmpty(props.currentTutorial) &&
+    //   props.currentTutorial.images[currentImgIndex].src &&
+    //   props.currentTutorial.images[currentImgIndex].src !== currentImgSrc
+    // )
+    //   setShowPointer(false);
   }, [props.currentTutorial]);
 
   useEffect(() => {
-    if (!currentTutorial.images || !currentTutorial.images[currentImgIndex])
-      return;
+    if (!currentTutorial.images || !currentTutorial.images[currentImgIndex]) return;
     let xPos = currentTutorial.images[currentImgIndex].coordinates.x;
     let yPos = currentTutorial.images[currentImgIndex].coordinates.y;
     if (xPos >= 0.5) {
@@ -41,13 +55,14 @@ export default function TutorialViewer(props) {
     }
 
     pointerRef.current.style.transform = `translate(${
-      imgContainerRef.current.offsetWidth * xPos -
-      pointerRef.current.offsetWidth / 2
-    }px, ${
-      imgContainerRef.current.offsetHeight * yPos -
-      pointerRef.current.offsetHeight / 2
-    }px)`;
-  }, [currentImgIndex]);
+      imgContainerRef.current.offsetWidth * xPos - pointerRef.current.offsetWidth / 2
+    }px, ${imgContainerRef.current.offsetHeight * yPos - pointerRef.current.offsetHeight / 2}px)`;
+
+    if (currentTutorial.images[currentImgIndex].src !== currentImgSrc)
+      setCurrentImgSrc(currentTutorial.images[currentImgIndex].src);
+
+    setPointerInPosition(false);
+  }, [currentTutorial, currentImgIndex]);
 
   const updateCurrentImgIndex = useCallback((direction) => {
     if (isEmpty(currentTutorialRef.current.images)) return;
@@ -78,35 +93,24 @@ export default function TutorialViewer(props) {
           <Fragment>
             <div className={styles.imgWrapper} ref={imgContainerRef}>
               <div
-                className={[
-                  styles.pointerWrapper,
-                  showPointer && styles.show,
-                ].join(" ")}
+                className={[styles.pointerWrapper, showPointer && styles.show].join(" ")}
                 ref={pointerRef}
+                onTransitionEnd={(e) => {
+                  if (e.target === pointerRef.current) setPointerInPosition(true);
+                }}
               >
-                <div
-                  className={[
-                    styles.pointerInstructionWrapper,
-                    currentTutorial.images[currentImgIndex].pointerSize &&
-                      styles[
-                        currentTutorial.images[currentImgIndex].pointerSize
-                      ],
-                  ].join(" ")}
-                >
-                  <p
-                    className={styles.pointerInstruction}
-                    ref={pointerInstructionRef}
-                  >
-                    {currentTutorial.images[currentImgIndex].instruction}
-                  </p>
-                </div>
+                <TutorialPointerInstruction
+                  currentTutorial={currentTutorial}
+                  currentImgIndex={currentImgIndex}
+                  pointerInPosition={pointerInPosition}
+                />
+
                 <div
                   className={[
                     styles.pointer,
+                    currentTutorial.images[currentImgIndex].brighterPointer && styles.brighter,
                     currentTutorial.images[currentImgIndex].pointerSize &&
-                      styles[
-                        currentTutorial.images[currentImgIndex].pointerSize
-                      ],
+                      styles[currentTutorial.images[currentImgIndex].pointerSize],
                     showCoordinates && styles.showCoordinates,
                   ].join(" ")}
                 ></div>
@@ -122,10 +126,8 @@ export default function TutorialViewer(props) {
                   //     imgContainerRef.current.offsetWidth,
                   //     imgContainerRef.current.offsetHeight
                   //   );
-                  let xPos =
-                    currentTutorial.images[currentImgIndex].coordinates.x;
-                  let yPos =
-                    currentTutorial.images[currentImgIndex].coordinates.y;
+                  let xPos = currentTutorial.images[currentImgIndex].coordinates.x;
+                  let yPos = currentTutorial.images[currentImgIndex].coordinates.y;
                   //   if (xPos >= 0.5) {
                   //     // pointerInstructionRef.current.style.left = "0px";
                   //     // pointerInstructionRef.current.style.right = "unset";
@@ -135,24 +137,16 @@ export default function TutorialViewer(props) {
                   //   }
 
                   pointerRef.current.style.transform = `translate(${
-                    imgContainerRef.current.offsetWidth * xPos -
-                    pointerRef.current.offsetWidth / 2
-                  }px, ${
-                    imgContainerRef.current.offsetHeight * yPos -
-                    pointerRef.current.offsetHeight / 2
-                  }px)`;
+                    imgContainerRef.current.offsetWidth * xPos - pointerRef.current.offsetWidth / 2
+                  }px, ${imgContainerRef.current.offsetHeight * yPos - pointerRef.current.offsetHeight / 2}px)`;
                 }}
                 onMouseMove={(e) => {
                   if (!showCoordinates) return;
 
-                  var {
-                    x,
-                    y,
-                  } = imgContainerRef.current.getBoundingClientRect();
-                  
+                  var { x, y } = imgContainerRef.current.getBoundingClientRect();
+
                   var parent = imgContainerRef.current.parentNode;
-                  var totalOffsetTop =
-                    imgContainerRef.current.offsetTop + parent.offsetTop;
+                  var totalOffsetTop = imgContainerRef.current.offsetTop + parent.offsetTop;
                   var totalOffsetLeft = imgContainerRef.current.offsetLeft;
                   while (!isEmpty(parent.parentNode)) {
                     parent = parent.parentNode;
@@ -160,43 +154,27 @@ export default function TutorialViewer(props) {
                     totalOffsetLeft += parent.offsetLeft;
                   }
 
-                  coordinatesDisplayRef.current.style.transform = `translateX(${
-                    e.clientX + window.scrollX - x
-                  }px)
-                                             translateY(${
-                                               e.clientY +
-                                               window.scrollY -
-                                               totalOffsetTop
-                                             }px)`;
+                  coordinatesDisplayRef.current.style.transform = `translateX(${e.clientX + window.scrollX - x}px)
+                                             translateY(${e.clientY + window.scrollY - totalOffsetTop}px)`;
 
-                  coordinatesDisplayRef.current.innerHTML = `x: ${Number(
-                    (e.clientX + window.scrollX - x) /
-                      imgContainerRef.current.offsetWidth
-                  ).toFixed(2)}, y: ${Number(
-                    (e.clientY + window.scrollY - totalOffsetTop) /
-                      imgContainerRef.current.offsetHeight
-                  ).toFixed(2)}`;
+                  coordinatesDisplayRef.current.innerHTML = `x: ${
+                    "" || Number((e.clientX + window.scrollX - x) / imgContainerRef.current.offsetWidth).toFixed(2)
+                  }, y: ${Number((e.clientY + window.scrollY - totalOffsetTop) / imgContainerRef.current.offsetHeight).toFixed(
+                    2
+                  )}`;
                 }}
-                src={currentTutorial.images[currentImgIndex].src}
+                src={currentImgSrc}
                 alt="img"
               ></img>
 
-              <p
-                className={[
-                  styles.coordinatesDisplay,
-                  showCoordinates && styles.show,
-                ].join(" ")}
-                ref={coordinatesDisplayRef}
-              >
+              <p className={[styles.coordinatesDisplay, showCoordinates && styles.show].join(" ")} ref={coordinatesDisplayRef}>
                 x: 0, y: 0
               </p>
             </div>
             <TutorialController
               currentImgIndex={currentImgIndex}
               updateCurrentImgIndex={updateCurrentImgIndex}
-              total={
-                currentTutorial.images ? currentTutorial.images.length : null
-              }
+              total={currentTutorial.images ? currentTutorial.images.length : null}
               showCoordinates={showCoordinates}
               setShowCoordinates={setShowCoordinates}
             />
@@ -208,10 +186,15 @@ export default function TutorialViewer(props) {
             })}
           </div>
         ) : (
-          <h1 className={styles.instructionalHeader}>Nothing here!</h1>
+          <h1 className={[styles.instructionalHeader, styles.nothingHere].join(" ")}>Nothing here!</h1>
         )
       ) : (
-        <h1 className={styles.instructionalHeader}>
+        <h1
+          className={styles.instructionalHeader}
+          onClick={() => {
+            props.setDirectToMenu(true);
+          }}
+        >
           Select a tutorial from the menu
         </h1>
       )}

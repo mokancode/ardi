@@ -13,7 +13,6 @@ export default function SupportPage() {
       <ParagraphWithHeader
         centerHeader={true}
         noUnderline={true}
-        extraLarge={true}
         background={true}
         // paragraphAlignLeft={true}
         headerText={`Ariadne Support & Professional services`}
@@ -25,12 +24,28 @@ export default function SupportPage() {
               dropboxQt
             </a>
             .
-            <p className={styles.emailWrapper}>
-              Please contact us by email: <span className={styles.link}>osoft4ardi@gmail.com</span>
+            <p className={styles.emailWrapper} style={{ display: "flex" }}>
+              Please contact us by email:{" "}
+              <span className={styles.link}>
+                <img
+                  src="/images/email.png"
+                  alt="email"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    marginBottom: "-4px",
+                    filter: "hue-rotate(60deg) drop-shadow(0 0 10px rgb(0, 0, 0, .2)",
+                  }}
+                ></img>{" "}
+                osoft4ardi@gmail.com
+              </span>
             </p>
           </p>
         }
         visibilitySensorReveal={true}
+        icon={<img style={{ filter: "invert(1)", transform: "scale(1.1)" }} src="images/support.png" alt="support"></img>}
+        iconBgColor1={"darkslategrey"}
+        iconBgColor2={"rgb(51, 141, 141)"}
       />
     </div>
   );

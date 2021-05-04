@@ -59,13 +59,16 @@ export default function ParagraphWithHeader(props) {
       }
 
       function scrollFuncHandler() {
+            if (props.first)
+            //  console.log("scroll first");
+            console.log("visibi", props.visibilitySensorReveal, props.first);
+
         try {
           // console.log("scroll", document.querySelector("#mainDiv").scrollTop);
           if (
             !props.visibilitySensorReveal
             // && props.first
           ) {
-            if (props.headerText === "Blackboards") console.log("scroll");
             // This was the old function that was dependent on offset:
             // let opacityEquation = calculateScrollProgression(e.target.scrollTop, offsetTopState, offset);
 
@@ -106,7 +109,7 @@ export default function ParagraphWithHeader(props) {
       onChange={(isVisible) => {
         // console.log("isVisible", isVisible, props.headerText);
         if (isVisible && props.visibilitySensorReveal) {
-            setShowComponent(true);
+          setShowComponent(true);
         }
         // else setShowComponent(false);
       }}
@@ -146,7 +149,7 @@ export default function ParagraphWithHeader(props) {
           >
             {props.icon ? (
               typeof props.icon === "string" ? (
-                <img src={props.icon} alt={imgAlt} />
+                <img className={props.rotateIcon && styles.rotate} src={props.icon} alt={imgAlt} />
               ) : (
                 <IconContainer
                   iconBgColor1={iconBgColor1}
@@ -162,6 +165,7 @@ export default function ParagraphWithHeader(props) {
             <h1
               className={[
                 styles.header,
+                props.nonBreakingHeader && styles.nonBreakingHeader,
                 props.color && styles[props.color],
                 props.centerHeader && styles.alignCenter,
                 props.icon && styles.marginLeft,
@@ -201,6 +205,8 @@ export default function ParagraphWithHeader(props) {
               {props.paragraphText}
             </p>
           )}
+
+          {props.button}
         </div>
       </div>
     </ReactVisibilitySensor>

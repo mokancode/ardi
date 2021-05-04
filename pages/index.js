@@ -5,21 +5,21 @@ import ParagraphWithHeader from "../components/ParagraphWithHeader/ParagraphWith
 import OutlinerIcon from "../icons/OutlinerIcon";
 import ToDoManagerIcon from "../icons/ToDoManagerIcon";
 import NotesIcon from "../icons/NotesIcon";
-import CameraIcon from "../icons/CameraIcon";
 import SyncIcon from "../icons/SyncIcon";
-import DiagramIcon from "../icons/DiagramIcon";
 import Link from "next/link";
 
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import StylesContext from "../store/styles-context";
 import ParallaxTrapezius from "../components/ParallaxTrapezius/ParallaxTrapezius";
 import LinkButton from "../components/LinkButton/LinkButton";
-import PrivacyPolicyIcon from "../components/SVGs/PrivacyPolicyIcon/PrivacyPolicyIcon";
-import TermsAndConditionsIcon from "../components/SVGs/TermsAndConditionsIcon/TermsAndConditionsIcon";
 import SwiperContainer from "../components/SwiperContainer/SwiperContainer";
 
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../utils/validation/is-empty";
+import PrivacyPolicyIcon from "../icons/PrivacyPolicyIcon/PrivacyPolicyIcon";
+import TermsAndConditionsIcon from "../icons/TermsAndConditionsIcon/TermsAndConditionsIcon";
+import BlackboardIcon from "../icons/BlackboardIcon/BlackboardIcon";
+import DiagramIcon from "../icons/DiagramIcon/DiagramIcon";
 
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
@@ -36,11 +36,11 @@ export default function Home(props) {
   }
 
   useEffect(() => {
-    // Set IDs for ParagraphWithHeader lists
-    // firstThreeParagraphs + secondThreeParagraphs = 2 lists of 3 = 6 IDs total
+    // Set IDs for ParagraphWithHeader lists plus other individual ones
+    // firstThreeParagraphs + secondThreeParagraphs + 4 individual = 2 lists of 3 + 4 = 10 IDs total
 
     let tempIDs = [];
-    for (var i = 0; i < 6; i++) tempIDs.push(uuidv4());
+    for (var i = 0; i < 10; i++) tempIDs.push(uuidv4());
     setIDs(tempIDs);
 
     if (window.innerWidth <= 800) {
@@ -57,6 +57,8 @@ export default function Home(props) {
       }
     });
   }, []);
+
+  if (isEmpty(IDs)) return <h1>Loading</h1>;
 
   const firstThreeParagraphs = [
     <ParagraphWithHeader
@@ -101,7 +103,7 @@ export default function Home(props) {
 
   const secondThreeParagraphs = [
     <ParagraphWithHeader
-      first={true}
+      // first={true}
       centerHeader={true}
       background={true}
       noUnderline={true}
@@ -109,7 +111,7 @@ export default function Home(props) {
       paragraphText="Blackboard is a 2D space divided in shaded columns. It works just like real life blackboard were you can write note, small diagram or big category of objects, pin down email and layout workflow. Blackboards are designed to bring notes and topics in context - connect them with arrows, arrange into columns and graphs."
       iconBgColor1={"rgb(117, 221, 139)"}
       iconBgColor2={"rgb(23, 172, 97)"}
-      icon={<CameraIcon />}
+      icon={<BlackboardIcon />}
       key={IDs[3]}
     />,
     <ParagraphWithHeader
@@ -167,7 +169,7 @@ export default function Home(props) {
       ) : null}
 
       <ParagraphWithHeader
-        // first={true}
+        first={true}
         centerHeader={true}
         headerText="Ardi - GMail client and organizer for notes, tasks, contacts, emails. Ardi can manage notes, emails, contacts, tasks and images."
         paragraphText="Ardi is a Gmail companion with organizer features for notes and topics. 

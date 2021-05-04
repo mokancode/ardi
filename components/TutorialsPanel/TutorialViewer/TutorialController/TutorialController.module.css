@@ -192,3 +192,13 @@
 .navButtons button:nth-of-type(2):active::before {
   opacity: 1;
 }
+
+
+.tickIconsWrapper {
+  position: absolute;
+  margin-top: 15px;
+  margin-right: -200px;
+  width: 35px;
+  height: 50px;
+  /* border: 5px solid black; */
+}

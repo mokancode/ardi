@@ -9,6 +9,8 @@ export default function TutorialSelector({
   currentCategory,
   currentTutorial,
   selectTutorial,
+  directToMenu,
+  setDirectToMenu,
 }) {
   const tutorialsListRefs = useRef([]);
   const [tutorialsListOpen, setTutorialListOpen] = useState(null);
@@ -22,10 +24,10 @@ export default function TutorialSelector({
               <p
                 className={
                   classNames(styles.categoryName, {
-                    [styles.hasList]: category.tutorials,
+                    [styles.hasList]: !isEmpty(category.tutorials),
                     [styles.listIsOpen]: tutorialsListOpen === categoryIndex,
-                    [styles.selected]:
-                      currentCategory && category.id === currentCategory.id,
+                    [styles.selected]: currentCategory && category.id === currentCategory.id,
+                    [styles.directToMenu]: directToMenu,
                   })
 
                   //     [
@@ -37,16 +39,16 @@ export default function TutorialSelector({
                   //     styles.selected,
                   // ].join(" ")
                 }
+                style={{ animationDelay: `${categoryIndex * 50}ms` }}
+                onAnimationEnd={() => {
+                  if (categoryIndex === tutorials.length - 1) setDirectToMenu(false);
+                }}
                 name={category.categoryName}
-                ref={(list) =>
-                  (tutorialsListRefs.current[categoryIndex] = list)
-                }
+                ref={(list) => (tutorialsListRefs.current[categoryIndex] = list)}
                 onClick={() => {
-                  if (!category.tutorials) return;
+                  if (isEmpty(category.tutorials)) return;
 
-                  let currentMaxHeightOfSelectedList =
-                    tutorialsListRefs.current[categoryIndex].nextSibling.style
-                      .maxHeight;
+                  let currentMaxHeightOfSelectedList = tutorialsListRefs.current[categoryIndex].nextSibling.style.maxHeight;
 
                   if (!currentMaxHeightOfSelectedList) {
                     tutorialsListRefs.current[
@@ -54,34 +56,24 @@ export default function TutorialSelector({
                     ].nextSibling.style.maxHeight = `${tutorialsListRefs.current[categoryIndex].nextSibling.scrollHeight}px`;
                     setTutorialListOpen(categoryIndex);
                   } else {
-                    tutorialsListRefs.current[
-                      categoryIndex
-                    ].nextSibling.style.maxHeight = "";
+                    tutorialsListRefs.current[categoryIndex].nextSibling.style.maxHeight = "";
                     setTutorialListOpen(null);
                   }
 
                   for (var i = 0; i < tutorialsListRefs.current.length; i++)
-                    if (
-                      tutorialsListRefs.current[i].nextSibling &&
-                      i !== categoryIndex
-                    )
-                      tutorialsListRefs.current[i].nextSibling.style.maxHeight =
-                        "";
+                    if (tutorialsListRefs.current[i].nextSibling && i !== categoryIndex)
+                      tutorialsListRefs.current[i].nextSibling.style.maxHeight = "";
                 }}
               >
                 {category.categoryName}
                 <span className={styles.arrow}></span>
               </p>
-              {category.tutorials && (
+              {!isEmpty(category.tutorials) && (
                 <ul className={styles.tutorialsList}>
                   {category.tutorials.map((tutorial, tutorialIndex) => {
                     return (
                       <p
-                        className={
-                          currentTutorial && tutorial.id === currentTutorial.id
-                            ? styles.selected
-                            : undefined
-                        }
+                        className={currentTutorial && tutorial.id === currentTutorial.id ? styles.selected : undefined}
                         key={tutorial.id}
                         onClick={() => {
                           selectTutorial(category.id, tutorial.id);

@@ -10,13 +10,13 @@ export default function TutorialsPanel({ tutorials }) {
 
   function selectTutorial(categoryId, tutorialId) {
     let category = tutorials.find((category) => category.id === categoryId);
-    let tutorial = category.tutorials.find(
-      (tutorial) => tutorial.id === tutorialId
-    );
+    let tutorial = category.tutorials.find((tutorial) => tutorial.id === tutorialId);
 
     setCurrentCategory(category);
     setCurrentTutorial(tutorial);
   }
+
+  const [directToMenu, setDirectToMenu] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -25,8 +25,10 @@ export default function TutorialsPanel({ tutorials }) {
         currentCategory={currentCategory}
         currentTutorial={currentTutorial}
         selectTutorial={selectTutorial}
+        directToMenu={directToMenu}
+        setDirectToMenu={setDirectToMenu}
       />
-      <TutorialViewer currentTutorial={currentTutorial} />
+      <TutorialViewer currentTutorial={currentTutorial} setDirectToMenu={setDirectToMenu}/>
     </div>
   );
 }

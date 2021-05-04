@@ -53,7 +53,7 @@ export default function DownloadButton(props) {
       offset={{ top: 10 }}
     >
       <a
-        className={[styles.btn, showComponent ? styles.show : undefined].join(" ")}
+        className={[styles.btn, showComponent ? styles.show : undefined, props.color && styles[props.color]].join(" ")}
         href={props.url}
         download={props.fileName}
         onTransitionEnd={() => setShowChildComponents(true)}
@@ -86,7 +86,7 @@ export default function DownloadButton(props) {
           )}
         </div>
         <div className={styles.separatingLine}></div>
-        <DownloadButtonStrip show={showChildComponents} color={props.stripColor} />
+        <DownloadButtonStrip show={showChildComponents} color={props.color} />
       </a>
     </ReactVisibilitySensor>
   );
