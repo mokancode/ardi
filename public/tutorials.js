@@ -203,13 +203,13 @@ const tutorials = [
         name: "Creating subtopics",
         images: [
           {
-            src: `${tutorialsImagesPath}/sortbox/subtopic/sortbox-subtopic.jpg`,
+            src: `${tutorialsImagesPath}/topics/subtopic/sortbox-subtopic.jpg`,
             coordinates: { x: 0.24, y: 0.2 },
             instruction:
               "Drag and drop a topic into the center of another topic to insert it as a subtopic (note that the black line that appears aligns with the center of the parent topic)",
           },
           {
-            src: `${tutorialsImagesPath}/sortbox/subtopic/sortbox-now-a-subtopic.jpg`,
+            src: `${tutorialsImagesPath}/topics/subtopic/sortbox-now-a-subtopic.jpg`,
             coordinates: { x: 0.28, y: 0.2 },
             instruction: "You now have a nested topic",
           },
