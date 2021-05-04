@@ -114,6 +114,7 @@ export default function DownloadPage(props) {
               visibilitySensorReveal={true}
               background={true}
               noUnderline={true}
+              centerHeader={true}
               // headerWithIconDirection="horizontal"
               nonBreakingHeader={true}
               headerText={`Ardi ${downloadData.mac.version} for MacOS`}

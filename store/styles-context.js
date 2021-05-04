@@ -19,6 +19,7 @@ import SyncIconStyles from "../icons/SyncIcon.module.css";
 import NotesIconStyles from "../icons/NotesIcon.module.css";
 import DiagramIconStyles from "../icons/DiagramIcon/DiagramIcon.module.css";
 import ToDoManagerIconStyles from "../icons/ToDoManagerIcon.module.css";
+import WindowsLogoStyles from "../icons/WindowsLogo/WindowsLogo.module.css";
 
 const StylesContext = createContext({
   styles: [],
@@ -44,16 +45,13 @@ export function StylesContextProvider(props) {
     { name: "NotesIcon", styles: NotesIconStyles },
     { name: "DiagramIcon", styles: DiagramIconStyles },
     { name: "ToDoManagerIcon", styles: ToDoManagerIconStyles },
+    { name: "WindowsLogo", styles: WindowsLogoStyles },
   ]);
   const context = {
     styles: contextStyles,
   };
 
-  return (
-    <StylesContext.Provider value={context}>
-      {props.children}
-    </StylesContext.Provider>
-  );
+  return <StylesContext.Provider value={context}>{props.children}</StylesContext.Provider>;
 }
 
 export default StylesContext;

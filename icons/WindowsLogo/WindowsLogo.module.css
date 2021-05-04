@@ -24,4 +24,36 @@
   background-color: white;
   margin-right: 3px;
   /* border: 1px solid red; */
+  transition: 0.8s ease-in-out;
+  opacity: 0;
+  transform: translateX(3px);
+}
+
+.square:nth-of-type(2) {
+  transition-delay: 0.1s;
+}
+.square:nth-of-type(3) {
+  transition-delay: 0.2s;
+}
+.square:nth-of-type(4) {
+  transition-delay: 0.3s;
+}
+
+.wrapper.show .square {
+  transform: unset;
+  opacity: 1;
+}
+
+.wrapper.colorize .square:nth-of-type(1) {
+  background-color: rgb(253, 140, 120);
+}
+
+.wrapper.colorize .square:nth-of-type(2) {
+  background-color: rgb(169, 216, 75);
+}
+.wrapper.colorize .square:nth-of-type(3) {
+  background-color: rgb(104, 195, 255);
+}
+.wrapper.colorize .square:nth-of-type(4) {
+  background-color: rgb(255, 203, 73);
 }
