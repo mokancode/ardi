@@ -33,9 +33,6 @@
 }
 
 .tickIconSVG:nth-child(2) {
-  /* display: none !important; */
-  animation: 2s tickIconAnim2 2s linear forwards infinite;
-  /* filter: drop-shadow(0px 0px 2px rgb(212, 255, 162)) drop-shadow(0px 0px 2px greenyellow); */
   filter: drop-shadow(0px 0px 10px greenyellow) drop-shadow(0px 0px 2px greenyellow);
 }
 
