@@ -172,6 +172,12 @@ p.white {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .header.extraLarge {
+    font-size: 20px;
+  }
+}
+
 @media screen and (max-width: 390px) {
   .header {
     font-size: 16px;
