@@ -105,6 +105,38 @@ export default function TutorialViewer(props) {
     });
   }, []);
 
+  const [smallScreenUnsupported, setSmallScreenUnsupported] = useState(false);
+  const smallScreenUnsupportedRef = useRef(smallScreenUnsupported);
+
+  function updateSmallScreenUnsupportedHandler(status) {
+    setSmallScreenUnsupported(status);
+    smallScreenUnsupportedRef.current = status;
+  }
+
+  useEffect(() => {
+    if (window.innerWidth <= 1100 && !smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(true);
+    else if (window.innerWidth > 1100 && smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(false);
+
+    function resizeFuncHandler() {
+      if (window.innerWidth <= 1100 && !smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(true);
+      else if (window.innerWidth > 1100 && smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(false);
+    }
+
+    window.addEventListener("resize", resizeFuncHandler);
+
+    return function cleanupListener() {
+      window.removeEventListener("resize", resizeFuncHandler);
+    };
+  }, []);
+
+  if (smallScreenUnsupported) {
+    return (
+      <div className={styles.wrapper}>
+        <h1 className={styles.instructionalHeader}>Tutorial displayer is currently unsupported for small screens</h1>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.wrapper}>
       {!isEmpty(currentTutorial) ? (

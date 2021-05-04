@@ -19,9 +19,11 @@
   height: auto;
   /* transform: rotate(30deg) scaleX(1.1); */
   /* transform: rotate(40deg) scale(1.3, 1.1) !important; */
-  transform: rotate(40deg) scale(1.4, 1.4) translateY(-100px) translateX(-20px) !important;
+  /* transform: rotate(40deg) scale(1.4, 1.4) translateY(-100px) translateX(-20px) !important; */
   transition: 2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
   /* border: 5px solid blue; */
+
+  /* transform: rotate(40deg) scale(1.4, 1.4) translateY(-50px) !important; */
 }
 
 /* .page-enter .mainGradientShape {

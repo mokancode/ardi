@@ -9,7 +9,7 @@ import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 
-const appVersion = "1.0.7";
+const appVersion = "1.0.8";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -47,7 +47,8 @@ export default function Layout(props) {
     switch (router.pathname) {
       case "/":
         if (window.innerWidth <= 800)
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
+          // mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
+          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.4, 1.4) translateY(-50px)`;
         else
           mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
             window.innerWidth > 1400 ? "1" : "3"

@@ -65,6 +65,36 @@ export default function TutorialPointerInstruction({
     }
   }, [animFinished]);
 
+  const [windowTooNarrow, setWindowTooNarrow] = useState(false);
+  const windowTooNarowRef = useRef(windowTooNarrow);
+
+  function updateWindowTooNarrowHandler(status) {
+    setWindowTooNarrow(status);
+    windowTooNarowRef.current = status;
+  }
+
+  useEffect(() => {
+    if (window.innerWidth <= 1325 && !windowTooNarowRef.current) updateWindowTooNarrowHandler(true);
+    else if (window.innerWidth > 1325 && windowTooNarowRef.current) updateWindowTooNarrowHandler(false);
+
+    function resizeFuncHandler() {
+      // console.log("resize");
+      if (window.innerWidth <= 1325 && !windowTooNarowRef.current) {
+        console.log("resize true");
+        updateWindowTooNarrowHandler(true);
+      } else if (window.innerWidth > 1325 && windowTooNarowRef.current) {
+        console.log("resize false");
+        updateWindowTooNarrowHandler(false);
+      }
+    }
+
+    window.addEventListener("resize", resizeFuncHandler);
+
+    return function cleanupListener() {
+      window.removeEventListener("resize", resizeFuncHandler);
+    };
+  }, []);
+
   return (
     <div
       className={[
@@ -73,7 +103,9 @@ export default function TutorialPointerInstruction({
         currentTutorial.images[currentImgIndex].coordinates.y &&
           currentTutorial.images[currentImgIndex].coordinates.y < 0.05 &&
           styles.marginTop,
-        rightSide && styles.rightSide,
+        ((rightSide && currentTutorial.images[currentImgIndex].coordinates.x < 0.55 && !windowTooNarrow) ||
+          (windowTooNarrow && currentTutorial.images[currentImgIndex].coordinates.x < 0.45)) &&
+          styles.rightSide,
         currentTutorial.images[currentImgIndex].pointerSize && styles[currentTutorial.images[currentImgIndex].pointerSize],
       ].join(" ")}
       onTransitionEnd={(e) => {
