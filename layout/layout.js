@@ -9,7 +9,7 @@ import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 
-const appVersion = "1.0.5";
+const appVersion = "1.0.6";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function Layout(props) {
       ref: mainDivRef,
     });
 
-    if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth * 1.15 - 1440}px`;
+    if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth * 1.1 - 1440}px`;
     else mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
 
     console.log("Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/");
