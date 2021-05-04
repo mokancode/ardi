@@ -2,12 +2,46 @@ import { useEffect, useRef, useState } from "react";
 import isEmpty from "../../../../utils/validation/is-empty";
 import styles from "./TutorialPointerInstruction.module.css";
 
-export default function TutorialPointerInstruction({ currentTutorial, currentImgIndex, pointerInPosition }) {
+export default function TutorialPointerInstruction({
+  currentTutorial,
+  currentImgIndex,
+  pointerInPosition,
+  pointerCoordinates,
+  setPointerInPosition,
+}) {
   const wrapperRef = useRef();
   const [instruction, setInstruction] = useState("");
   const [animateOut, setAnimateOut] = useState(false);
   const [animFinished, setAnimFinished] = useState(false);
   const [rightSide, setRightSide] = useState(null);
+  // const [pointerCoordinatesLocal, setPointerCoordinates] = useState({ x: null, y: null });
+  // const pointerCoordinatesRef = useRef({ x: null, y: null });
+
+  // useEffect(() => {
+  //   if (isEmpty(pointerCoordinates.current.x)) return;
+
+  //   if (
+  //     pointerCoordinates &&
+  //     pointerCoordinates.current &&
+  //     pointerCoordinates.current.x &&
+  //     pointerCoordinates.current.y &&
+  //     pointerCoordinates.current.x === pointerCoordinatesRef.current.x &&
+  //     pointerCoordinates.current.y === pointerCoordinatesRef.current.y
+  //   ) {
+  //     // console.log("same");
+  //     setAnimateOut(false);
+  //     setAnimFinished(true);
+  //     // setPointerInPosition(true);
+  //     // setTimeout(() => {
+  //     //   console.log("anim", animateOut);
+  //     // }, 1000);
+  //     // setPointerInPosition(true);
+  //     setInstruction(currentTutorial.images[currentImgIndex].instruction);
+  //   }
+
+  //   // setPointerCoordinates(pointerCoordinates.current);
+  //   pointerCoordinatesRef.current = pointerCoordinates.current;
+  // }, [pointerCoordinates.current.x, pointerCoordinates.current.y, currentImgIndex]);
 
   useEffect(() => {
     if (isEmpty(instruction)) setInstruction(currentTutorial.images[currentImgIndex].instruction);
@@ -37,7 +71,7 @@ export default function TutorialPointerInstruction({ currentTutorial, currentImg
         styles.pointerInstructionWrapper,
         pointerInPosition == false && styles.animateOut,
         currentTutorial.images[currentImgIndex].coordinates.y &&
-          currentTutorial.images[currentImgIndex].coordinates.y < 0.1 &&
+          currentTutorial.images[currentImgIndex].coordinates.y < 0.05 &&
           styles.marginTop,
         rightSide && styles.rightSide,
         currentTutorial.images[currentImgIndex].pointerSize && styles[currentTutorial.images[currentImgIndex].pointerSize],

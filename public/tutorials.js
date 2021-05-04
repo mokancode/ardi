@@ -49,7 +49,7 @@ const tutorials = [
           },
           {
             src: `${tutorialsImagesPath}/boards/create-a-board/boards-open-navbar.jpg`,
-            coordinates: { x: 0.04, y: 0.14 },
+            coordinates: { x: 0.05, y: 0.145 },
             pointerSize: "m",
             instruction: "Click on Boards",
           },

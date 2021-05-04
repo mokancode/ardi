@@ -18,6 +18,8 @@ export default function TutorialViewer(props) {
   const [showPointer, setShowPointer] = useState(false);
   const [showCoordinates, setShowCoordinates] = useState(false);
   const [pointerInPosition, setPointerInPosition] = useState(false);
+  const pointerCoordinates = useRef({ x: null, y: null });
+  // const [pointerCoordinates, setPointerCoordinates] = useState({ x: null, y: null });
 
   useEffect(() => {
     if (!isEmpty(props.currentTutorial))
@@ -46,6 +48,13 @@ export default function TutorialViewer(props) {
     if (!currentTutorial.images || !currentTutorial.images[currentImgIndex]) return;
     let xPos = currentTutorial.images[currentImgIndex].coordinates.x;
     let yPos = currentTutorial.images[currentImgIndex].coordinates.y;
+
+    // if (pointerCoordinates.current.x === xPos && pointerCoordinates.current.y === yPos) {
+    //   console.log("same");
+    // }
+    pointerCoordinates.current = { x: xPos, y: yPos };
+    // setPointerCoordinates({ x: xPos, y: yPos });
+
     if (xPos >= 0.5) {
       // pointerInstructionRef.current.style.left = "0px";
       // pointerInstructionRef.current.style.right = "unset";
@@ -61,6 +70,16 @@ export default function TutorialViewer(props) {
     if (currentTutorial.images[currentImgIndex].src !== currentImgSrc)
       setCurrentImgSrc(currentTutorial.images[currentImgIndex].src);
 
+    // if (
+    //   pointerCoordinates &&
+    //   pointerCoordinates.current &&
+    //   pointerCoordinates.current.x &&
+    //   pointerCoordinates.current.y &&
+    //   pointerCoordinates.current.x === xPos &&
+    //   pointerCoordinates.current.y === yPos
+    // ) {
+    //   return;
+    // }
     setPointerInPosition(false);
   }, [currentTutorial, currentImgIndex]);
 
@@ -103,6 +122,8 @@ export default function TutorialViewer(props) {
                   currentTutorial={currentTutorial}
                   currentImgIndex={currentImgIndex}
                   pointerInPosition={pointerInPosition}
+                  pointerCoordinates={pointerCoordinates}
+                  setPointerInPosition={setPointerInPosition}
                 />
 
                 <div
