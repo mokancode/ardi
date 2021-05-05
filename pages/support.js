@@ -1,10 +1,15 @@
 import Head from "next/head";
+import { useContext } from "react";
 import ParagraphWithHeader from "../components/ParagraphWithHeader/ParagraphWithHeader";
-import styles from "../styles/SupportPage.module.css";
+import StylesContext from "../store/styles-context";
+// import styles from "../styles/SupportPage.module.css";
 
 export default function SupportPage() {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "SupportPage").styles;
+
   return (
-    <div className="pageWrapper">
+    <div className={["pageWrapper", styles.pageWrapper].join(" ")}>
       <Head>
         <title>Ardi - Support</title>
         <meta name="description" content="Contact us"></meta>

@@ -6,9 +6,12 @@ import NavbarStyles from "../components/Navbar/Navbar.module.css";
 import FooterStyles from "../components/Footer/Footer.module.css";
 import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.module.css";
 import ParallaxTrapeziusStyles from "../components/ParallaxTrapezius/ParallaxTrapezius.module.css";
+import VideosContainerStyles from "../components/VideosContainer/VideosContainer.module.css";
+import VideoContainerStyles from "../components/VideosContainer/VideoContainer.module.css";
 
 import HomeStyles from "../styles/Home.module.css";
 import DownloadPageStyles from "../styles/DownloadPage.module.css";
+import SupportPageStyles from "../styles/SupportPage.module.css";
 import PrivacyPolicyStyles from "../styles/PrivacyPolicy.module.css";
 import DemoStyles from "../styles/Demo.module.css";
 
@@ -32,9 +35,12 @@ export function StylesContextProvider(props) {
     { name: "Footer", styles: FooterStyles },
     { name: "DownloadButton", styles: DownloadButtonStyles },
     { name: "ParallaxTrapezius", styles: ParallaxTrapeziusStyles },
+    { name: "VideosContainer", styles: VideosContainerStyles },
+    { name: "VideoContainer", styles: VideoContainerStyles },
 
     { name: "Home", styles: HomeStyles },
     { name: "DownloadPage", styles: DownloadPageStyles },
+    { name: "SupportPage", styles: SupportPageStyles },
     { name: "PrivacyPolicyPage", styles: PrivacyPolicyStyles },
     { name: "DemoPage", styles: DemoStyles },
 

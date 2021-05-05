@@ -4,12 +4,11 @@ import StylesContext from "../store/styles-context";
 import tutorialsImport from "../public/tutorials";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../utils/validation/is-empty";
+import VideosContainer from "../components/VideosContainer/VideosContainer";
 
 export default function DemoPage({ tutorialsData }) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find(
-    (styleSheet) => styleSheet.name === "DemoPage"
-  ).styles;
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "DemoPage").styles;
 
   const [tutorials, setTutorials] = useState([]);
   useEffect(() => {
@@ -38,8 +37,9 @@ export default function DemoPage({ tutorialsData }) {
 
   return (
     <div className={styles.page}>
-      
       <TutorialsPanel tutorials={tutorials} />
+
+      <VideosContainer />
     </div>
   );
 }
