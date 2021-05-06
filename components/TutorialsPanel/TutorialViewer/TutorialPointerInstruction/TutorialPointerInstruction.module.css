@@ -6,7 +6,8 @@
   width: 300px;
   display: flex;
   justify-content: flex-end;
-  transition: .2s transform, .2s opacity, .2s margin-top .2s, .2s margin-left .2s, .2s margin-right .2s, .1s left .2s, .1s right .2s;
+  /* transition: .2s transform, .2s opacity, .2s margin-top .2s, .2s margin-left .2s, .2s margin-right .2s, .2s left .2s, .2s right .2s; */
+  transition: .2s;
   /* border: 4px solid red; */
 }
 

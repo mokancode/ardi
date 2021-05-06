@@ -8,6 +8,7 @@ import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.mo
 import ParallaxTrapeziusStyles from "../components/ParallaxTrapezius/ParallaxTrapezius.module.css";
 import VideosContainerStyles from "../components/VideosContainer/VideosContainer.module.css";
 import VideoContainerStyles from "../components/VideosContainer/VideoContainer.module.css";
+import ScrollDownButtonStyles from "../components/ScrollDownButton/ScrollDownButton.module.css";
 
 import HomeStyles from "../styles/Home.module.css";
 import DownloadPageStyles from "../styles/DownloadPage.module.css";
@@ -37,6 +38,7 @@ export function StylesContextProvider(props) {
     { name: "ParallaxTrapezius", styles: ParallaxTrapeziusStyles },
     { name: "VideosContainer", styles: VideosContainerStyles },
     { name: "VideoContainer", styles: VideoContainerStyles },
+    { name: "ScrollDownButton", styles: ScrollDownButtonStyles },
 
     { name: "Home", styles: HomeStyles },
     { name: "DownloadPage", styles: DownloadPageStyles },

@@ -5,6 +5,9 @@ import tutorialsImport from "../public/tutorials";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../utils/validation/is-empty";
 import VideosContainer from "../components/VideosContainer/VideosContainer";
+import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
+import { scrollToTop } from "react-scroll/modules/mixins/animate-scroll";
+import ScrollDownButton from "../components/ScrollDownButton/ScrollDownButton";
 
 export default function DemoPage({ tutorialsData }) {
   const stylesContext = useContext(StylesContext);
@@ -33,13 +36,28 @@ export default function DemoPage({ tutorialsData }) {
     // console.log("temp", tutorialsImport[0].tutorials[0].images[0].instruction);
   }, [tutorialsImport]);
 
+  function scrollToVideos() {
+    scroller.scrollTo("videosContainerWrapper", {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+      containerId: "mainDiv",
+      offset: 40,
+    });
+  }
+
   if (isEmpty(tutorials)) return <h1>Loading</h1>;
 
   return (
-    <div className={styles.page}>
-      <TutorialsPanel tutorials={tutorials} />
+    <div className={[styles.page, "pageContainer"].join(" ")}>
+      <div className={styles.tutorialsPanelWrapper}>
+        <TutorialsPanel tutorials={tutorials} />
+        <ScrollDownButton func={scrollToVideos} />
+      </div>
 
-      <VideosContainer />
+      <Element id="videosContainerWrapper">
+        <VideosContainer />
+      </Element>
     </div>
   );
 }

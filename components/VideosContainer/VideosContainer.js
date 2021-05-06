@@ -91,7 +91,9 @@ export default function VideosContainer() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Videos</h1>
+      <a className={styles.header} href="https://www.youtube.com/channel/UCll5lZq0reYXYz2OeSC-zbw/videos" target="_blank">
+        Videos
+      </a>
       <ul className={styles.list}>
         {videos.map((video, index) => {
           return <VideoContainer key={IDs[index]} video={video} index={index} />;

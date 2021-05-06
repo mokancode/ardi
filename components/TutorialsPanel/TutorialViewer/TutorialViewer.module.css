@@ -56,7 +56,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* transform: unset !important; */
   opacity: 0;
   pointer-events: none;
   z-index: 2;
@@ -154,6 +153,8 @@
   transition: 1s opacity;
   opacity: 0;
   z-index: 3;
+  /* border: 3px solid red; */
+  pointer-events: none;
 }
 
 .coordinatesDisplay.show {

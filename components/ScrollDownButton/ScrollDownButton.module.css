@@ -1,0 +1,91 @@
+.container {
+  position: absolute;
+  right: -100px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.5s;
+  cursor: pointer;
+  opacity: .99;
+}
+
+.container.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container p {
+  font-family: Quicksand;
+  text-align: center;
+  user-select: none;
+  color: rgb(106, 133, 133);
+  transition: .5s;
+}
+
+.container:hover p {
+    color: black;
+}
+
+.arrows {
+  border: 2px solid rgb(151, 168, 168);
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrows::before,
+.arrows::after {
+  position: absolute;
+  content: "";
+  /* bottom: 0px; */
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgb(151, 168, 168);
+  border-bottom: 2px solid rgb(151, 168, 168);
+  transform: rotate(45deg);
+
+}
+
+.arrows::before {
+  margin-bottom: -7.5px;
+}
+
+.arrows::after {
+  margin-bottom: 12.5px;
+  animation-delay: .1s;
+}
+
+.container:hover .arrows::before,
+.container:hover .arrows::after {
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-name: arrowDownAnim;
+}
+
+@keyframes arrowDownAnim {
+  0% {
+    transform: rotate(45deg) translateX(0px) translateY(0px);
+    opacity: 1;
+  }
+  20% {
+    transform: rotate(45deg) translateX(4px) translateY(4px);
+    opacity: 0;
+  }
+  21% {
+    transform: rotate(45deg) translateX(0px) translateY(0px);
+    opacity: 0;
+  }
+  40% {
+    transform: rotate(45deg) translateX(-7px) translateY(-7px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(45deg) translateX(0px) translateY(-0px);
+    opacity: 1;
+  }
+}

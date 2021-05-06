@@ -2,16 +2,16 @@ const tutorialsImagesPath = "/images/tutorials";
 
 const tutorials = [
   {
-    categoryName: "Navigation Pane",
+    categoryName: "Navigation",
     tutorials: [
       {
-        name: "Navigation bar",
+        name: "Selector",
         images: [
           {
             src: `${tutorialsImagesPath}/navigation-pane/navigation-pane.jpg`,
             coordinates: { x: 0.5, y: 0.5 },
             instruction:
-              "This is the navigation pane. All your notes, topics, emails, contacts, boards, can be created and/or accessed from here.",
+              "This is the selector. All your notes, topics, emails, contacts, boards, can be created and/or accessed from here.",
           },
           {
             src: `${tutorialsImagesPath}/navigation-pane/navigation-pane.jpg`,
@@ -24,151 +24,6 @@ const tutorials = [
             coordinates: { x: 0.05, y: 0.925 },
             pointerSize: "xs",
             instruction: "If you would like to keep the navigation bar open, click on the lock icon",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    categoryName: "Boards",
-    tutorials: [
-      {
-        name: "What are Boards?",
-        verbalInstruction: [
-          "Boards are a 2D canvas where you can organize your notes and emails and draw connections between them",
-        ],
-      },
-      {
-        name: "Create a board",
-        images: [
-          {
-            src: `${tutorialsImagesPath}/boards/create-a-board/boards-closed-navbar.jpg`,
-            coordinates: { x: 0.04, y: 0.14 },
-            pointerSize: "m",
-            instruction: "Click here to open the sidebar",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/create-a-board/boards-open-navbar.jpg`,
-            coordinates: { x: 0.05, y: 0.145 },
-            pointerSize: "m",
-            instruction: "Click on Boards",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/create-a-board/boards-open-navbar.jpg`,
-            coordinates: { x: 0.14, y: 0.09 },
-            pointerSize: "s",
-            instruction: "Click here to create a board",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/create-a-board/board-created.jpg`,
-            coordinates: { x: 0.4, y: 0.5 },
-            instruction: "This is your new board",
-          },
-        ],
-      },
-      {
-        name: "Drag & Drop",
-        images: [
-          {
-            src: `${tutorialsImagesPath}/boards/drag-and-drop/select-item.jpg`,
-            coordinates: { x: 0.83, y: 0.38 },
-            instruction: "Drag and drop any item (topic, email, etc.) from the navigation pane onto a board",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/drag-and-drop/choose-associations-alignment.jpg`,
-            coordinates: { x: 0.42, y: 0.25 },
-            instruction:
-              "If your item is a nested one (i.e. contains subtopics), choose your preferred alignment of parent & children nodes on the board, and then press OK",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/drag-and-drop/nested-topic-on-board.jpg`,
-            coordinates: { x: 0.08, y: 0.48 },
-            instruction: "Your topic is now visualized on the board along with its subtopics",
-            instructionSide: "right",
-          },
-        ],
-      },
-      {
-        name: "Associatons",
-        images: [
-          {
-            src: `${tutorialsImagesPath}/boards/associations/select-topic.jpg`,
-            coordinates: { x: 0.39, y: 0.5 },
-            instruction: "In Ardi you can draw visual associations between items on a board. First select an item",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/associations/select-topic.jpg`,
-            coordinates: { x: 0.36, y: 0.06 },
-            pointerSize: "s",
-            instruction: "Click on the arrow button",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/associations/add-link.jpg`,
-            coordinates: { x: 0.08, y: 0.48 },
-            instruction: 'Now click on the item you wish to associate the original item with, and then click on "Add link"',
-            instructionSide: "right",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/associations/association-created.jpg`,
-            coordinates: { x: 0.24, y: 0.52 },
-            instruction: "The newly created arrow represents an association between the items",
-            instructionSide: "right",
-          },
-        ],
-      },
-      {
-        name: "Annotations",
-        images: [
-          {
-            src: `${tutorialsImagesPath}/boards/annotations/select-item.jpg`,
-            coordinates: { x: 0.39, y: 0.54 },
-            instruction: "Items can be given annotations. Click on an item to select it",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/annotations/select-item.jpg`,
-            coordinates: { x: 0.02, y: 0.05 },
-            pointerSize: "s",
-            instruction: "Click the annotation icon",
-            instructionSide: "right",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/annotations/type-annotation.jpg`,
-            coordinates: { x: 0.39, y: 0.54 },
-            instruction:
-              "Type your annotation in the popped up window, and then press Enter or click outside of the window once you're done",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/annotations/annotation-created.jpg`,
-            coordinates: { x: 0.4, y: 0.55 },
-            // pointerSize: "m",
-            instruction: "Your new annotation will be shown over its parent item",
-          },
-        ],
-      },
-      {
-        name: "Changing shapes",
-        images: [
-          {
-            src: `${tutorialsImagesPath}/boards/changing-shapes/select-item.jpg`,
-            coordinates: { x: 0.39, y: 0.54 },
-            instruction: "Items can be assigned different shapes. Click on an item to select it",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/changing-shapes/select-item.jpg`,
-            coordinates: { x: 0.385, y: 0.06 },
-            pointerSize: "s",
-            instruction: "Click on the triangle shaped icon",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/changing-shapes/select-shape.jpg`,
-            coordinates: { x: 0.41, y: 0.18 },
-            instruction: "Select your desired shape",
-          },
-          {
-            src: `${tutorialsImagesPath}/boards/changing-shapes/shape-changed.jpg`,
-            coordinates: { x: 0.395, y: 0.64 },
-            pointerSize: "s",
-            instruction: "Your item's new look",
           },
         ],
       },
@@ -272,10 +127,15 @@ const tutorials = [
         ],
       },
       {
-        name: "Sub-tabs",
+        name: "Folders",
         images: [
           {
-            src: `${tutorialsImagesPath}/topics/sub-tabs/sortbox.jpg`,
+            src: `${tutorialsImagesPath}/topics/folders/sortbox.jpg`,
+            coordinates: { x: 0.93, y: 0.14 },
+            instruction: "Note the tabs on the right, this is the locus bar",
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/folders/sortbox.jpg`,
             coordinates: { x: 0.93, y: 0.105 },
             pointerSize: "m",
             instruction:
@@ -283,7 +143,7 @@ const tutorials = [
             instructionSide: "right",
           },
           {
-            src: `${tutorialsImagesPath}/topics/sub-tabs/reference.jpg`,
+            src: `${tutorialsImagesPath}/topics/folders/reference.jpg`,
             coordinates: { x: 0.93, y: 0.205 },
             pointerSize: "m",
             instruction:
@@ -291,16 +151,307 @@ const tutorials = [
             instructionSide: "right",
           },
           {
-            src: `${tutorialsImagesPath}/topics/sub-tabs/maybe-someday.jpg`,
+            src: `${tutorialsImagesPath}/topics/folders/maybe-someday.jpg`,
             coordinates: { x: 0.93, y: 0.35 },
             instruction: "The Maybe/Someday sub-tab is dedicated to tasks planned for the future",
             instructionSide: "right",
           },
         ],
       },
+      {
+        name: "Adding folders",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/topics/adding-folders/menu-bar-folders.jpg`,
+            coordinates: { x: 0.245, y: 0.06 },
+            pointerSize: "m",
+            instruction: 'Click on "View" from the menu bar, then click on "Folders"',
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/adding-folders/select-folders.png`,
+            coordinates: { x: 0.06, y: 0.77 },
+            pointerSize: "s",
+            instruction: 'Click on "New"',
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/adding-folders/create-new-folder.png`,
+            coordinates: { x: 0.22, y: 0.52 },
+            instructionSide: "right",
+            instruction:
+              'Check the box if you wish the folder to show on the locus bar. Name your new folder and mark it with a color if you wish, then press "OK"',
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/adding-folders/folder-created.png`,
+            coordinates: { x: 0.975, y: 0.49 },
+            pointerSize: "m",
+            instruction: "Your newly created folder",
+          },
+        ],
+      },
     ],
   },
-  { categoryName: "Emails" },
+  {
+    categoryName: "Emails",
+    tutorials: [
+      {
+        name: "Signing in",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/sign-in.jpg`,
+            coordinates: { x: 0.055, y: 0.358 },
+            pointerSize: "m",
+            instruction: "Click on the Emails tab",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/sign-in.jpg`,
+            coordinates: { x: 0.24, y: 0.09 },
+            instruction: "Click here to sign in",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/select-email.jpg`,
+            coordinates: { x: 0.28, y: 0.86 },
+            instructionSide: "right",
+            instruction: "Select the email account you would like to connect with Ardi",
+            brighterPointer: "true",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/allow.jpg`,
+            coordinates: { x: 0.78, y: 0.82 },
+            instruction: "Follow Gmail instructions",
+            brighterPointer: "true",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/copy-auth-code.jpg`,
+            coordinates: { x: 0.25, y: 0.39 },
+            brighterPointer: "true",
+            instructionSide: "right",
+            instruction: "Once you've granted Ardi access to your Gmail acount, copy the authorization code provided",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/paste-auth-code.png`,
+            coordinates: { x: 0.14, y: 0.62 },
+            instruction: "Return to Ardi and paste the authorization code into the input box, then press OK",
+            brighterPointer: "true",
+            instructionSide: "right",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/signing-in/emails.jpg`,
+            coordinates: { x: 0.79, y: 0.36 },
+            instruction: "Your emails are now accessible through the selector",
+            brighterPointer: "true",
+          },
+        ],
+      },
+      {
+        name: "Adding accounts",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/emails/adding-accounts/email-selector.jpg`,
+            coordinates: { x: 0.94, y: 0.08 },
+            pointerSize: "s",
+            instruction: "To connect more accounts, click on the icon here",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/adding-accounts/add-account.png`,
+            coordinates: { x: 0.07, y: 0.79 },
+            pointerSize: "m",
+            instructionSide: "right",
+            instruction: 'Click on "Add" and repeat the previous tutorial',
+          },
+        ],
+      },
+      {
+        name: "Composing mails",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/emails/adding-accounts/email-selector.jpg`,
+            coordinates: { x: 0.1, y: 0.97 },
+            pointerSize: "m",
+            instruction: 'Click on "Compose"',
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/composing-mails/select-recipients.png`,
+            coordinates: { x: 0.07, y: 0.24 },
+            instructionSide: "right",
+            instruction: "Use the search bar to find your contacts by name or email",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/composing-mails/select-recipients.png`,
+            coordinates: { x: 0.2, y: 0.32 },
+            instructionSide: "right",
+            brighterPointer: true,
+            instruction: "Select a recipient(s) from your contacts list (On how to add contacts, refer to the Contacts section)",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/composing-mails/recipient-added.png`,
+            coordinates: { x: 0.1, y: 0.82 },
+            instructionSide: "right",
+            instruction:
+              'You may either double-click on a contact or select it and then press on "To" or "cc" (carbon copy). Press "OK" when done',
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/composing-mails/email-editor.jpg`,
+            coordinates: { x: 0.38, y: 0.36 },
+            instructionSide: "right",
+            brighterPointer: true,
+            instruction: "This is the email editor. Enter the subject line at the top, and the content of your email here.",
+          },
+          {
+            src: `${tutorialsImagesPath}/emails/composing-mails/email-editor.jpg`,
+            coordinates: { x: 0.748, y: 0.1 },
+            pointerSize: "m",
+            brighterPointer: true,
+            instruction: 'Click on "Attach" if you wish to attach files. Click on "Send" when your email is ready to be sent',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryName: "Boards",
+    tutorials: [
+      {
+        name: "What are Boards?",
+        verbalInstruction: [
+          "Boards are a 2D canvas where you can organize your notes and emails and draw connections between them",
+        ],
+      },
+      {
+        name: "Create a board",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/boards/create-a-board/boards-closed-navbar.jpg`,
+            coordinates: { x: 0.04, y: 0.14 },
+            pointerSize: "m",
+            instruction: "Click here to open the sidebar",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/create-a-board/boards-open-navbar.jpg`,
+            coordinates: { x: 0.05, y: 0.145 },
+            pointerSize: "m",
+            instruction: "Click on Boards",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/create-a-board/boards-open-navbar.jpg`,
+            coordinates: { x: 0.14, y: 0.09 },
+            pointerSize: "s",
+            instruction: "Click here to create a board",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/create-a-board/board-created.jpg`,
+            coordinates: { x: 0.4, y: 0.5 },
+            instruction: "This is your new board",
+          },
+        ],
+      },
+      {
+        name: "Drag & Drop",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/boards/drag-and-drop/select-item.jpg`,
+            coordinates: { x: 0.83, y: 0.38 },
+            instruction: "Drag and drop any item (topic, email, etc.) from the selector onto a board",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/drag-and-drop/choose-associations-alignment.jpg`,
+            coordinates: { x: 0.42, y: 0.25 },
+            instruction:
+              "If your item is a nested one (i.e. contains subtopics), choose your preferred alignment of parent & children nodes on the board, and then press OK",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/drag-and-drop/nested-topic-on-board.jpg`,
+            coordinates: { x: 0.08, y: 0.48 },
+            instruction: "Your topic is now visualized on the board along with its subtopics",
+            instructionSide: "right",
+          },
+        ],
+      },
+      {
+        name: "Associatons",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/boards/associations/select-topic.jpg`,
+            coordinates: { x: 0.39, y: 0.5 },
+            instruction: "In Ardi you can draw visual associations between items on a board. First select an item",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/associations/select-topic.jpg`,
+            coordinates: { x: 0.36, y: 0.06 },
+            pointerSize: "s",
+            instruction: "Click on the arrow button",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/associations/add-link.jpg`,
+            coordinates: { x: 0.08, y: 0.48 },
+            instruction: 'Now click on the item you wish to associate the original item with, and then click on "Add link"',
+            instructionSide: "right",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/associations/association-created.jpg`,
+            coordinates: { x: 0.24, y: 0.52 },
+            instruction: "The newly created arrow represents an association between the items",
+            instructionSide: "right",
+          },
+        ],
+      },
+      {
+        name: "Annotations",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/boards/annotations/select-item.jpg`,
+            coordinates: { x: 0.39, y: 0.54 },
+            instruction: "Items can be given annotations. Click on an item to select it",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/annotations/select-item.jpg`,
+            coordinates: { x: 0.02, y: 0.05 },
+            pointerSize: "s",
+            instruction: "Click the annotation icon",
+            instructionSide: "right",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/annotations/type-annotation.jpg`,
+            coordinates: { x: 0.39, y: 0.54 },
+            instruction:
+              "Type your annotation in the popped up window, and then press Enter or click outside of the window once you're done",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/annotations/annotation-created.jpg`,
+            coordinates: { x: 0.4, y: 0.55 },
+            // pointerSize: "m",
+            instruction: "Your new annotation will be shown over its parent item",
+          },
+        ],
+      },
+      {
+        name: "Changing shapes",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/boards/changing-shapes/select-item.jpg`,
+            coordinates: { x: 0.39, y: 0.54 },
+            instruction: "Items can be assigned different shapes. Click on an item to select it",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/changing-shapes/select-item.jpg`,
+            coordinates: { x: 0.385, y: 0.06 },
+            pointerSize: "s",
+            instruction: "Click on the triangle shaped icon",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/changing-shapes/select-shape.jpg`,
+            coordinates: { x: 0.41, y: 0.18 },
+            instruction: "Select your desired shape",
+          },
+          {
+            src: `${tutorialsImagesPath}/boards/changing-shapes/shape-changed.jpg`,
+            coordinates: { x: 0.395, y: 0.64 },
+            pointerSize: "s",
+            instruction: "Your item's new look",
+          },
+        ],
+      },
+    ],
+  },
   {
     categoryName: "Sort",
     tutorials: [
@@ -315,15 +466,10 @@ const tutorials = [
           },
           {
             src: `${tutorialsImagesPath}/sort/sort-tab.jpg`,
-            coordinates: { x: 0.95, y: 0.14 },
-            instruction: "Note the sub-tabs on the right side",
-          },
-          {
-            src: `${tutorialsImagesPath}/sort/sort-tab.jpg`,
             coordinates: { x: 0.95, y: 0.1 },
             pointerSize: "m",
             instruction:
-              "The Search sub-tab contains a filtered list of all the topics that contain the keyword currently searched for",
+              "The Search tab contains a filtered list of all the topics that contain the keyword currently searched for",
           },
           {
             src: `${tutorialsImagesPath}/sort/sort-tab.jpg`,

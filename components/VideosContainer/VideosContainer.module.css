@@ -24,7 +24,8 @@
   color: darkslategrey;
   font-family: Quicksand;
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  margin: 20px 0px;
+  margin-top: 10px;
+  margin-bottom: 30px;
   /* background-color: rgba(255, 255, 255, 0.7); */
   background: linear-gradient(125deg, #ffe9d380, rgba(175, 183, 255, 0.99) 120%);
   padding: 30px;
@@ -35,6 +36,9 @@
   user-select: none;
   max-width: 80%;
   text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .header:hover {

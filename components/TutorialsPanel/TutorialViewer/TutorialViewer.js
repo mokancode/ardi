@@ -13,22 +13,28 @@ export default function TutorialViewer(props) {
   const [currentTutorial, setCurrentTutorial] = useState({});
   const currentTutorialRef = useRef(currentTutorial);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const [currentImgSrc, setCurrentImgSrc] = useState("");
   const currentImgIndexRef = useRef(currentImgIndex);
+  const [currentImgSrc, setCurrentImgSrc] = useState("");
   const [showPointer, setShowPointer] = useState(false);
   const [showCoordinates, setShowCoordinates] = useState(false);
   const [pointerInPosition, setPointerInPosition] = useState(false);
   const pointerCoordinates = useRef({ x: null, y: null });
   // const [pointerCoordinates, setPointerCoordinates] = useState({ x: null, y: null });
 
+  function updateCurrentTutorial(tutorial) {
+    setCurrentTutorial(tutorial);
+    currentTutorialRef.current = tutorial;
+  }
+
   useEffect(() => {
     if (!isEmpty(props.currentTutorial))
-      setCurrentTutorial((prev) => {
-        currentTutorialRef.current = props.currentTutorial;
-        return props.currentTutorial;
-      });
-    setCurrentImgIndex(0);
-    currentImgIndexRef.current = 0;
+      // setCurrentTutorial((prev) => {
+      //   currentTutorialRef.current = props.currentTutorial;
+      //   return props.currentTutorial;
+      // });
+      updateCurrentTutorial(props.currentTutorial);
+
+    updateCurrentImgIndex(0);
 
     // setCurrentImgSrc(currentTutorial.images[currentImgIndex].src);
 
@@ -84,6 +90,12 @@ export default function TutorialViewer(props) {
   }, [currentTutorial, currentImgIndex]);
 
   const updateCurrentImgIndex = useCallback((direction) => {
+    if (direction === 0) {
+      setCurrentImgIndex(0);
+      currentImgIndexRef.current = 0;
+      return;
+    }
+
     if (isEmpty(currentTutorialRef.current.images)) return;
     let tempCurrentImgIndex = currentImgIndexRef.current;
     let total = currentTutorialRef.current.images.length;
@@ -152,7 +164,9 @@ export default function TutorialViewer(props) {
               >
                 <TutorialPointerInstruction
                   currentTutorial={currentTutorial}
+                  currentTutorialRef={currentTutorialRef}
                   currentImgIndex={currentImgIndex}
+                  currentImgIndexRef={currentImgIndexRef}
                   pointerInPosition={pointerInPosition}
                   pointerCoordinates={pointerCoordinates}
                   setPointerInPosition={setPointerInPosition}
