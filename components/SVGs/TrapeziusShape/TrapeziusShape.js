@@ -2,12 +2,15 @@
 import { Fragment, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import classnames from "classnames";
+import isEmpty from "../../../utils/validation/is-empty";
 export default function TrapeziusShape(props) {
   const { iconBgColor1, iconBgColor2, index } = props;
 
   const [id, setId] = useState(uuidv4());
 
   const { isIconContainer, showComponent } = props;
+
+  if (isEmpty(id)) return null;
 
   return (
     <div
@@ -53,9 +56,7 @@ export default function TrapeziusShape(props) {
 
           {isIconContainer && (
             <path
-              className={classnames("trapPath", {
-                isIcon: "isIcon",
-              })}
+              className="trapPath"
               d="M276,608.3c-18.71,0-37.15-4.94-53.35-14.3l-166.79-96.3C22.94,478.71,2.5,443.3,2.5,405.3V212.7
       c0-38,20.44-73.41,53.35-92.41l166.79-96.3c16.2-9.35,34.65-14.3,53.35-14.3s37.15,4.94,53.35,14.3l166.79,96.3
       c32.91,19,53.35,54.41,53.35,92.41v192.6c0,38-20.44,73.41-53.35,92.41l-166.79,96.3C313.15,603.36,294.71,608.3,276,608.3z"
@@ -64,9 +65,7 @@ export default function TrapeziusShape(props) {
           {isIconContainer && (
             <path
               fill={`url(#trapeziusShapeLinearGradient_${id})`}
-              className={classnames("trapPath", {
-                isIcon: "isIcon",
-              })}
+              className="trapPath"
               d="M276,608.3c-18.71,0-37.15-4.94-53.35-14.3l-166.79-96.3C22.94,478.71,2.5,443.3,2.5,405.3V212.7
         c0-38,20.44-73.41,53.35-92.41l166.79-96.3c16.2-9.35,34.65-14.3,53.35-14.3s37.15,4.94,53.35,14.3l166.79,96.3
         c32.91,19,53.35,54.41,53.35,92.41v192.6c0,38-20.44,73.41-53.35,92.41l-166.79,96.3C313.15,603.36,294.71,608.3,276,608.3z"

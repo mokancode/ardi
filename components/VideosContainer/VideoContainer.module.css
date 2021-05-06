@@ -1,12 +1,9 @@
 .videoListItem {
   margin-bottom: 20px;
   width: 49%;
+  min-width: 250px;
   height: 350px;
   position: relative;
-  /* border: 2px solid red; */
-  /* filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4)); */
-  /* background-color: rgba(0, 0, 0, 0.4); */
-  /* padding: 15px; */
 }
 
 .videoListItem iframe {
@@ -54,4 +51,33 @@
 .titleScreen.hide .veil {
   pointer-events: none;
   transform: translateX(100%);
+}
+
+@media screen and (max-width: 900px) {
+  .videoListItem {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .videoListItem {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .titleScreen h3 {
+    font-size: 18px;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .videoListItem {
+    min-width: unset;
+  }
+
+  .titleScreen h3 {
+    font-size: 15px;
+    width: 80%;
+  }
 }

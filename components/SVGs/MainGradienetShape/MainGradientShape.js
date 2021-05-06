@@ -1,13 +1,8 @@
 import classnames from "classnames";
-import { route } from "next/dist/next-server/server/router";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import styles from "./MainGradientShape.module.css";
 
 export default function MainGradientShape(props) {
-  const router = useRouter();
-
-  const [extractedRoutes, setRouteName] = useState(["/"]);
   const [animateShape, setAnimateShape] = useState(false);
 
   return (
@@ -20,7 +15,6 @@ export default function MainGradientShape(props) {
       viewBox="0 0 552 619"
       style={{ enableBackground: "new 0 0 552 619" }}
       preserveAspectRatio="none"
-      onTransitionEnd={() => {}}
     >
       <g>
         <path

@@ -24,7 +24,7 @@ export default function IconContainer(props) {
       partialVisibility={false}
       offset={{ bottom: 200 }}
     >
-      <div className={[styles.containerWrapper, showComponent && styles.show].join(" ")}>
+      <div className={[styles.containerWrapper, showComponent ? styles.show : undefined].join(" ")}>
         <TrapeziusShape
           showComponent={showComponent}
           iconBgColor1={iconBgColor1}
@@ -32,7 +32,11 @@ export default function IconContainer(props) {
           index={index}
           isIconContainer={true}
         />
-        <div className={styles.container}>{React.cloneElement(props.children, { show: showComponent })}</div>
+        {props.children.type === "img" ? (
+          <img style={props.children.props.style} src={props.children.props.src} alt={props.children.props.alt}></img>
+        ) : (
+          <div className={styles.container}>{React.cloneElement(props.children, { show: showComponent })}</div>
+        )}
       </div>
     </ReactVisibilitySensor>
   );

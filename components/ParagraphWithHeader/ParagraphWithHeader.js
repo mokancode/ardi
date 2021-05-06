@@ -9,6 +9,7 @@ import ReactVisibilitySensor from "react-visibility-sensor";
 import calculateScrollProgression from "../../utils/CalculateScrollProgression";
 
 import { v4 as uuidv4 } from "uuid";
+import classNames from "classnames";
 
 export default function ParagraphWithHeader(props) {
   const paragraphWithHeaderRef = useRef();
@@ -59,9 +60,9 @@ export default function ParagraphWithHeader(props) {
       }
 
       function scrollFuncHandler() {
-            // if (props.first)
-            // //  console.log("scroll first");
-            // console.log("visibility", props.visibilitySensorReveal, props.first);
+        // if (props.first)
+        // //  console.log("scroll first");
+        // console.log("visibility", props.visibilitySensorReveal, props.first);
 
         try {
           // console.log("scroll", document.querySelector("#mainDiv").scrollTop);
@@ -119,12 +120,11 @@ export default function ParagraphWithHeader(props) {
       <div className={[styles.outerWrapper, props.noPadding ? styles.noPadding : undefined].join(" ")}>
         <div
           ref={paragraphWithHeaderRef}
-          className={[
-            styles.wrapper,
-            props.background && styles.background,
-            showComponent && styles.show,
-            props.forceNoBackground && styles.forceNoBackground,
-          ].join(" ")}
+          className={classNames(styles.wrapper, {
+            [styles.background]: props.background,
+            [styles.show]: showComponent,
+            [styles.forceNoBackground]: props.forceNoBackground,
+          })}
         >
           {/* {offsetTopState && (
           <p
@@ -140,16 +140,15 @@ export default function ParagraphWithHeader(props) {
           </p>
         )} */}
           <div
-            className={[
-              styles.headerWithIconWrapper,
-              props.centerHeader && styles.alignCenter,
-              props.noUnderline && styles.noUnderline,
-              props.headerWithIconDirection && styles[props.headerWithIconDirection],
-            ].join(" ")}
+            className={classNames(styles.headerWithIconWrapper, {
+              [styles.alignCenter]: props.centerHeader,
+              [styles.noUnderline]: props.noUnderline,
+              [styles[props.headerWithIconDirection]]: props.headerWithIconDirection,
+            })}
           >
             {props.icon ? (
               typeof props.icon === "string" ? (
-                <img className={props.rotateIcon && styles.rotate} src={props.icon} alt={imgAlt} />
+                <img className={props.rotateIcon ? styles.rotate : undefined} src={props.icon} alt={imgAlt} />
               ) : (
                 <IconContainer
                   iconBgColor1={iconBgColor1}
@@ -163,14 +162,13 @@ export default function ParagraphWithHeader(props) {
               )
             ) : null}
             <h1
-              className={[
-                styles.header,
-                props.nonBreakingHeader && styles.nonBreakingHeader,
-                props.color && styles[props.color],
-                props.centerHeader && styles.alignCenter,
-                props.icon && styles.marginLeft,
-                props.extraLarge && styles.extraLarge,
-              ].join(" ")}
+              className={classNames(styles.header, {
+                [styles.nonBreakingHeader]: props.nonBreakingHeader,
+                [styles[props.color]]: props.color,
+                [styles.alignCenter]: props.centerHeader,
+                [styles.marginLeft]: props.icon,
+                [styles.extraLarge]: props.extraLarge,
+              })}
             >
               {props.headerText}
             </h1>
@@ -182,11 +180,10 @@ export default function ParagraphWithHeader(props) {
                 return (
                   <li key={changelogItem.id}>
                     <p
-                      className={[
-                        styles.paragraph,
-                        props.color && styles[props.color],
-                        props.paragraphAlignLeft && styles.paragraphAlignLeft,
-                      ].join(" ")}
+                      className={classNames(styles.paragraph, {
+                        [styles[props.color]]: props.color,
+                        [styles.paragraphAlignLeft]: props.paragraphAlignLeft,
+                      })}
                     >
                       {changelogItem.text}
                     </p>
@@ -196,11 +193,10 @@ export default function ParagraphWithHeader(props) {
             </ul>
           ) : (
             <p
-              className={[
-                styles.paragraph,
-                props.color && styles[props.color],
-                props.paragraphAlignLeft && styles.paragraphAlignLeft,
-              ].join(" ")}
+              className={classNames(styles.paragraph, {
+                [styles[props.color]]: props.color,
+                [styles.paragraphAlignLeft]: props.paragraphAlignLeft,
+              })}
             >
               {props.paragraphText}
             </p>

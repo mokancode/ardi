@@ -8,8 +8,9 @@ import RefsContext from "../store/refs-context";
 import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
+import classNames from "classnames";
 
-const appVersion = "1.1.2";
+const appVersion = "1.1.3";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -17,6 +18,7 @@ export default function Layout(props) {
   const mainGradientShapeRef = useRef();
 
   const [detachNavbar, setDetachNavbar] = useState(false);
+  const [showMainGradientShape, setShowMainGradientShape] = useState(false);
 
   const refsContext = useContext(RefsContext);
 
@@ -30,6 +32,8 @@ export default function Layout(props) {
     if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
     else mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
 
+    setShowMainGradientShape(true);
+
     console.log("Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/");
 
     window.addEventListener("resize", () => {
@@ -41,48 +45,48 @@ export default function Layout(props) {
   }, []);
 
   useEffect(() => {
-    setDetachNavbar(false);
+    console.log("route", router.pathname);
 
-    // console.log("route", router.pathname);
-
-    switch (router.pathname) {
-      case "/":
-        if (window.innerWidth <= 800)
-          // mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.4, 1.4) translateY(-50px)`;
-        else
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
-            window.innerWidth > 1400 ? "1" : "3"
-          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-        break;
-      case "/download":
-        if (window.innerWidth <= 800)
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.2, 1.2) translateY(-100px)`;
-        else
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.${
-            window.innerWidth > 1400 ? "1" : "3"
-          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-        break;
-      case "/support":
-        if (window.innerWidth <= 800)
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.2, 1.2) translateY(-100px)`;
-        else
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.${
-            window.innerWidth > 1400 ? "1" : "3"
-          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-        break;
-      case "/demo":
-        if (window.innerWidth <= 800)
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
-        else
-          mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
-            window.innerWidth > 1400 ? "1" : "3"
-          }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-
-      default:
-        break;
+    if (router.pathname === "/") {
+      // console.log("/");
+      if (window.innerWidth <= 800)
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.4, 1.4) translateY(-50px)`;
+      else
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
+          window.innerWidth > 1400 ? "1" : "3"
+        }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     }
+    if (router.pathname === "/download") {
+      console.log("/download");
+      if (window.innerWidth <= 800)
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.2, 1.2) translateY(-100px)`;
+      else
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.${
+          window.innerWidth > 1400 ? "1" : "3"
+        }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
+    }
+    if (router.pathname === "/support") {
+      console.log("/support");
+      if (window.innerWidth <= 800)
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.2, 1.2) translateY(-100px)`;
+      else
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.${
+          window.innerWidth > 1400 ? "1" : "3"
+        }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
+    }
+    if (router.pathname === "/demo") {
+      console.log("/demo");
+      if (window.innerWidth <= 800)
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
+      else
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
+          window.innerWidth > 1400 ? "1" : "3"
+        }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
+    }
+
     mainGradientShapeRef.current.style.transform = `translateY(0px)`;
+
+    setDetachNavbar(false);
   }, [router.pathname]);
 
   // Determine if mobile dimensions
@@ -126,47 +130,54 @@ export default function Layout(props) {
         </CSSTransition>
       </TransitionGroup> */}
 
-      <div className="mainGradientShapeWrapper" ref={mainGradientShapeRef}>
+      <div
+        className={classNames("mainGradientShapeWrapper", {
+          show: showMainGradientShape,
+        })}
+        ref={mainGradientShapeRef}
+      >
         <MainGradientShape />
       </div>
 
-      <TransitionGroup className="transition-group">
-        <CSSTransition
-          key={router.pathname}
-          classNames="page"
-          // timeout={{ enter: 800, exit: 300 }}
-          timeout={300}
-        >
-          <main
-            id="mainDiv"
-            className="centerDiv mainDiv"
-            ref={mainDivRef}
-            onScroll={(e) => {
-              // console.log(e.target.scrollTop);
-              window.scrollY = e.target.scrollTop;
-
-              mainGradientShapeRef.current.style.transform = `translateY(-${e.target.scrollTop / 2}px)`;
-
-              if (!detachNavbar && e.target.scrollTop > 0) {
-                setDetachNavbar(true);
-                // console.log("attach");
-              } else if (detachNavbar && e.target.scrollTop === 0) {
-                // console.log("detach");
-                setDetachNavbar(false);
-              }
-            }}
+      {showMainGradientShape && (
+        <TransitionGroup className="transition-group">
+          <CSSTransition
+            key={router.pathname}
+            classNames="page"
+            // timeout={{ enter: 800, exit: 300 }}
+            timeout={300}
           >
-            {/* <SwitchTransition 
+            <main
+              id="mainDiv"
+              className="centerDiv mainDiv"
+              ref={mainDivRef}
+              onScroll={(e) => {
+                // console.log(e.target.scrollTop);
+                window.scrollY = e.target.scrollTop;
+
+                mainGradientShapeRef.current.style.transform = `translateY(-${e.target.scrollTop / 2}px)`;
+
+                if (!detachNavbar && e.target.scrollTop > 0) {
+                  setDetachNavbar(true);
+                  // console.log("attach");
+                } else if (detachNavbar && e.target.scrollTop === 0) {
+                  // console.log("detach");
+                  setDetachNavbar(false);
+                }
+              }}
+            >
+              {/* <SwitchTransition 
         // mode="out-in"
         > */}
-            <div className="mainChildrenWrapper">
-              <div className="pagesWrapper">{props.children}</div>
-              <Footer />
-            </div>
-          </main>
-        </CSSTransition>
-        {/* </SwitchTransition> */}
-      </TransitionGroup>
+              <div className="mainChildrenWrapper">
+                <div className="pagesWrapper">{props.children}</div>
+                <Footer />
+              </div>
+            </main>
+          </CSSTransition>
+          {/* </SwitchTransition> */}
+        </TransitionGroup>
+      )}
     </div>
   );
 }

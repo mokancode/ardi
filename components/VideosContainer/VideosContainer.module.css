@@ -10,6 +10,12 @@
   box-shadow: -10px 5px 20px 0 rgba(49, 49, 49, 0.3);
 }
 
+@media screen and (max-width: 900) {
+  .container {
+    padding: 0px;
+  }
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;

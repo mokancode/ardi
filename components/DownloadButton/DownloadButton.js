@@ -5,6 +5,7 @@ import StylesContext from "../../store/styles-context";
 import { DownloadButtonStrip } from "./DownloadButtonStrip";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../../utils/validation/is-empty";
+import classNames from "classnames";
 
 export default function DownloadButton(props) {
   const stylesContext = useContext(StylesContext);
@@ -53,7 +54,10 @@ export default function DownloadButton(props) {
       offset={{ top: 10 }}
     >
       <a
-        className={[styles.btn, showComponent ? styles.show : undefined, props.color && styles[props.color]].join(" ")}
+        className={classNames(styles.btn, {
+          [styles.show]: showComponent,
+          [styles[props.color]]: props.color,
+        })}
         href={props.url}
         download={props.fileName}
         onTransitionEnd={() => setShowChildComponents(true)}

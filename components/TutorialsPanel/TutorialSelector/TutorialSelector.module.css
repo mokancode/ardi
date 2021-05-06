@@ -12,6 +12,13 @@
   /* border: 1px solid red; */
   overflow-y: auto;
   scrollbar-width: thin;
+  /* display: none; */
+}
+
+@media screen and (max-width: 1100px) {
+  .container {
+    display: none;
+  }
 }
 
 /* Custom Scrollbar */

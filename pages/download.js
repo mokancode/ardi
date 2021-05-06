@@ -90,7 +90,7 @@ export default function DownloadPage(props) {
               // headerWithIconDirection="horizontal"
               nonBreakingHeader={true}
               headerText={`Ardi ${downloadData.windows.version} for Windows`}
-              paragraphText={`${downloadData.windows.windowsOS}`}
+              paragraphText={`${downloadData.windows.windowsOS || ""}`}
               iconBgColor1={"rgb(117, 166, 221)"}
               iconBgColor2={"rgb(36, 129, 184)"}
               icon={<WindowsLogo />}

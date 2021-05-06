@@ -43,8 +43,8 @@ export default function DiagramIcon() {
         />
       </g>
       <g id={styles.emails}>
-        <rect x="181.5" y="392" class="st3" width="114.3" height="80.5" />
-        <rect x="183.5" y="7.8" class="st3" width="113" height="80.2" />
+        <rect x="181.5" y="392" className={styles.st3} width="114.3" height="80.5" />
+        <rect x="183.5" y="7.8" className={styles.st3} width="113" height="80.2" />
         <path
           className={styles.st2}
           d="M240.2,69.3c-3.4,0-6.7-0.9-9.6-2.7l-50.8-31.3c-2-1.3-2.7-3.9-1.6-6c1.2-2.1,3.8-2.8,5.8-1.6l50.9,31.2
@@ -69,8 +69,8 @@ export default function DiagramIcon() {
         />
       </g>
       <g id={styles.note}>
-        <rect x="6.4" y="190.6" class="st3" width="83.7" height="97" />
-        <rect x="390.8" y="189.1" class="st5" width="83.7" height="97" />
+        <rect x="6.4" y="190.6" className={styles.st3} width="83.7" height="97" />
+        <rect x="390.8" y="189.1" className={styles.st5} width="83.7" height="97" />
         <path
           id={styles.path3683}
           className={styles.st3}

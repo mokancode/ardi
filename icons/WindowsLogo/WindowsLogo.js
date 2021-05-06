@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useContext, useEffect, useState } from "react";
 import StylesContext from "../../store/styles-context";
 // import styles from "./WindowsLogo.module.css";
@@ -17,7 +18,12 @@ export default function WindowsLogo() {
 
   return (
     <div className={styles.container}>
-      <div className={[styles.wrapper, show && styles.show, colorize && styles.colorize].join(" ")}>
+      <div
+        className={classNames(styles.wrapper, {
+          [styles.show]: show,
+          [styles.colorize]: colorize,
+        })}
+      >
         <div className={styles.square}></div>
         <div className={styles.square}></div>
         <div className={styles.square}></div>

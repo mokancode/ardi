@@ -77,11 +77,9 @@ export default function TutorialPointerInstruction({
 
   // reset first
   useEffect(() => {
-    // console.log("update", currentImgIndexRef.current + 1);
-    if (rightSideRef.current !== null && animOutFinished) {
-      // console.log("Reset side");
+    console.log("update", currentImgIndexRef.current + 1);
+    if (rightSideRef.current !== null)
       updateRightSide(Boolean(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide));
-    }
   }, [currentImgIndexRef.current]);
 
   // update
@@ -103,15 +101,15 @@ export default function TutorialPointerInstruction({
         !windowTooNarrow
       ) {
         // x close to right perimeter but window wide enough so keep on right side
-        // console.log("wide enough");
+        console.log("wide enough");
         return updateRightSide(true);
       } else if (windowTooNarrow && currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55) {
         // x close to right side but window is too narrow, force left side
-        // console.log("too narrow for right");
+        console.log("too narrow for right");
         return updateRightSide(false);
       } else if (windowTooNarrow && currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.45) {
         // x close to left side but window is too narrow, force right side
-        // console.log("too narrow for left");
+        console.log("too narrow for left");
         return updateRightSide(true);
       }
 
@@ -141,14 +139,27 @@ export default function TutorialPointerInstruction({
   function threeCriticalConditionsOfPointerSide() {
     try {
       if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.55) {
-        // console.log("1", currentImgIndexRef.current);
+        console.log("1", currentImgIndexRef.current);
         return updateRightSide(true);
       }
+      // if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.55 && rightSideRef.current) return updateRightSide(true);
+      // else if (
+      //   currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55 &&
+      //   !currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide
+      // )
+      //   return updateRightSide(false);
+      // else if (
+      //   currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55 &&
+      //   Boolean(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide)
+      // ) {
+      //   console.log("left side");
+      //   return updateRightSide(false);
+      // }
       else if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55) {
-        // console.log("2", currentImgIndexRef.current, currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x);
+        console.log("2", currentImgIndexRef.current, currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x);
         return updateRightSide(false);
       } else if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.45) {
-        // console.log("3");
+        console.log("3");
         return updateRightSide(true);
       }
     } catch (err) {}

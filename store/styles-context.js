@@ -15,6 +15,7 @@ import DownloadPageStyles from "../styles/DownloadPage.module.css";
 import SupportPageStyles from "../styles/SupportPage.module.css";
 import PrivacyPolicyStyles from "../styles/PrivacyPolicy.module.css";
 import DemoStyles from "../styles/Demo.module.css";
+import TermsOfServicePageStyles from "../styles/TermsOfService.module.css";
 
 import IconContainerStyles from "../icons/IconContainer.module.css";
 import BlackboardIconStyles from "../icons/BlackboardIcon/BlackboardIcon.module.css";
@@ -45,6 +46,7 @@ export function StylesContextProvider(props) {
     { name: "SupportPage", styles: SupportPageStyles },
     { name: "PrivacyPolicyPage", styles: PrivacyPolicyStyles },
     { name: "DemoPage", styles: DemoStyles },
+    { name: "TermsOfServicePage", styles: TermsOfServicePageStyles },
 
     { name: "IconContainer", styles: IconContainerStyles },
     { name: "BlackboardIcon", styles: BlackboardIconStyles },
