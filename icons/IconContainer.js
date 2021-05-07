@@ -1,7 +1,7 @@
 // import styles from "./IconContainer.module.css";
 import React, { useContext, useState } from "react";
 import ReactVisibilitySensor from "react-visibility-sensor";
-import TrapeziusShape from "../components/SVGs/TrapeziusShape/TrapeziusShape";
+import Hexagon from "../components/SVGs/Hexagon/Hexagon";
 import StylesContext from "../store/styles-context";
 
 export default function IconContainer(props) {
@@ -25,7 +25,7 @@ export default function IconContainer(props) {
       offset={{ bottom: 200 }}
     >
       <div className={[styles.containerWrapper, showComponent ? styles.show : undefined].join(" ")}>
-        <TrapeziusShape
+        <Hexagon
           showComponent={showComponent}
           iconBgColor1={iconBgColor1}
           iconBgColor2={iconBgColor2}

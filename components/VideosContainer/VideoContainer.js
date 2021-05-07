@@ -19,7 +19,7 @@ export default function VideoContainer({ video, index }) {
       {video.iframe}
       <div className={[styles.titleScreen, hideVeil && styles.hide].join(" ")}>
         <div className={styles.veil}>
-          <h3>{video.title}</h3>
+          <h4>{video.title}</h4>
         </div>
       </div>
     </li>

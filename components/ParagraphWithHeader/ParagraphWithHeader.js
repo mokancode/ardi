@@ -55,7 +55,7 @@ export default function ParagraphWithHeader(props) {
       scrollEventListenerSetRef.current = true;
 
       if (!paragraphWithHeaderRef || !paragraphWithHeaderRef.current) {
-        console.log("ref doesn't exist", scrollEventListenerSetRef.current, props.first);
+        // console.log("ref doesn't exist", scrollEventListenerSetRef.current, props.first);
         return;
       }
 
@@ -93,7 +93,7 @@ export default function ParagraphWithHeader(props) {
             paragraphWithHeaderRef.current.style.transform = `translateY(${50 * translateYEquation}px)`;
           }
         } catch (err) {
-          console.log("scroll err", err);
+          // console.log("scroll err", err);
         }
       }
 

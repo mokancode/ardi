@@ -11,11 +11,11 @@ const tutorials = [
             src: `${tutorialsImagesPath}/navigation-pane/navigation-pane.jpg`,
             coordinates: { x: 0.5, y: 0.5 },
             instruction:
-              "This is the selector. All your notes, topics, emails, contacts, boards, can be created and/or accessed from here.",
+              "This is the selector. All your notes, topics, emails, contacts, and boards can be created and/or accessed from here.",
           },
           {
             src: `${tutorialsImagesPath}/navigation-pane/navigation-pane.jpg`,
-            coordinates: { x: 0.025, y: 0.11 },
+            coordinates: { x: 0.0255, y: 0.11 },
             pointerSize: "m",
             instruction: "Click here to reveal the navigation bar",
           },
@@ -82,7 +82,7 @@ const tutorials = [
             src: `${tutorialsImagesPath}/topics/topics-pane/note-editor.jpg`,
             coordinates: { x: 0.4, y: 0.5 },
             instruction: "This is the note editor pane, where the contents of your topics can be edited.",
-            instructionSide: "right",
+            rightSide: true,
             brighterPointer: true,
           },
           {
@@ -90,7 +90,7 @@ const tutorials = [
             coordinates: { x: 0.11, y: 0.09 },
             instruction:
               "This is the text styling toolbar. First select the text you wish to style, then click on the desired effect in the toolbar",
-            instructionSide: "right",
+            rightSide: true,
             brighterPointer: true,
           },
           {
@@ -98,7 +98,7 @@ const tutorials = [
             coordinates: { x: 0.605, y: 0.08 },
             instruction: "You can undo or redo actions, insert tables, and search for keywords",
             brighterPointer: true,
-            instructionSide: "right",
+            rightSide: true,
           },
           {
             src: `${tutorialsImagesPath}/topics/topics-pane/extra-features.jpg`,
@@ -140,7 +140,7 @@ const tutorials = [
             pointerSize: "m",
             instruction:
               "The Sortbox is for all your yet unorganized notes. Jot them down here, and later move them to separate organized folders",
-            instructionSide: "right",
+            rightSide: true,
           },
           {
             src: `${tutorialsImagesPath}/topics/folders/reference.jpg`,
@@ -148,13 +148,13 @@ const tutorials = [
             pointerSize: "m",
             instruction:
               "The Reference sub-tab is a place for all your non-actionable topics that don't have strategic importance or urgency",
-            instructionSide: "right",
+            rightSide: true,
           },
           {
             src: `${tutorialsImagesPath}/topics/folders/maybe-someday.jpg`,
             coordinates: { x: 0.93, y: 0.35 },
             instruction: "The Maybe/Someday sub-tab is dedicated to tasks planned for the future",
-            instructionSide: "right",
+            rightSide: true,
           },
         ],
       },
@@ -176,15 +176,55 @@ const tutorials = [
           {
             src: `${tutorialsImagesPath}/topics/adding-folders/create-new-folder.png`,
             coordinates: { x: 0.22, y: 0.52 },
-            instructionSide: "right",
+            rightSide: true,
             instruction:
-              'Check the box if you wish the folder to show on the locus bar. Name your new folder and mark it with a color if you wish, then press "OK"',
+              'Check the box if you wish the folder to show on the locus bar. Name your new folder and mark it with a color if you wish, then click on "OK"',
           },
           {
             src: `${tutorialsImagesPath}/topics/adding-folders/folder-created.png`,
             coordinates: { x: 0.975, y: 0.49 },
             pointerSize: "m",
             instruction: "Your newly created folder",
+          },
+        ],
+      },
+      {
+        name: "Arranging tabs",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/topics/arranging-tabs/open-tab.jpg`,
+            coordinates: { x: 0.745, y: 0.025 },
+            pointerSize: "xs",
+            instruction: 'Open a topic and click on the "more" icon',
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/arranging-tabs/pin.jpg`,
+            coordinates: { x: 0.84, y: 0.19 },
+            pointerSize: "m",
+            instruction: 'Click on "Pin Tab"',
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/arranging-tabs/pinned-tabs.jpg`,
+            coordinates: { x: 0.39, y: 0.52 },
+            instruction: "Open a few more tabs and pin them as well",
+            brighterPointer: true,
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/arranging-tabs/pinned-tabs.jpg`,
+            coordinates: { x: 0.76, y: 0.02 },
+            pointerSize: "xs",
+            instruction: "Click on the box icon",
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/arranging-tabs/arrange-tabs.jpg`,
+            coordinates: { x: 0.81, y: 0.1 },
+            instruction: "The current arrangement is highlighted in grey. Select the arrangement of your choice",
+          },
+          {
+            src: `${tutorialsImagesPath}/topics/arranging-tabs/new-arrangement.jpg`,
+            coordinates: { x: 0.39, y: 0.37 },
+            instruction: "The tabs have been rearranged",
+            brighterPointer: true,
           },
         ],
       },
@@ -210,7 +250,7 @@ const tutorials = [
           {
             src: `${tutorialsImagesPath}/emails/signing-in/select-email.jpg`,
             coordinates: { x: 0.28, y: 0.86 },
-            instructionSide: "right",
+            rightSide: true,
             instruction: "Select the email account you would like to connect with Ardi",
             brighterPointer: "true",
           },
@@ -224,15 +264,15 @@ const tutorials = [
             src: `${tutorialsImagesPath}/emails/signing-in/copy-auth-code.jpg`,
             coordinates: { x: 0.25, y: 0.39 },
             brighterPointer: "true",
-            instructionSide: "right",
+            rightSide: true,
             instruction: "Once you've granted Ardi access to your Gmail acount, copy the authorization code provided",
           },
           {
             src: `${tutorialsImagesPath}/emails/signing-in/paste-auth-code.png`,
             coordinates: { x: 0.14, y: 0.62 },
-            instruction: "Return to Ardi and paste the authorization code into the input box, then press OK",
+            instruction: "Return to Ardi and paste the authorization code into the input box, then click on OK",
             brighterPointer: "true",
-            instructionSide: "right",
+            rightSide: true,
           },
           {
             src: `${tutorialsImagesPath}/emails/signing-in/emails.jpg`,
@@ -255,7 +295,7 @@ const tutorials = [
             src: `${tutorialsImagesPath}/emails/adding-accounts/add-account.png`,
             coordinates: { x: 0.07, y: 0.79 },
             pointerSize: "m",
-            instructionSide: "right",
+            rightSide: true,
             instruction: 'Click on "Add" and repeat the previous tutorial',
           },
         ],
@@ -272,27 +312,27 @@ const tutorials = [
           {
             src: `${tutorialsImagesPath}/emails/composing-mails/select-recipients.png`,
             coordinates: { x: 0.07, y: 0.24 },
-            instructionSide: "right",
+            rightSide: true,
             instruction: "Use the search bar to find your contacts by name or email",
           },
           {
             src: `${tutorialsImagesPath}/emails/composing-mails/select-recipients.png`,
             coordinates: { x: 0.2, y: 0.32 },
-            instructionSide: "right",
+            rightSide: true,
             brighterPointer: true,
             instruction: "Select a recipient(s) from your contacts list (On how to add contacts, refer to the Contacts section)",
           },
           {
             src: `${tutorialsImagesPath}/emails/composing-mails/recipient-added.png`,
             coordinates: { x: 0.1, y: 0.82 },
-            instructionSide: "right",
+            rightSide: true,
             instruction:
-              'You may either double-click on a contact or select it and then press on "To" or "cc" (carbon copy). Press "OK" when done',
+              'You may either double-click on a contact or select it and then click on "To" or "cc" (carbon copy). Click on "OK" when done',
           },
           {
             src: `${tutorialsImagesPath}/emails/composing-mails/email-editor.jpg`,
             coordinates: { x: 0.38, y: 0.36 },
-            instructionSide: "right",
+            rightSide: true,
             brighterPointer: true,
             instruction: "This is the email editor. Enter the subject line at the top, and the content of your email here.",
           },
@@ -356,13 +396,13 @@ const tutorials = [
             src: `${tutorialsImagesPath}/boards/drag-and-drop/choose-associations-alignment.jpg`,
             coordinates: { x: 0.42, y: 0.25 },
             instruction:
-              "If your item is a nested one (i.e. contains subtopics), choose your preferred alignment of parent & children nodes on the board, and then press OK",
+              "If your item is a nested one (i.e. contains subtopics), choose your preferred alignment of parent & children nodes on the board, and then click on OK",
           },
           {
             src: `${tutorialsImagesPath}/boards/drag-and-drop/nested-topic-on-board.jpg`,
             coordinates: { x: 0.08, y: 0.48 },
             instruction: "Your topic is now visualized on the board along with its subtopics",
-            instructionSide: "right",
+            rightSide: true,
           },
         ],
       },
@@ -384,13 +424,13 @@ const tutorials = [
             src: `${tutorialsImagesPath}/boards/associations/add-link.jpg`,
             coordinates: { x: 0.08, y: 0.48 },
             instruction: 'Now click on the item you wish to associate the original item with, and then click on "Add link"',
-            instructionSide: "right",
+            rightSide: true,
           },
           {
             src: `${tutorialsImagesPath}/boards/associations/association-created.jpg`,
             coordinates: { x: 0.24, y: 0.52 },
             instruction: "The newly created arrow represents an association between the items",
-            instructionSide: "right",
+            rightSide: true,
           },
         ],
       },
@@ -407,7 +447,7 @@ const tutorials = [
             coordinates: { x: 0.02, y: 0.05 },
             pointerSize: "s",
             instruction: "Click the annotation icon",
-            instructionSide: "right",
+            rightSide: true,
           },
           {
             src: `${tutorialsImagesPath}/boards/annotations/type-annotation.jpg`,
@@ -490,9 +530,9 @@ const tutorials = [
           },
           {
             src: `${tutorialsImagesPath}/sort/task-ring.jpg`,
-            coordinates: { x: 0.8, y: 0.2 },
+            coordinates: { x: 0.18, y: 0.14 },
             pointerSize: "m",
-            instruction: "Right click on an item to and press here to mark it as done.",
+            instruction: 'Click on "Done" to move a topic out of the task ring.',
           },
           {
             src: `${tutorialsImagesPath}/sort/notes.jpg`,
@@ -516,7 +556,39 @@ const tutorials = [
       },
     ],
   },
-  { categoryName: "Contacts", tutorials: [{ name: "How to " }] },
+  {
+    categoryName: "Contacts",
+    tutorials: [
+      {
+        name: "Adding contacts",
+        images: [
+          {
+            src: `${tutorialsImagesPath}/contacts/adding-contacts/new-contact.jpg`,
+            coordinates: { x: 0.05, y: 0.97 },
+            pointerSize: "xs",
+            instruction: "Click on New to create a new contact",
+          },
+          {
+            src: `${tutorialsImagesPath}/contacts/adding-contacts/contact.jpg`,
+            coordinates: { x: 0.22, y: 0.13 },
+            instruction: "Click inside the Name column on the newly created",
+          },
+          {
+            src: `${tutorialsImagesPath}/contacts/adding-contacts/enter-name.jpg`,
+            coordinates: { x: 0.21, y: 0.15 },
+            instruction: "Enter the the name for your contact, and do the same for the email",
+          },
+          {
+            src: `${tutorialsImagesPath}/contacts/adding-contacts/contact-created.jpg`,
+            coordinates: { x: 0.12, y: 0.97 },
+            pointerSize: "xs",
+            instruction: "Your contact is ready for use. To send an email, select the contact and then click here",
+            rightSide: true,
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export default tutorials;

@@ -3,14 +3,14 @@ import { CSSTransition, SwitchTransition, TransitionGroup } from "react-transiti
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import { useRouter } from "next/router";
-import MainGradientShape from "../components/SVGs/MainGradienetShape/MainGradientShape";
+import MainGradientShape from "../components/SVGs/MainGradientShape/MainGradientShape";
 import RefsContext from "../store/refs-context";
 import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
 
-const appVersion = "1.1.3";
+const appVersion = "1.1.4";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -45,7 +45,7 @@ export default function Layout(props) {
   }, []);
 
   useEffect(() => {
-    console.log("route", router.pathname);
+    // console.log("route", router.pathname);
 
     if (router.pathname === "/") {
       // console.log("/");
@@ -57,7 +57,7 @@ export default function Layout(props) {
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     }
     if (router.pathname === "/download") {
-      console.log("/download");
+      // console.log("/download");
       if (window.innerWidth <= 800)
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.2, 1.2) translateY(-100px)`;
       else
@@ -66,7 +66,7 @@ export default function Layout(props) {
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     }
     if (router.pathname === "/support") {
-      console.log("/support");
+      // console.log("/support");
       if (window.innerWidth <= 800)
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.2, 1.2) translateY(-100px)`;
       else
@@ -75,7 +75,7 @@ export default function Layout(props) {
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     }
     if (router.pathname === "/demo") {
-      console.log("/demo");
+      // console.log("/demo");
       if (window.innerWidth <= 800)
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
       else
@@ -105,10 +105,10 @@ export default function Layout(props) {
 
     window.addEventListener("resize", () => {
       if (window.innerWidth <= 700 && !mobileModeRef.current) {
-        console.log("mobile mode", mobileModeRef.current);
+        // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(true);
       } else if (window.innerWidth > 700 && mobileModeRef.current) {
-        console.log("mobile mode", mobileModeRef.current);
+        // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(false);
       }
     });

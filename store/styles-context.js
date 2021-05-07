@@ -5,7 +5,7 @@ import ParagraphWithHeaderStyles from "../components/ParagraphWithHeader/Paragra
 import NavbarStyles from "../components/Navbar/Navbar.module.css";
 import FooterStyles from "../components/Footer/Footer.module.css";
 import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.module.css";
-import ParallaxTrapeziusStyles from "../components/ParallaxTrapezius/ParallaxTrapezius.module.css";
+import ParallaxHexagonStyles from "../components/ParallaxHexagon/ParallaxHexagon.module.css";
 import VideosContainerStyles from "../components/VideosContainer/VideosContainer.module.css";
 import VideoContainerStyles from "../components/VideosContainer/VideoContainer.module.css";
 import ScrollDownButtonStyles from "../components/ScrollDownButton/ScrollDownButton.module.css";
@@ -36,7 +36,7 @@ export function StylesContextProvider(props) {
     { name: "Navbar", styles: NavbarStyles },
     { name: "Footer", styles: FooterStyles },
     { name: "DownloadButton", styles: DownloadButtonStyles },
-    { name: "ParallaxTrapezius", styles: ParallaxTrapeziusStyles },
+    { name: "ParallaxHexagon", styles: ParallaxHexagonStyles },
     { name: "VideosContainer", styles: VideosContainerStyles },
     { name: "VideoContainer", styles: VideoContainerStyles },
     { name: "ScrollDownButton", styles: ScrollDownButtonStyles },

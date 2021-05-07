@@ -16,6 +16,14 @@ export default function TutorialsPanel({ tutorials }) {
     setCurrentTutorial(tutorial);
   }
 
+  useEffect(() => {
+    if (!isEmpty(tutorials)) {
+      // setCurrentCategory(tutorials[0]);
+      // setCurrentTutorial(tutorials[0].tutorials[0]);
+      // console.log(tutorials[0].tutorials[0]);
+    }
+  }, [tutorials]);
+
   const [directToMenu, setDirectToMenu] = useState(false);
 
   return (
@@ -28,7 +36,7 @@ export default function TutorialsPanel({ tutorials }) {
         directToMenu={directToMenu}
         setDirectToMenu={setDirectToMenu}
       />
-      <TutorialViewer currentTutorial={currentTutorial} setDirectToMenu={setDirectToMenu}/>
+      <TutorialViewer currentTutorial={currentTutorial} setDirectToMenu={setDirectToMenu} />
     </div>
   );
 }

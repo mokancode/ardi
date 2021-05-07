@@ -97,7 +97,8 @@ export default function DownloadPage(props) {
               button={
                 <DownloadButton
                   visibilitySensorReveal={true}
-                  url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
+                  // url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
+                  url={downloadData.windows.url}
                   fileName={downloadData.windows.fileName}
                   fileSize={downloadData.windows.fileSize}
                   color="blue"
@@ -125,7 +126,8 @@ export default function DownloadPage(props) {
               button={
                 <DownloadButton
                   visibilitySensorReveal={true}
-                  url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
+                  // url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
+                  url={downloadData.mac.url}
                   fileName={downloadData.mac.fileName}
                   fileSize={downloadData.mac.fileSize}
                 />

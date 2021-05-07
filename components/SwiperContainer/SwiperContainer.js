@@ -91,7 +91,7 @@ export default function SwiperContainer(props) {
                     try {
                       swiperRef.current.slideTo(index);
                     } catch (err) {
-                      console.log("err", err);
+                      // console.log("err", err);
                     }
                   }}
                 ></button>

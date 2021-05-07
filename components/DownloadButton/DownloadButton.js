@@ -14,22 +14,6 @@ export default function DownloadButton(props) {
   const [showComponent, setShowComponent] = useState(false);
   const [showChildComponents, setShowChildComponents] = useState(false);
 
-  function downloadStuff(url) {
-    var link = document.createElement("a");
-    link.setAttribute("download", "test.jpg");
-    // link.href = makeTextFile(textbox.value);
-    // link.href = "/images/live.jpg";
-    link.href = "https://ardi-test.000webhostapp.com/ardi6-49.msi";
-    document.body.appendChild(link);
-
-    // wait for the link to be added to the document
-    window.requestAnimationFrame(function () {
-      var event = new MouseEvent("click");
-      link.dispatchEvent(event);
-      document.body.removeChild(link);
-    });
-  }
-
   const [IDs, setIDs] = useState([]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import Layout from "../layout/layout";
 import "../styles/globals.css";
-import "../styles/TrapeziusShape.css";
+import "../styles/Hexagon.css";
 import "../styles/TermsAndConditionsIcon.css";
 import "../styles/MainGradientShape.css";
 import "../styles/MobileNavbarClip.css";

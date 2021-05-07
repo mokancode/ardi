@@ -80,7 +80,7 @@ export default function TutorialPointerInstruction({
     // console.log("update", currentImgIndexRef.current + 1);
     if (rightSideRef.current !== null && animOutFinished) {
       // console.log("Reset side");
-      updateRightSide(Boolean(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide));
+      updateRightSide(currentTutorialRef.current.images[currentImgIndexRef.current].rightSide);
     }
   }, [currentImgIndexRef.current]);
 
@@ -98,7 +98,7 @@ export default function TutorialPointerInstruction({
 
       // Three critical conditions dependent on viewport dimensions:
       if (
-        Boolean(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide) &&
+        currentTutorialRef.current.images[currentImgIndexRef.current].rightSide &&
         currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.55 &&
         !windowTooNarrow
       ) {
@@ -116,14 +116,14 @@ export default function TutorialPointerInstruction({
       }
 
       if (
-        currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide &&
+        currentTutorialRef.current.images[currentImgIndexRef.current].rightSide &&
         pointerInPosition === false &&
         animOutFinished
       ) {
         updateRightSide(true);
       } else {
         if (
-          isEmpty(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide) &&
+          isEmpty(currentTutorialRef.current.images[currentImgIndexRef.current].rightSide) &&
           rightSideRef.current &&
           animOutFinished
         ) {
@@ -171,8 +171,8 @@ export default function TutorialPointerInstruction({
         updateWindowTooNarrowHandler(false);
 
         try {
-          // console.log("bool", Boolean(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide), currentImgIndexRef.current+1);
-          return updateRightSide(Boolean(currentTutorialRef.current.images[currentImgIndexRef.current].instructionSide)); // return to original condition
+          // console.log("bool", currentTutorialRef.current.images[currentImgIndexRef.current].rightSide), currentImgIndexRef.current+1);
+          return updateRightSide(currentTutorialRef.current.images[currentImgIndexRef.current].rightSide); // return to original condition
         } catch (err) {}
       }
     }

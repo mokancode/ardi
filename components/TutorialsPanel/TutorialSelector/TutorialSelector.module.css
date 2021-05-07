@@ -81,6 +81,31 @@
   z-index: 2;
 }
 
+.categoryContainer:nth-of-type(1) .categoryName.highlight {
+  animation-name: highlightCategory;
+  animation-duration: 0.8s;
+}
+
+@keyframes highlightCategory {
+  0% {
+  }
+  30% {
+    background-color: rgba(162, 208, 235, 0.322);
+  }
+  50% {
+    background-color: rgba(162, 208, 235, 0.322);
+    color: darkslategrey;
+    text-shadow: 0 0 5px rgb(157, 241, 241);
+  }
+  70% {
+    background-color: rgba(162, 208, 235, 0.322);
+    color: darkslategrey;
+    text-shadow: 0 0 5px rgb(157, 241, 241);
+  }
+  100% {
+  }
+}
+
 .categoryName.directToMenu {
   animation-duration: 1s;
   animation-name: directToMenu;

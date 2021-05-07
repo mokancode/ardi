@@ -14,6 +14,23 @@ export default function TutorialSelector({
 }) {
   const tutorialsListRefs = useRef([]);
   const [tutorialsListOpen, setTutorialListOpen] = useState(null);
+  const tutorialsListOpenRef = useRef(tutorialsListOpen);
+  const [initialTutorialSet, setInitialTutorial] = useState(false);
+  const [initialTutorialOpen, setInitialTutorialOpen] = useState(false);
+
+  function updateTutorialsListOpen(state) {
+    setTutorialListOpen(state);
+    tutorialsListOpenRef.current = state;
+  }
+
+  useEffect(() => {
+    if (!isEmpty(tutorials) && !initialTutorialSet) {
+      setTimeout(() => {
+        if (tutorialsListOpenRef.current) return setInitialTutorialOpen(true);
+        setInitialTutorial(true);
+      }, 1000);
+    }
+  }, [tutorials, initialTutorialSet]);
 
   return (
     <div className={styles.container}>
@@ -28,6 +45,7 @@ export default function TutorialSelector({
                     [styles.listIsOpen]: tutorialsListOpen === categoryIndex,
                     [styles.selected]: currentCategory && category.id === currentCategory.id,
                     [styles.directToMenu]: directToMenu,
+                    [styles.highlight]: initialTutorialSet,
                   })
 
                   //     [
@@ -42,6 +60,13 @@ export default function TutorialSelector({
                 style={{ animationDelay: `${categoryIndex * 50}ms` }}
                 onAnimationEnd={() => {
                   if (categoryIndex === tutorials.length - 1) setDirectToMenu(false);
+
+                  if (categoryIndex === 0 && initialTutorialSet && !initialTutorialOpen) {
+                    setInitialTutorialOpen(true);
+                    updateTutorialsListOpen(0);
+                    selectTutorial(tutorials[0].id, tutorials[0].tutorials[0].id);
+                    tutorialsListRefs.current[0].nextSibling.style.maxHeight = `${tutorialsListRefs.current[0].nextSibling.scrollHeight}px`;
+                  }
                 }}
                 name={category.categoryName}
                 ref={(list) => (tutorialsListRefs.current[categoryIndex] = list)}
@@ -54,10 +79,10 @@ export default function TutorialSelector({
                     tutorialsListRefs.current[
                       categoryIndex
                     ].nextSibling.style.maxHeight = `${tutorialsListRefs.current[categoryIndex].nextSibling.scrollHeight}px`;
-                    setTutorialListOpen(categoryIndex);
+                    updateTutorialsListOpen(categoryIndex);
                   } else {
                     tutorialsListRefs.current[categoryIndex].nextSibling.style.maxHeight = "";
-                    setTutorialListOpen(null);
+                    updateTutorialsListOpen(null);
                   }
 
                   for (var i = 0; i < tutorialsListRefs.current.length; i++)

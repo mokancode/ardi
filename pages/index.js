@@ -10,7 +10,7 @@ import Link from "next/link";
 
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import StylesContext from "../store/styles-context";
-import ParallaxTrapezius from "../components/ParallaxTrapezius/ParallaxTrapezius";
+import ParallaxHexagon from "../components/ParallaxHexagon/ParallaxHexagon";
 import LinkButton from "../components/LinkButton/LinkButton";
 import SwiperContainer from "../components/SwiperContainer/SwiperContainer";
 
@@ -49,10 +49,10 @@ export default function Home(props) {
 
     window.addEventListener("resize", () => {
       if (window.innerWidth <= 800 && !mobileModeRef.current) {
-        console.log("mobile mode", mobileModeRef.current);
+        // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(true);
       } else if (window.innerWidth > 800 && mobileModeRef.current) {
-        console.log("mobile mode", mobileModeRef.current);
+        // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(false);
       }
     });
@@ -201,22 +201,22 @@ export default function Home(props) {
         <LinkButton url="/terms-of-service" text="Terms of Service" icon={<TermsAndConditionsIcon />} />
       </div>
 
-      <div className={styles.parallaxTrapeziusWrapper}>
+      <div className={styles.parallaxHexagonWrapper}>
         <div className={styles.regularFill}>
-          <ParallaxTrapezius bgFill={true} climb={50} blockTopBoundary={true} />
+          <ParallaxHexagon bgFill={true} climb={50} blockTopBoundary={true} />
 
-          <ParallaxTrapezius bgFill={true} />
-          <ParallaxTrapezius bgFill={true} climb={50} blockTopBoundary={true} />
+          <ParallaxHexagon bgFill={true} />
+          <ParallaxHexagon bgFill={true} climb={50} blockTopBoundary={true} />
         </div>
 
         <div className={styles.gradientFill}>
-          <ParallaxTrapezius
+          <ParallaxHexagon
             gradientColor1={"rgb(35, 175, 220, .3)"}
             gradientColor2={"rgb(46, 211, 255)"}
             climb={90}
             blockTopBoundary={true}
           />
-          <ParallaxTrapezius
+          <ParallaxHexagon
             gradientColor1={"rgb(35, 175, 220, .3)"}
             gradientColor2={"rgb(46, 211, 255)"}
             climb={200}
