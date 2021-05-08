@@ -60,6 +60,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  z-index: 2;
 }
 
 .paragraphsWrapper > div {
@@ -81,5 +82,12 @@
 @media screen and (max-width: 1000px) {
   .paragraphsWrapper > div {
     flex-basis: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .homePage > div:nth-of-type(1) {
+    margin-top: -70px;
+    z-index: 2;
   }
 }

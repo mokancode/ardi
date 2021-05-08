@@ -1,14 +1,19 @@
 import classnames from "classnames";
+import { useRouter } from "next/router";
 import { useState } from "react";
 // import styles from "./MainGradientShape.module.css";
 
 export default function MainGradientShape(props) {
   const [animateShape, setAnimateShape] = useState(false);
+  const router = useRouter();
+
+  console.log("router", router.pathname);
 
   return (
     <svg
       className={classnames("mainGradientShape", {
         animate: animateShape,
+        home: router.pathname === "/",
       })}
       x="0px"
       y="0px"
