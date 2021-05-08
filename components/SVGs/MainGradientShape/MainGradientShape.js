@@ -7,7 +7,7 @@ export default function MainGradientShape(props) {
   const [animateShape, setAnimateShape] = useState(false);
   const router = useRouter();
 
-  console.log("router", router.pathname);
+  // console.log("router", router.pathname);
 
   return (
     <svg
