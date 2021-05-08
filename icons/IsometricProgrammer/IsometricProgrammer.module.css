@@ -420,10 +420,15 @@
 }
 
 .st56 {
-  fill: #a33335;
+  /* fill: #a33335;
   filter: 
   drop-shadow(0 0 40px rgb(255, 99, 99))
   drop-shadow(0 0 100px rgb(255, 99, 99))
+  ; */
+  fill: rgb(38, 137, 202);
+  filter: 
+  drop-shadow(0 0 40px rgba(143, 195, 255, 0.25))
+  drop-shadow(0 0 100px rgba(143, 195, 255, 0.9))
   ;
   animation-name: opacityAnim;
   animation-duration: 2s;
@@ -431,7 +436,8 @@
   animation-timing-function: linear;
 }
 .st57 {
-  fill: #e4464a;
+  /* fill: #e4464a; */
+  fill: rgb(80, 155, 241);
 }
 .st58 {
   fill: rgb(33, 168, 203);
