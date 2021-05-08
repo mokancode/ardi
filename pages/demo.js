@@ -8,6 +8,7 @@ import VideosContainer from "../components/VideosContainer/VideosContainer";
 import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
 import { scrollToTop } from "react-scroll/modules/mixins/animate-scroll";
 import ScrollDownButton from "../components/ScrollDownButton/ScrollDownButton";
+import Head from "next/head";
 
 export default function DemoPage({ tutorialsData }) {
   const stylesContext = useContext(StylesContext);
@@ -50,6 +51,11 @@ export default function DemoPage({ tutorialsData }) {
 
   return (
     <div className={[styles.page, "pageContainer"].join(" ")}>
+      <Head>
+        <title>Ardi - Application Demonstration</title>
+        <meta name="description" content="A library of tutorials on how to use the app"></meta>
+      </Head>
+
       <div className={styles.tutorialsPanelWrapper}>
         <TutorialsPanel tutorials={tutorials} />
         <ScrollDownButton func={scrollToVideos} />

@@ -20,6 +20,7 @@ import PrivacyPolicyIcon from "../icons/PrivacyPolicyIcon/PrivacyPolicyIcon";
 import TermsAndConditionsIcon from "../icons/TermsAndConditionsIcon/TermsAndConditionsIcon";
 import BlackboardIcon from "../icons/BlackboardIcon/BlackboardIcon";
 import DiagramIcon from "../icons/DiagramIcon/DiagramIcon";
+import IsometricProgrammer from "../icons/IsometricProgrammer/IsometricProgrammer";
 
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
@@ -224,6 +225,8 @@ export default function Home(props) {
           />
         </div>
       </div>
+
+      <IsometricProgrammer />
     </div>
   );
 }

@@ -97,7 +97,6 @@ export default function DownloadPage(props) {
               button={
                 <DownloadButton
                   visibilitySensorReveal={true}
-                  // url={`http://prokarpaty.net/ard_download/${downloadData.windows.fileName}`}
                   url={downloadData.windows.url}
                   fileName={downloadData.windows.fileName}
                   fileSize={downloadData.windows.fileSize}
@@ -126,7 +125,6 @@ export default function DownloadPage(props) {
               button={
                 <DownloadButton
                   visibilitySensorReveal={true}
-                  // url={`http://prokarpaty.net/ard_download/${downloadData.mac.fileName}`}
                   url={downloadData.mac.url}
                   fileName={downloadData.mac.fileName}
                   fileSize={downloadData.mac.fileSize}
@@ -158,34 +156,6 @@ export async function getStaticProps() {
   console.log("________________");
   console.log("________________");
   console.log("________________");
-
-  // const response = await fetch("https://ardi-test.000webhostapp.com/text.json");
-  // const jsonData = await response.json();
-  // console.log("jsonData", jsonData);
-
-  // return await axios
-  //   .get("https://ardi-test.000webhostapp.com/text.json")
-  //   .then(function (response) {
-  //     // handle success
-  //     console.log("res", response.data);
-
-  //     return {
-  //       props: {
-  //         downloadData: response.data,
-  //       },
-  //       revalidate: 60,
-  //     };
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log("err", error);
-
-  //     return {
-  //       props: {
-  //         hasError: true,
-  //       },
-  //     };
-  //   });
 
   const path = require("path");
   const fs = require("fs").promises;
