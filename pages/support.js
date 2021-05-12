@@ -12,7 +12,7 @@ export default function SupportPage() {
     <div className={["pageWrapper", styles.pageWrapper].join(" ")}>
       <Head>
         <title>Ardi - Support</title>
-        <meta name="description" content="Contact us"></meta>
+        <meta name="description" content="Ardi - Contact us"></meta>
       </Head>
 
       <ParagraphWithHeader

@@ -8,7 +8,13 @@ import NotesIcon from "../icons/NotesIcon";
 import SyncIcon from "../icons/SyncIcon";
 import Link from "next/link";
 
-import { Fragment, useContext, useEffect, useRef, useState } from "react";
+import {
+  Fragment,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import StylesContext from "../store/styles-context";
 import ParallaxHexagon from "../components/ParallaxHexagon/ParallaxHexagon";
 import LinkButton from "../components/LinkButton/LinkButton";
@@ -24,9 +30,15 @@ import IsometricProgrammer from "../icons/IsometricProgrammer/IsometricProgramme
 
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "Home").styles;
+  const styles = stylesContext.styles.find(
+    (styleSheet) => styleSheet.name === "Home"
+  ).styles;
 
   const [IDs, setIDs] = useState([]);
+  const [
+    animateIsometricProgrammer,
+    setAnimateIsometricProgrammer,
+  ] = useState(false);
 
   const [mobileMode, setMobileMode] = useState(false);
   const mobileModeRef = useRef(false);
@@ -49,10 +61,16 @@ export default function Home(props) {
     }
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth <= 800 && !mobileModeRef.current) {
+      if (
+        window.innerWidth <= 800 &&
+        !mobileModeRef.current
+      ) {
         // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(true);
-      } else if (window.innerWidth > 800 && mobileModeRef.current) {
+      } else if (
+        window.innerWidth > 800 &&
+        mobileModeRef.current
+      ) {
         // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(false);
       }
@@ -141,10 +159,15 @@ export default function Home(props) {
   ];
 
   return (
-    <div className={["pageWrapper", styles.homePage].join(" ")}>
+    <div
+      className={["pageWrapper", styles.homePage].join(" ")}
+    >
       <Head>
         <title>Ardi - The Organizer</title>
-        <meta name="description" content="Ardi - The Organizer. A Gmail Client and Notes Manager"></meta>
+        <meta
+          name="description"
+          content="Ardi - The Organizer. A Gmail Client and Notes Manager"
+        ></meta>
       </Head>
 
       <ParagraphWithHeader
@@ -159,8 +182,12 @@ export default function Home(props) {
 
       {mobileMode ? (
         <Fragment>
-          <SwiperContainer visibilitySensorReveal={true}>{firstThreeParagraphs}</SwiperContainer>
-          <SwiperContainer visibilitySensorReveal={true}>{secondThreeParagraphs}</SwiperContainer>
+          <SwiperContainer visibilitySensorReveal={true}>
+            {firstThreeParagraphs}
+          </SwiperContainer>
+          <SwiperContainer visibilitySensorReveal={true}>
+            {secondThreeParagraphs}
+          </SwiperContainer>
         </Fragment>
       ) : !isEmpty(IDs) ? (
         <div className={styles.paragraphsWrapper}>
@@ -183,7 +210,9 @@ export default function Home(props) {
       />
 
       <ParagraphWithHeader
-        headerText={"Outliner with project-management & GTD time-management methods."}
+        headerText={
+          "Outliner with project-management & GTD time-management methods."
+        }
         paragraphText={
           "Ardi blends best methods popular in data management software, techniques described by David Allen and known as Getting Things Done (GTD) and classic outline sofware.\n" +
           "Program gives the user leverage to work with day-to-day data processing routines and managing complex depth projects with scalable toolset that allows to look at the big picture or focus on details if needed.\n" +
@@ -198,16 +227,32 @@ export default function Home(props) {
       />
 
       <div className={styles.links}>
-        <LinkButton url="/privacy-policy" text="Privacy Policy" icon={<PrivacyPolicyIcon />} />
-        <LinkButton url="/terms-of-service" text="Terms of Service" icon={<TermsAndConditionsIcon />} />
+        <LinkButton
+          url="/privacy-policy"
+          text="Privacy Policy"
+          icon={<PrivacyPolicyIcon />}
+        />
+        <LinkButton
+          url="/terms-of-service"
+          text="Terms of Service"
+          icon={<TermsAndConditionsIcon />}
+        />
       </div>
 
       <div className={styles.parallaxHexagonWrapper}>
         <div className={styles.regularFill}>
-          <ParallaxHexagon bgFill={true} climb={50} blockTopBoundary={true} />
+          <ParallaxHexagon
+            bgFill={true}
+            climb={50}
+            blockTopBoundary={true}
+          />
 
           <ParallaxHexagon bgFill={true} />
-          <ParallaxHexagon bgFill={true} climb={50} blockTopBoundary={true} />
+          <ParallaxHexagon
+            bgFill={true}
+            climb={50}
+            blockTopBoundary={true}
+          />
         </div>
 
         <div className={styles.gradientFill}>
@@ -226,7 +271,21 @@ export default function Home(props) {
         </div>
       </div>
 
-      <IsometricProgrammer />
+      <button
+        className={styles.animateBtn}
+        onClick={() => {
+          setAnimateIsometricProgrammer((prev) => {
+            return !prev;
+          });
+        }}
+      >
+        {animateIsometricProgrammer
+          ? "turn off"
+          : "turn on"}
+      </button>
+      <IsometricProgrammer
+        // animate={animateIsometricProgrammer}
+      />
     </div>
   );
 }

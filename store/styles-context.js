@@ -9,6 +9,7 @@ import ParallaxHexagonStyles from "../components/ParallaxHexagon/ParallaxHexagon
 import VideosContainerStyles from "../components/VideosContainer/VideosContainer.module.css";
 import VideoContainerStyles from "../components/VideosContainer/VideoContainer.module.css";
 import ScrollDownButtonStyles from "../components/ScrollDownButton/ScrollDownButton.module.css";
+import IsometricProgrammerStyles from "../icons/IsometricProgrammer/IsometricProgrammer.module.css";
 import GlowOrbStyles from "../icons/IsometricProgrammer/GlowOrb/GlowOrb.module.css";
 
 import HomeStyles from "../styles/Home.module.css";
@@ -41,6 +42,7 @@ export function StylesContextProvider(props) {
     { name: "VideosContainer", styles: VideosContainerStyles },
     { name: "VideoContainer", styles: VideoContainerStyles },
     { name: "ScrollDownButton", styles: ScrollDownButtonStyles },
+    { name: "IsometricProgrammer", styles: IsometricProgrammerStyles },
     { name: "GlowOrb", styles: GlowOrbStyles },
 
     { name: "Home", styles: HomeStyles },

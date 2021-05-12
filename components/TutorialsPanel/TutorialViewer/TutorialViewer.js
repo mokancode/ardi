@@ -3,8 +3,10 @@ import isEmpty from "../../../utils/validation/is-empty";
 import TutorialController from "./TutorialController/TutorialController";
 import TutorialPointerInstruction from "./TutorialPointerInstruction/TutorialPointerInstruction";
 import styles from "./TutorialViewer.module.css";
+
 export default function TutorialViewer(props) {
   const imgContainerRef = useRef();
+  const pointerCanvas = useRef();
   const pointerRef = useRef();
   const pointerInstructionRef = useRef();
   const imgRef = useRef();
@@ -51,42 +53,50 @@ export default function TutorialViewer(props) {
   }, [props.currentTutorial]);
 
   useEffect(() => {
-    if (!currentTutorial.images || !currentTutorial.images[currentImgIndex]) return;
-    let xPos = currentTutorial.images[currentImgIndex].coordinates.x;
-    let yPos = currentTutorial.images[currentImgIndex].coordinates.y;
+    try {
+      if (!currentTutorial.images || !currentTutorial.images[currentImgIndex]) return;
+      let xPos = currentTutorial.images[currentImgIndex].coordinates.x;
+      let yPos = currentTutorial.images[currentImgIndex].coordinates.y;
 
-    // if (pointerCoordinates.current.x === xPos && pointerCoordinates.current.y === yPos) {
-    //   console.log("same");
-    // }
-    pointerCoordinates.current = { x: xPos, y: yPos };
-    // setPointerCoordinates({ x: xPos, y: yPos });
+      // if (pointerCoordinates.current.x === xPos && pointerCoordinates.current.y === yPos) {
+      //   console.log("same");
+      // }
+      pointerCoordinates.current = { x: xPos, y: yPos };
+      // setPointerCoordinates({ x: xPos, y: yPos });
 
-    if (xPos >= 0.5) {
-      // pointerInstructionRef.current.style.left = "0px";
-      // pointerInstructionRef.current.style.right = "unset";
-    } else if (xPos < 0.5) {
-      // pointerInstructionRef.current.style.right = "-240px";
-      // pointerInstructionRef.current.style.left = "unset";
+      if (xPos >= 0.5) {
+        // pointerInstructionRef.current.style.left = "0px";
+        // pointerInstructionRef.current.style.right = "unset";
+      } else if (xPos < 0.5) {
+        // pointerInstructionRef.current.style.right = "-240px";
+        // pointerInstructionRef.current.style.left = "unset";
+      }
+
+      pointerRef.current.style.transform = `translate(${
+        imgContainerRef.current.offsetWidth * xPos - pointerRef.current.offsetWidth / 2
+      }px, ${
+        imgContainerRef.current.offsetHeight * yPos - pointerRef.current.offsetHeight / 2
+      }px)`;
+
+      if (currentTutorial.images[currentImgIndex].src !== currentImgSrc)
+        setCurrentImgSrc(currentTutorial.images[currentImgIndex].src);
+
+      // if (
+      //   pointerCoordinates &&
+      //   pointerCoordinates.current &&
+      //   pointerCoordinates.current.x &&
+      //   pointerCoordinates.current.y &&
+      //   pointerCoordinates.current.x === xPos &&
+      //   pointerCoordinates.current.y === yPos
+      // ) {
+      //   return;
+      // }
+      setPointerInPosition(false);
+    } catch (err) {
+      console.log("err", err);
     }
 
-    pointerRef.current.style.transform = `translate(${
-      imgContainerRef.current.offsetWidth * xPos - pointerRef.current.offsetWidth / 2
-    }px, ${imgContainerRef.current.offsetHeight * yPos - pointerRef.current.offsetHeight / 2}px)`;
-
-    if (currentTutorial.images[currentImgIndex].src !== currentImgSrc)
-      setCurrentImgSrc(currentTutorial.images[currentImgIndex].src);
-
-    // if (
-    //   pointerCoordinates &&
-    //   pointerCoordinates.current &&
-    //   pointerCoordinates.current.x &&
-    //   pointerCoordinates.current.y &&
-    //   pointerCoordinates.current.x === xPos &&
-    //   pointerCoordinates.current.y === yPos
-    // ) {
-    //   return;
-    // }
-    setPointerInPosition(false);
+    pointerCanvas.current.style.width = `${imgContainerRef.current.offsetWidth}px`;
   }, [currentTutorial, currentImgIndex]);
 
   const updateCurrentImgIndex = useCallback((direction) => {
@@ -126,12 +136,16 @@ export default function TutorialViewer(props) {
   }
 
   useEffect(() => {
-    if (window.innerWidth <= 1100 && !smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(true);
-    else if (window.innerWidth > 1100 && smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(false);
+    if (window.innerWidth <= 1100 && !smallScreenUnsupportedRef.current)
+      updateSmallScreenUnsupportedHandler(true);
+    else if (window.innerWidth > 1100 && smallScreenUnsupportedRef.current)
+      updateSmallScreenUnsupportedHandler(false);
 
     function resizeFuncHandler() {
-      if (window.innerWidth <= 1100 && !smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(true);
-      else if (window.innerWidth > 1100 && smallScreenUnsupportedRef.current) updateSmallScreenUnsupportedHandler(false);
+      if (window.innerWidth <= 1100 && !smallScreenUnsupportedRef.current)
+        updateSmallScreenUnsupportedHandler(true);
+      else if (window.innerWidth > 1100 && smallScreenUnsupportedRef.current)
+        updateSmallScreenUnsupportedHandler(false);
     }
 
     window.addEventListener("resize", resizeFuncHandler);
@@ -144,68 +158,71 @@ export default function TutorialViewer(props) {
   if (smallScreenUnsupported) {
     return (
       <div className={styles.wrapper}>
-        <h1 className={styles.instructionalHeader}>Tutorial displayer is currently unsupported for small screens</h1>
+        <h1 className={styles.instructionalHeader}>
+          Tutorial displayer is currently unsupported for small screens
+        </h1>
       </div>
     );
   }
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.pointerCanvas} ref={pointerCanvas}>
+        {!isEmpty(currentTutorial.images) && (
+          <div
+            className={[styles.pointerWrapper, showPointer && styles.show].join(" ")}
+            ref={pointerRef}
+            onTransitionEnd={(e) => {
+              if (e.target === pointerRef.current) setPointerInPosition(true);
+            }}
+          >
+            <TutorialPointerInstruction
+              currentTutorial={currentTutorial}
+              currentTutorialRef={currentTutorialRef}
+              currentImgIndex={currentImgIndex}
+              currentImgIndexRef={currentImgIndexRef}
+              pointerInPosition={pointerInPosition}
+              pointerCoordinates={pointerCoordinates}
+              setPointerInPosition={setPointerInPosition}
+            />
+
+            <div
+              className={[
+                styles.pointer,
+                currentTutorial.images[currentImgIndex].brighterPointer &&
+                  styles.brighter,
+                currentTutorial.images[currentImgIndex].pointerSize &&
+                  styles[currentTutorial.images[currentImgIndex].pointerSize],
+                showCoordinates && styles.showCoordinates,
+              ].join(" ")}
+            ></div>
+          </div>
+        )}
+      </div>
+
       {!isEmpty(currentTutorial) ? (
         !isEmpty(currentTutorial.images) ? (
           <Fragment>
             <div className={styles.imgWrapper} ref={imgContainerRef}>
-              <div
-                className={[styles.pointerWrapper, showPointer && styles.show].join(" ")}
-                ref={pointerRef}
-                onTransitionEnd={(e) => {
-                  if (e.target === pointerRef.current) setPointerInPosition(true);
-                }}
-              >
-                <TutorialPointerInstruction
-                  currentTutorial={currentTutorial}
-                  currentTutorialRef={currentTutorialRef}
-                  currentImgIndex={currentImgIndex}
-                  currentImgIndexRef={currentImgIndexRef}
-                  pointerInPosition={pointerInPosition}
-                  pointerCoordinates={pointerCoordinates}
-                  setPointerInPosition={setPointerInPosition}
-                />
-
-                <div
-                  className={[
-                    styles.pointer,
-                    currentTutorial.images[currentImgIndex].brighterPointer && styles.brighter,
-                    currentTutorial.images[currentImgIndex].pointerSize &&
-                      styles[currentTutorial.images[currentImgIndex].pointerSize],
-                    showCoordinates && styles.showCoordinates,
-                  ].join(" ")}
-                ></div>
-              </div>
-
-              <img
+              <picture
                 ref={imgRef}
-                onLoad={() => {
+                onLoad={(e) => {
+                  pointerCanvas.current.style.width = `${imgContainerRef.current.offsetWidth}px`;
+
+                  // console.log("loaded", e.target);
+
                   if (!showPointer) setShowPointer(true);
 
-                  //   console.log(
-                  //     "load",
-                  //     imgContainerRef.current.offsetWidth,
-                  //     imgContainerRef.current.offsetHeight
-                  //   );
                   let xPos = currentTutorial.images[currentImgIndex].coordinates.x;
                   let yPos = currentTutorial.images[currentImgIndex].coordinates.y;
-                  //   if (xPos >= 0.5) {
-                  //     // pointerInstructionRef.current.style.left = "0px";
-                  //     // pointerInstructionRef.current.style.right = "unset";
-                  //   } else if (xPos < 0.5) {
-                  //     // pointerInstructionRef.current.style.right = "-240px";
-                  //     // pointerInstructionRef.current.style.left = "unset";
-                  //   }
 
                   pointerRef.current.style.transform = `translate(${
-                    imgContainerRef.current.offsetWidth * xPos - pointerRef.current.offsetWidth / 2
-                  }px, ${imgContainerRef.current.offsetHeight * yPos - pointerRef.current.offsetHeight / 2}px)`;
+                    imgContainerRef.current.offsetWidth * xPos -
+                    pointerRef.current.offsetWidth / 2
+                  }px, ${
+                    imgContainerRef.current.offsetHeight * yPos -
+                    pointerRef.current.offsetHeight / 2
+                  }px)`;
                 }}
                 onMouseMove={(e) => {
                   if (!showCoordinates) return;
@@ -213,7 +230,8 @@ export default function TutorialViewer(props) {
                   var { x, y } = imgContainerRef.current.getBoundingClientRect();
 
                   var parent = imgContainerRef.current.parentNode;
-                  var totalOffsetTop = imgContainerRef.current.offsetTop + parent.offsetTop;
+                  var totalOffsetTop =
+                    imgContainerRef.current.offsetTop + parent.offsetTop;
                   var totalOffsetLeft = imgContainerRef.current.offsetLeft;
                   while (!isEmpty(parent.parentNode)) {
                     parent = parent.parentNode;
@@ -221,20 +239,38 @@ export default function TutorialViewer(props) {
                     totalOffsetLeft += parent.offsetLeft;
                   }
 
-                  coordinatesDisplayRef.current.style.transform = `translateX(${e.clientX + window.scrollX - x}px)
-                                             translateY(${e.clientY + window.scrollY - totalOffsetTop}px)`;
+                  coordinatesDisplayRef.current.style.transform = `translateX(${
+                    e.clientX + window.scrollX - x
+                  }px)
+                                             translateY(${
+                                               e.clientY + window.scrollY - totalOffsetTop
+                                             }px)`;
 
                   coordinatesDisplayRef.current.innerHTML = `x: ${
-                    "" || Number((e.clientX + window.scrollX - x) / imgContainerRef.current.offsetWidth).toFixed(2)
-                  }, y: ${Number((e.clientY + window.scrollY - totalOffsetTop) / imgContainerRef.current.offsetHeight).toFixed(
-                    2
-                  )}`;
+                    "" ||
+                    Number(
+                      (e.clientX + window.scrollX - x) /
+                        imgContainerRef.current.offsetWidth
+                    ).toFixed(2)
+                  }, y: ${Number(
+                    (e.clientY + window.scrollY - totalOffsetTop) /
+                      imgContainerRef.current.offsetHeight
+                  ).toFixed(2)}`;
                 }}
-                src={currentImgSrc}
-                alt="img"
-              ></img>
+                alt={`${currentTutorial.name} ${currentImgIndex}/${currentTutorial.images.length}`}
+              >
+                <source srcSet={require(`${currentImgSrc}?webp`)} type="image/webp" />
+                <source srcSet={require(`${currentImgSrc}`)} type="image/jpeg" />
+                <img src={require(`${currentImgSrc}`)} />
+              </picture>
 
-              <p className={[styles.coordinatesDisplay, showCoordinates && styles.show].join(" ")} ref={coordinatesDisplayRef}>
+              <p
+                className={[
+                  styles.coordinatesDisplay,
+                  showCoordinates && styles.show,
+                ].join(" ")}
+                ref={coordinatesDisplayRef}
+              >
                 x: 0, y: 0
               </p>
             </div>
@@ -253,7 +289,9 @@ export default function TutorialViewer(props) {
             })}
           </div>
         ) : (
-          <h1 className={[styles.instructionalHeader, styles.nothingHere].join(" ")}>Nothing here!</h1>
+          <h1 className={[styles.instructionalHeader, styles.nothingHere].join(" ")}>
+            Nothing here!
+          </h1>
         )
       ) : (
         <h1

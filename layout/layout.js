@@ -10,7 +10,7 @@ import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
 
-const appVersion = "1.1.8";
+const appVersion = "1.1.9";
 
 export default function Layout(props) {
   const router = useRouter();

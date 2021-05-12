@@ -91,3 +91,11 @@
     z-index: 2;
   }
 }
+
+.animateBtn {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  z-index: 3;
+  display: none;
+}

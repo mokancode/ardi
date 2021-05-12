@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import TutorialsPanel from "../components/TutorialsPanel/TutorialsPanel";
 import StylesContext from "../store/styles-context";
 import tutorialsImport from "../public/tutorials";
@@ -10,9 +10,54 @@ import { scrollToTop } from "react-scroll/modules/mixins/animate-scroll";
 import ScrollDownButton from "../components/ScrollDownButton/ScrollDownButton";
 import Head from "next/head";
 
+import Img from "react-optimized-image";
+// import MyImage from `./images/doge.jpg`;
+
+import path from "path";
+
 export default function DemoPage({ tutorialsData }) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "DemoPage").styles;
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "DemoPage")
+    .styles;
+
+  // const [myImg, setMyImg] = useState("");
+  // const myImg = require("./images/tutorials/boards/annotations/select-item.jpg");
+
+  // return <Fragment>HELLO</Fragment>;
+
+  const myPath = "./doge.jpg";
+
+  // return (
+  //   <div style={{ width: "400px", height: "400px" }}>
+  //     <img style={{ width: "50px", height: "100px" }} src={myPath} alt="test"></img>
+  //     <img style={{ width: "50px", height: "100px" }} src={require(myPath + "?webp")} alt="test"></img>;
+  //   </div>
+  // );
+
+  // return <h1>{"path " + window.location.origin + "/doge.jpg"}</h1>;
+
+  // return <img src={window.location.origin + "/images/doge.jpg"} alt="asd"></img>
+  // return <Img src={require(`${process.env.PUBLIC_URL}/images/doge.jpg`)} alt="doge" />;
+  // return <img src={require("./doge.jpg")} webp sizes={[400]} />;
+
+  // return (
+  //   <picture
+  //     onLoad={() => {
+  //       console.log("loded");
+  //     }}
+  //   >
+  //     <source srcSet={require(`${myPath}?webp`)} type="image/webp" />
+  //     <source srcSet={require(`${myPath}`)} type="image/jpeg" />
+  //     <img src={require(`${myPath}`)} />
+  //   </picture>
+  // );
+
+  // const [mPath, setPath] = useState(String(require("./doge.jpg")));
+
+  // return <Fragment>{!isEmpty(mPath) && <Img src={"" + mPath} webp sizes={[400]} />}</Fragment>;
+  // return <Fragment>{!isEmpty(mPath) && <Img src={mPath} webp sizes={[400]} />}</Fragment>;
+
+  // return <h1>Hey</h1>;
 
   const [tutorials, setTutorials] = useState([]);
   useEffect(() => {
@@ -53,7 +98,10 @@ export default function DemoPage({ tutorialsData }) {
     <div className={[styles.page, "pageContainer"].join(" ")}>
       <Head>
         <title>Ardi - Application Demonstration</title>
-        <meta name="description" content="A library of tutorials on how to use the app"></meta>
+        <meta
+          name="description"
+          content="A library of tutorials on how to use Ardi"
+        ></meta>
       </Head>
 
       <div className={styles.tutorialsPanelWrapper}>

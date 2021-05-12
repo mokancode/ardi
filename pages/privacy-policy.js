@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
     <div className={[styles.pageWrapper, "bg"].join(" ")}>
       <Head>
         <title>Ardi - Privacy Policy</title>
-        <meta name="description" content="Ardi privacy policy "></meta>
+        <meta name="description" content="Ardi - Privacy Policy"></meta>
       </Head>
 
       <h3 className={"textAlignCenter"}>Privacy Policy</h3>

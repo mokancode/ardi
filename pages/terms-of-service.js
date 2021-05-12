@@ -14,7 +14,7 @@ export default function TermsOfService() {
     <div className={"pageWrapper bg"} style={{ backgroundColor: "whitesmoke", padding: "40px" }}>
       <Head>
         <title>Ardi - Terms of Service</title>
-        <meta name="description" content="Terms of service"></meta>
+        <meta name="description" content="Ardi - Terms of service"></meta>
       </Head>
 
       <h1 className="textAlignCenter">Ardi - The Organizer (Ardi)</h1>

@@ -4,7 +4,10 @@ import { useState } from "react";
 // import styles from "./MainGradientShape.module.css";
 
 export default function MainGradientShape(props) {
-  const [animateShape, setAnimateShape] = useState(false);
+  const [
+    transitionDurationSet,
+    setTransitionDurationSet,
+  ] = useState(null);
   const router = useRouter();
 
   // console.log("router", router.pathname);
@@ -12,7 +15,6 @@ export default function MainGradientShape(props) {
   return (
     <svg
       className={classnames("mainGradientShape", {
-        animate: animateShape,
         home: router.pathname === "/",
       })}
       x="0px"
@@ -20,6 +22,12 @@ export default function MainGradientShape(props) {
       viewBox="0 0 552 619"
       style={{ enableBackground: "new 0 0 552 619" }}
       preserveAspectRatio="none"
+      onTransitionEnd={(e) => {
+        if (!transitionDurationSet) {
+          setTransitionDurationSet(true);
+          e.target.style.transitionDuration = "2s";
+        }
+      }}
     >
       <g>
         <path
@@ -36,7 +44,11 @@ c0-38,20.44-73.41,53.35-92.41l166.79-96.3c16.2-9.35,34.65-14.3,53.35-14.3s37.15,
 c32.91,19,53.35,54.41,53.35,92.41v192.6c0,38-20.44,73.41-53.35,92.41l-166.79,96.3C313.15,603.36,294.71,608.3,276,608.3z"
           />
         </clipPath>
-        <foreignObject clipPath="url(#clipPath)" width="200%" height="100%">
+        <foreignObject
+          clipPath="url(#clipPath)"
+          width="200%"
+          height="100%"
+        >
           <div className={"gradientShape"}></div>
         </foreignObject>
         {/* <path
