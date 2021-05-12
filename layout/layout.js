@@ -18,7 +18,8 @@ export default function Layout(props) {
   const mainGradientShapeRef = useRef();
 
   const [detachNavbar, setDetachNavbar] = useState(false);
-  const [showMainGradientShape, setShowMainGradientShape] = useState(false);
+  const [showMainGradientShape, setShowMainGradientShape] = useState(0);
+  // showMainGradientShape needs to be 2 to show (increments once after the top adjustment of parent div and once after rotation adjustment of svg)
 
   const refsContext = useContext(RefsContext);
 
@@ -29,12 +30,13 @@ export default function Layout(props) {
     });
 
     // if (window.innerWidth > 1700) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
-    if (window.innerWidth > 1400) mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
+    if (window.innerWidth > 1400)
+      mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
     else mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
 
-    setShowMainGradientShape(true);
-
-    console.log("Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/");
+    console.log(
+      "Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/"
+    );
 
     window.addEventListener("resize", () => {
       if (window.innerWidth <= 1400) {
@@ -132,14 +134,21 @@ export default function Layout(props) {
 
       <div
         className={classNames("mainGradientShapeWrapper", {
-          show: showMainGradientShape,
+          show: showMainGradientShape === 2,
         })}
         ref={mainGradientShapeRef}
+        onTransitionEnd={(e) => {
+          if (e.target === mainGradientShapeRef.current && showMainGradientShape < 2)
+            setShowMainGradientShape(showMainGradientShape + 1);
+        }}
       >
-        <MainGradientShape />
+        <MainGradientShape
+          showMainGradientShape={showMainGradientShape}
+          setShowMainGradientShape={setShowMainGradientShape}
+        />
       </div>
 
-      {showMainGradientShape && (
+      {showMainGradientShape === 2 && (
         <TransitionGroup className="transition-group">
           <CSSTransition
             key={router.pathname}
@@ -155,7 +164,9 @@ export default function Layout(props) {
                 // console.log(e.target.scrollTop);
                 window.scrollY = e.target.scrollTop;
 
-                mainGradientShapeRef.current.style.transform = `translateY(-${e.target.scrollTop / 2}px)`;
+                mainGradientShapeRef.current.style.transform = `translateY(-${
+                  e.target.scrollTop / 2
+                }px)`;
 
                 if (!detachNavbar && e.target.scrollTop > 0) {
                   setDetachNavbar(true);

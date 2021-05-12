@@ -4,10 +4,7 @@ import { useState } from "react";
 // import styles from "./MainGradientShape.module.css";
 
 export default function MainGradientShape(props) {
-  const [
-    transitionDurationSet,
-    setTransitionDurationSet,
-  ] = useState(null);
+  const [transitionDurationSet, setTransitionDurationSet] = useState(null);
   const router = useRouter();
 
   // console.log("router", router.pathname);
@@ -25,6 +22,10 @@ export default function MainGradientShape(props) {
       onTransitionEnd={(e) => {
         if (!transitionDurationSet) {
           setTransitionDurationSet(true);
+
+          if (props.showMainGradientShape < 2)
+            props.setShowMainGradientShape(props.showMainGradientShape + 1);
+
           e.target.style.transitionDuration = "2s";
         }
       }}
@@ -44,12 +45,12 @@ c0-38,20.44-73.41,53.35-92.41l166.79-96.3c16.2-9.35,34.65-14.3,53.35-14.3s37.15,
 c32.91,19,53.35,54.41,53.35,92.41v192.6c0,38-20.44,73.41-53.35,92.41l-166.79,96.3C313.15,603.36,294.71,608.3,276,608.3z"
           />
         </clipPath>
-        <foreignObject
-          clipPath="url(#clipPath)"
-          width="200%"
-          height="100%"
-        >
+        <foreignObject clipPath="url(#clipPath)" width="200%" height="100%">
           <div className={"gradientShape"}></div>
+        </foreignObject>
+
+        <foreignObject clipPath="url(#clipPath)" width="200%" height="100%">
+          <div className="isometricProgrammerShadow"></div>
         </foreignObject>
         {/* <path
         d="M276,10.2c18.62,0,36.98,4.92,53.1,14.23l166.79,96.3c32.76,18.91,53.1,54.16,53.1,91.98v192.6

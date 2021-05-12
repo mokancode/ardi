@@ -9,6 +9,7 @@
   animation-delay: 0s;
   animation-fill-mode: forwards;
   /* display: none; */
+  transition: 0.001s top;
 }
 
 .mainGradientShapeWrapper.show {
@@ -32,7 +33,7 @@
   z-index: 1;
   fill: black;
   height: auto;
-  transform: rotate(40deg) scale(1.1, 1);
+  /* transform: rotate(40deg) scale(1.1, 1); */
   transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
   transition-duration: 0.001s;
   /* border: 5px solid blue; */
@@ -89,4 +90,21 @@
     width: 105vw;
     left: -3vw;
   }
+}
+
+.isometricProgrammerShadow {
+  position: absolute;
+  bottom: 100px;
+  right: 550px;
+  width: 200px;
+  height: 200px;
+  transform: scale(2);
+  background: radial-gradient(rgb(15, 24, 131), transparent, transparent);
+  transition: 1s;
+  opacity: 0;
+  /* display: none; */
+}
+
+.mainGradientShape.home .isometricProgrammerShadow {
+  opacity: .6;
 }
