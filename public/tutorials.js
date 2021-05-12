@@ -1,5 +1,4 @@
 // const tutorialsImagesPath = "/images/tutorials";
-// const tutorialsImagesPath = "../components/TutorialsPanel/TutorialViewer/images";
 const tutorialsImagesPath = "./images";
 
 const tutorials = [
