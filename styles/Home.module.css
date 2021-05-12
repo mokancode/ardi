@@ -99,3 +99,12 @@
   z-index: 3;
   display: none;
 }
+
+.isometricProgrammerWrapper {
+  position: absolute;
+  right: 350px;
+  top: -50px;
+  width: 400px;
+  height: 400px;
+  /* border: 2px solid cyan; */
+}

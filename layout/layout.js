@@ -10,7 +10,7 @@ import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
 
-const appVersion = "1.2.0";
+const appVersion = "1.2.2";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function Layout(props) {
 
   const [detachNavbar, setDetachNavbar] = useState(false);
   const [showMainGradientShape, setShowMainGradientShape] = useState(0);
-  // showMainGradientShape needs to be 2 to show (increments once after the top adjustment of parent div and once after rotation adjustment of svg)
+  // showMainGradientShape needs to be 2 to show (increments once after the top adjustment of parent div and once after rotation adjustment of svg).
 
   const refsContext = useContext(RefsContext);
 

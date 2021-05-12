@@ -8,13 +8,7 @@ import NotesIcon from "../icons/NotesIcon";
 import SyncIcon from "../icons/SyncIcon";
 import Link from "next/link";
 
-import {
-  Fragment,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import StylesContext from "../store/styles-context";
 import ParallaxHexagon from "../components/ParallaxHexagon/ParallaxHexagon";
 import LinkButton from "../components/LinkButton/LinkButton";
@@ -26,20 +20,18 @@ import PrivacyPolicyIcon from "../icons/PrivacyPolicyIcon/PrivacyPolicyIcon";
 import TermsAndConditionsIcon from "../icons/TermsAndConditionsIcon/TermsAndConditionsIcon";
 import BlackboardIcon from "../icons/BlackboardIcon/BlackboardIcon";
 import DiagramIcon from "../icons/DiagramIcon/DiagramIcon";
-import IsometricProgrammer from "../icons/IsometricProgrammer/IsometricProgrammer";
+// import IsometricProgrammer from "../components/SVGs/IsometricProgrammer/IsometricProgrammer";
+// import IsometricProgrammerIconBoxes from "../components/SVGs/IsometricProgrammer/IsometricProgrammerIconBoxes";
+// import IsometricProgrammerTable from "../components/SVGs/IsometricProgrammer/IsometricProgrammerTable";
+// import IsometricProgrammerLaptop from "../components/SVGs/IsometricProgrammer/IsometricProgrammerLaptop";
+import IsometricProgrammerContainer from "../components/SVGs/IsometricProgrammer/IsometricProgrammerContainer";
 
 export default function Home(props) {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find(
-    (styleSheet) => styleSheet.name === "Home"
-  ).styles;
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "Home")
+    .styles;
 
   const [IDs, setIDs] = useState([]);
-  const [
-    animateIsometricProgrammer,
-    setAnimateIsometricProgrammer,
-  ] = useState(false);
-
   const [mobileMode, setMobileMode] = useState(false);
   const mobileModeRef = useRef(false);
 
@@ -60,21 +52,21 @@ export default function Home(props) {
       updateMobileMode(true);
     }
 
-    window.addEventListener("resize", () => {
-      if (
-        window.innerWidth <= 800 &&
-        !mobileModeRef.current
-      ) {
+    function updateMobileModeHandler() {
+      if (window.innerWidth <= 800 && !mobileModeRef.current) {
         // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(true);
-      } else if (
-        window.innerWidth > 800 &&
-        mobileModeRef.current
-      ) {
+      } else if (window.innerWidth > 800 && mobileModeRef.current) {
         // console.log("mobile mode", mobileModeRef.current);
         updateMobileMode(false);
       }
-    });
+    }
+
+    window.addEventListener("resize", updateMobileModeHandler);
+
+    return function cleanupListener() {
+      window.removeEventListener("resize", updateMobileModeHandler);
+    };
   }, []);
 
   if (isEmpty(IDs)) return <h1>Loading</h1>;
@@ -159,9 +151,7 @@ export default function Home(props) {
   ];
 
   return (
-    <div
-      className={["pageWrapper", styles.homePage].join(" ")}
-    >
+    <div className={["pageWrapper", styles.homePage].join(" ")}>
       <Head>
         <title>Ardi - The Organizer</title>
         <meta
@@ -210,9 +200,7 @@ export default function Home(props) {
       />
 
       <ParagraphWithHeader
-        headerText={
-          "Outliner with project-management & GTD time-management methods."
-        }
+        headerText={"Outliner with project-management & GTD time-management methods."}
         paragraphText={
           "Ardi blends best methods popular in data management software, techniques described by David Allen and known as Getting Things Done (GTD) and classic outline sofware.\n" +
           "Program gives the user leverage to work with day-to-day data processing routines and managing complex depth projects with scalable toolset that allows to look at the big picture or focus on details if needed.\n" +
@@ -241,18 +229,10 @@ export default function Home(props) {
 
       <div className={styles.parallaxHexagonWrapper}>
         <div className={styles.regularFill}>
-          <ParallaxHexagon
-            bgFill={true}
-            climb={50}
-            blockTopBoundary={true}
-          />
+          <ParallaxHexagon bgFill={true} climb={50} blockTopBoundary={true} />
 
           <ParallaxHexagon bgFill={true} />
-          <ParallaxHexagon
-            bgFill={true}
-            climb={50}
-            blockTopBoundary={true}
-          />
+          <ParallaxHexagon bgFill={true} climb={50} blockTopBoundary={true} />
         </div>
 
         <div className={styles.gradientFill}>
@@ -271,7 +251,7 @@ export default function Home(props) {
         </div>
       </div>
 
-      <button
+      {/* <button
         className={styles.animateBtn}
         onClick={() => {
           setAnimateIsometricProgrammer((prev) => {
@@ -279,13 +259,11 @@ export default function Home(props) {
           });
         }}
       >
-        {animateIsometricProgrammer
-          ? "turn off"
-          : "turn on"}
-      </button>
-      <IsometricProgrammer
-        // animate={animateIsometricProgrammer}
-      />
+        {animateIsometricProgrammer ? "turn off" : "turn on"}
+      </button> */}
+      <div className={styles.isometricProgrammerWrapper}>
+        <IsometricProgrammerContainer />
+      </div>
     </div>
   );
 }
