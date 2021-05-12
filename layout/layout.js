@@ -120,7 +120,13 @@ export default function Layout(props) {
     <div className="appContainer">
       <AppVersion version={appVersion} />
 
-      {mobileMode ? <MobileNavbarClip /> : <Navbar detach={detachNavbar} />}
+      {showMainGradientShape === 2 ? (
+        mobileMode ? (
+          <MobileNavbarClip />
+        ) : (
+          <Navbar detach={detachNavbar} />
+        )
+      ) : null}
 
       {/* <TransitionGroup className="transition-group">
         <CSSTransition
