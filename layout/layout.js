@@ -9,8 +9,9 @@ import AppVersion from "../components/AppVersion/AppVersion";
 import Footer from "../components/Footer/Footer";
 import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
+import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
 
-const appVersion = "1.2.3";
+const appVersion = "1.2.4";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -84,10 +85,34 @@ export default function Layout(props) {
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
           window.innerWidth > 1400 ? "1" : "3"
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
+    } else {
+      // console.log("/");
+      if (window.innerWidth <= 800)
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.4, 1.4) translateY(-50px)`;
+      else
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.${
+          window.innerWidth > 1400 ? "1" : "3"
+        }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     }
 
-    console.log("reset translateY");
+    // console.log("reset translateY");
     mainGradientShapeRef.current.style.transform = `translateY(0px)`;
+
+    // scroll.scrollToTop({
+    //   duration: 1500,
+    //   delay: 300,
+    //   smooth: "easeInOutQuad",
+    //   containerId: "mainChildrenWrapper",
+    //   offset: 100, // Scrolls to element + 50 pixels down the page
+    // });
+
+    scroller.scrollTo("mainChildrenWrapper", {
+      duration: 1,
+      delay: 1,
+      smooth: true,
+      containerId: "mainDiv",
+      offset: -99, // Scrolls to element + 50 pixels down the page
+    });
 
     setDetachNavbar(false);
   }, [router.pathname]);
@@ -164,6 +189,7 @@ export default function Layout(props) {
             timeout={300}
           >
             <main
+              name="mainDiv"
               id="mainDiv"
               className="centerDiv mainDiv"
               ref={mainDivRef}
@@ -171,7 +197,7 @@ export default function Layout(props) {
                 // console.log(e.target.scrollTop);
                 window.scrollY = e.target.scrollTop;
 
-                console.log("scrollTop", e.target.scrollTop);
+                // console.log("scrollTop", e.target.scrollTop);
                 mainGradientShapeRef.current.style.transform = `translateY(-${
                   e.target.scrollTop / 2
                 }px)`;
@@ -188,10 +214,10 @@ export default function Layout(props) {
               {/* <SwitchTransition 
         // mode="out-in"
         > */}
-              <div className="mainChildrenWrapper">
+              <Element name="mainChildrenWrapper" className="mainChildrenWrapper">
                 <div className="pagesWrapper">{props.children}</div>
                 <Footer />
-              </div>
+              </Element>
             </main>
           </CSSTransition>
           {/* </SwitchTransition> */}

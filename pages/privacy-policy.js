@@ -1,28 +1,12 @@
 import Head from "next/head";
-
-// import styles from "../styles/PrivacyPolicy.module.css";
 import Link from "next/link";
-
 import { useContext, useEffect, useState } from "react";
 import StylesContext from "../store/styles-context";
-import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
-import { scrollToTop } from "react-scroll/modules/mixins/animate-scroll";
-
 import { v4 as uuidv4 } from "uuid";
 
 export default function PrivacyPolicyPage() {
   const stylesContext = useContext(StylesContext);
-  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "PrivacyPolicyPage").styles;
-
-  useEffect(() => {
-    scroll.scrollToTop({
-      duration: 1500,
-      delay: 300,
-      smooth: "easeInOutQuad",
-      containerId: "mainDiv",
-      offset: 50, // Scrolls to element + 50 pixels down the page
-    });
-  }, []);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "PrivacyPolicyPage").styles;  
 
   const [uniqueIDs, setUniqueIDs] = useState([uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4()]);
 
