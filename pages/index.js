@@ -20,10 +20,6 @@ import PrivacyPolicyIcon from "../icons/PrivacyPolicyIcon/PrivacyPolicyIcon";
 import TermsAndConditionsIcon from "../icons/TermsAndConditionsIcon/TermsAndConditionsIcon";
 import BlackboardIcon from "../icons/BlackboardIcon/BlackboardIcon";
 import DiagramIcon from "../icons/DiagramIcon/DiagramIcon";
-// import IsometricProgrammer from "../components/SVGs/IsometricProgrammer/IsometricProgrammer";
-// import IsometricProgrammerIconBoxes from "../components/SVGs/IsometricProgrammer/IsometricProgrammerIconBoxes";
-// import IsometricProgrammerTable from "../components/SVGs/IsometricProgrammer/IsometricProgrammerTable";
-// import IsometricProgrammerLaptop from "../components/SVGs/IsometricProgrammer/IsometricProgrammerLaptop";
 import IsometricProgrammerContainer from "../components/SVGs/IsometricProgrammer/IsometricProgrammerContainer";
 
 export default function Home(props) {
