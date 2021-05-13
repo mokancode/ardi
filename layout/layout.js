@@ -11,7 +11,7 @@ import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
 import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
 
-const appVersion = "1.2.4";
+const appVersion = "1.2.5";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -202,7 +202,7 @@ export default function Layout(props) {
                   e.target.scrollTop / 2
                 }px)`;
 
-                if (!detachNavbar && e.target.scrollTop > 0) {
+                if (!detachNavbar && e.target.scrollTop > 1) {
                   setDetachNavbar(true);
                   // console.log("attach");
                 } else if (detachNavbar && e.target.scrollTop === 0) {
