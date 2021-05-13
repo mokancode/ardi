@@ -86,6 +86,7 @@ export default function Layout(props) {
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     }
 
+    console.log("reset translateY");
     mainGradientShapeRef.current.style.transform = `translateY(0px)`;
 
     setDetachNavbar(false);
@@ -170,6 +171,7 @@ export default function Layout(props) {
                 // console.log(e.target.scrollTop);
                 window.scrollY = e.target.scrollTop;
 
+                console.log("scrollTop", e.target.scrollTop);
                 mainGradientShapeRef.current.style.transform = `translateY(-${
                   e.target.scrollTop / 2
                 }px)`;
