@@ -85,10 +85,34 @@
   }
 }
 
+@media screen and (max-width: 860px) {
+  .homePage > div:nth-of-type(1) {
+    margin-top: 0px;
+    top: -20px;
+    z-index: 2;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .homePage > div:nth-of-type(1) {
+    max-width: 400px;
+    /* border: 1px solid red; */
+  }
+}
+
 @media screen and (max-width: 700px) {
   .homePage > div:nth-of-type(1) {
+    margin-top: -90px;
+    margin-bottom: 290px;
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .homePage > div:nth-of-type(1) {
     margin-top: -70px;
-    z-index: 2;
+    margin-bottom: 320px;
+    /* max-width: 500px; */
   }
 }
 

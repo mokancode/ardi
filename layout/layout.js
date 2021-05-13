@@ -11,7 +11,7 @@ import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
 import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
 
-const appVersion = "1.2.5";
+const appVersion = "1.2.6";
 
 export default function Layout(props) {
   const router = useRouter();

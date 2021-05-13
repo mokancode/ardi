@@ -58,12 +58,12 @@
 }
 
 .animate .transformWrapper {
-  animation-name: glowTransformLargeAnim;
+  /* animation-name: glowTransformLargeAnim; */
 }
 
 .glowOrb.animate:nth-of-type(2) .transformWrapper,
 .glowOrb.animate:nth-of-type(3) .transformWrapper {
-  animation-name: glowTransformMediumAnim;
+  /* animation-name: glowTransformMediumAnim; */
 }
 
 .glowOrb:nth-of-type(1) .transformWrapper {
@@ -79,12 +79,12 @@
 }
 
 .glowOrb.animate:nth-of-type(4) .transformWrapper {
-  animation-name: glowTransformSmallAnim;
+  /* animation-name: glowTransformSmallAnim; */
   animation-delay: 7s;
 }
 
 .glowOrb.animate:nth-of-type(5) .transformWrapper {
-  animation-name: glowTransformExtraSmallAnim;
+  /* animation-name: glowTransformExtraSmallAnim; */
   animation-delay: 9s;
 }
 
@@ -100,7 +100,7 @@
 }
 
 .animate .transformWrapper::before {
-  animation-name: glowAnim;
+  /* animation-name: glowAnim; */
 }
 
 @keyframes glowTransformLargeAnim {

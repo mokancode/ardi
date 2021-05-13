@@ -79,16 +79,66 @@
   opacity: 1;
 } */
 
+@media screen and (min-width: 1600px) {
+  .mainGradientShapeWrapper {
+    width: 105vw;
+    left: -3vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mainGradientShapeWrapper {
+    width: 105vw;
+    height: 105vh;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mainGradientShapeWrapper {
+    width: 110vw;
+    height: 110vh;
+  }
+}
+
 @media screen and (max-width: 600px) {
+  .mainGradientShapeWrapper {
+    width: 115vw;
+    height: 115vh;
+  }
+
   .gradientShape {
     background: linear-gradient(90deg, rgb(12, 19, 97) 15%, rgb(8, 120, 218) 45%);
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (max-width: 600px) {
   .mainGradientShapeWrapper {
-    width: 105vw;
-    left: -3vw;
+    left: -5vw;
+    width: 125vw;
+    height: 125vh;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mainGradientShapeWrapper {
+    left: -15vw;
+    width: 135vw;
+    height: 135vh;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .mainGradientShapeWrapper {
+    left: -15vw;
+    width: 145vw;
+    height: 145vh;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .mainGradientShapeWrapper {
+    left: -20vw;
+    width: 160vw;
+    height: 160vh;
   }
 }
 
@@ -106,5 +156,5 @@
 }
 
 .mainGradientShape.home .isometricProgrammerShadow {
-  opacity: .9;
+  opacity: 0.9;
 }

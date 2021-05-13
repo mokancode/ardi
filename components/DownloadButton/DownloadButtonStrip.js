@@ -1,16 +1,23 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DownloadArrowDown } from "./DownloadArrowDown";
 import styles from "./DownloadButtonStrip.module.css";
 export function DownloadButtonStrip(props) {
   const stripRef = useRef();
   const [showChildComponents, setShowChildComponents] = useState(false);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(true);
+    }, 10);
+  }, []);
 
   return (
     <div
       ref={stripRef}
       className={[
         styles.outerWrapper,
-        props.show && styles.show,
+        show && styles.show,
         props.color && styles[props.color],
       ].join(" ")}
       onTransitionEnd={(e) => {

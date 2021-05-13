@@ -233,8 +233,8 @@ export default function Home(props) {
 
         <div className={styles.gradientFill}>
           <ParallaxHexagon
-            gradientColor1={"rgb(35, 175, 220, .3)"}
-            gradientColor2={"rgb(46, 211, 255)"}
+            gradientColor1={"rgba(123, 185, 255, 0.747)"}
+            gradientColor2={"rgb(81, 153, 235)"}
             climb={90}
             blockTopBoundary={true}
           />

@@ -204,7 +204,8 @@ export default function TutorialViewer(props) {
         !isEmpty(currentTutorial.images) ? (
           <Fragment>
             <div className={styles.imgWrapper} ref={imgContainerRef}>
-              <picture
+              {/* <picture */}
+              <img
                 ref={imgRef}
                 onLoad={(e) => {
                   pointerCanvas.current.style.width = `${imgContainerRef.current.offsetWidth}px`;
@@ -258,11 +259,12 @@ export default function TutorialViewer(props) {
                   ).toFixed(2)}`;
                 }}
                 alt={`${currentTutorial.name} ${currentImgIndex}/${currentTutorial.images.length}`}
-              >
-                <source srcSet={require(`${currentImgSrc}?webp`)} type="image/webp" />
+                src={currentImgSrc}
+              ></img>
+              {/* <source srcSet={require(`${currentImgSrc}?webp`)} type="image/webp" />
                 <source srcSet={require(`${currentImgSrc}`)} type="image/jpeg" />
                 <img src={require(`${currentImgSrc}`)} />
-              </picture>
+              </picture> */}
 
               <p
                 className={[

@@ -1,5 +1,5 @@
-// const tutorialsImagesPath = "/images/tutorials";
-const tutorialsImagesPath = "./images";
+const tutorialsImagesPath = "/images/tutorials";
+// const tutorialsImagesPath = "./images";
 
 const tutorials = [
   {

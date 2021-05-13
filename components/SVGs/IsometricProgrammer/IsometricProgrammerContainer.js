@@ -13,11 +13,11 @@ export default function IsometricProgrammerContainer() {
 
   const [animateIsometricProgrammer, setAnimateIsometricProgrammer] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setAnimateIsometricProgrammer(true);
-    }, 500);
-  }, []);
+//   useEffect(() => {
+//     setTimeout(() => {
+//       setAnimateIsometricProgrammer(true);
+//     }, 500);
+//   }, []);
 
   return (
     <Fragment>

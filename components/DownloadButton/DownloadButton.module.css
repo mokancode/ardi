@@ -18,9 +18,9 @@
   cursor: pointer;
   text-decoration: none;
   width: fit-content;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: 0.5s 0.5s;
+  /* opacity: 0; */
+  /* transform: translateX(-10px); */
+  transition: 0.3s 0.5s;
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -50,7 +50,7 @@
 }
 
 .btn p.animate {
-  animation-name: downloadBtnTextAnim;
+  /* animation-name: downloadBtnTextAnim; */
   /* animation-iteration-count: infinite; */
 }
 

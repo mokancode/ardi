@@ -6,11 +6,11 @@
   height: calc(100% + 20px);
   display: flex;
   justify-content: flex-end;
-  transition-duration: .9s, 0.5s;
-  transition-delay: 0.2s, 0.2s;
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.5s, 0.5s;
   transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
   transition-property: all, opacity;
-  transform: translateX(5%);
+  transform: translateX(4%);
   opacity: 0;
   /* border: 2px solid white; */
 }
@@ -37,10 +37,7 @@
   /* background: linear-gradient(to top, rgb(87, 188, 228), rgb(116, 135, 148)); */
   background: linear-gradient(to top, rgb(180, 209, 221), rgb(114, 119, 122));
   /* box-shadow: -5px 0 2px 0 rgba(0, 0, 0, 0.2); */
-  box-shadow: 
-  -7px 2px 10px 0px rgba(7, 33, 82, 0.5)
-  , -5px 0 2px 0 rgba(0, 0, 0, 0.2)
-  ;
+  box-shadow: -7px 2px 10px 0px rgba(7, 33, 82, 0.5), -5px 0 2px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
   position: relative;
 }
@@ -95,11 +92,10 @@
   /* border: 2px solid red; */
 }
 
-
 .outerWrapper:hover .arrowsDownWrapper > * {
   /* border: 1px solid red; */
-  animation-name: arrowDownAnim;
-  animation-duration: .6s;
+  /* animation-name: arrowDownAnim; */
+  animation-duration: 0.6s;
 }
 
 .outerWrapper .arrowsDownWrapper > *:nth-of-type(2) {
