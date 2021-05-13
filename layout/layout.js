@@ -76,9 +76,9 @@ export default function Layout(props) {
     } else if (router.pathname === "/demo") {
       // console.log("/demo");
       if (window.innerWidth <= 800)
-        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(32deg) scale(1.2, 1.2) translateY(-100px)`;
       else
-        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
+        mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(32deg) scale(1.${
           window.innerWidth > 1400 ? "1" : "3"
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
     } else {
