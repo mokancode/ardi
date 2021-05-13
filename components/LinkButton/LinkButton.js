@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactVisibilitySensor from "react-visibility-sensor";
 import styles from "./LinkButton.module.css";
 import Link from "next/link";
+import StylesContext from "../../store/styles-context";
 
 export default function LinkButton({ url, text, icon }) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "LinkButton")
+    .styles;
+
   const [showComponent, setShowComponent] = useState(false);
   const [showChildComponents, setShowChildComponents] = useState(false);
 
@@ -35,7 +40,9 @@ export default function LinkButton({ url, text, icon }) {
           <div className={styles.iconContainer}>
             <div className={styles.whiteSpaceWrapper}></div>
             {/* <div className={styles.iconWrapper}>{icon}</div> */}
-            <div className={styles.iconWrapper}>{React.cloneElement(icon, { show: showChildComponents })}</div>
+            <div className={styles.iconWrapper}>
+              {React.cloneElement(icon, { show: showChildComponents })}
+            </div>
           </div>
         </a>
       </Link>

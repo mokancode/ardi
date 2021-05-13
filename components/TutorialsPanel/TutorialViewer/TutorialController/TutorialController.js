@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import TickIcon from "../../../../icons/TickIcon/TickIcon";
-import styles from "./TutorialController.module.css";
+import StylesContext from "../../../../store/styles-context";
 
 export default function TutorialController({
   currentImgIndex,
@@ -9,6 +9,10 @@ export default function TutorialController({
   showCoordinates,
   setShowCoordinates,
 }) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "TutorialController")
+    .styles;
+  
   return (
     <div className={styles.wrapper}>
       <div className={styles.navButtons}>

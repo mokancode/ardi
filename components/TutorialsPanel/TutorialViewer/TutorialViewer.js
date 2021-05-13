@@ -1,10 +1,14 @@
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useContext, useEffect, useRef, useState } from "react";
+import StylesContext from "../../../store/styles-context";
 import isEmpty from "../../../utils/validation/is-empty";
 import TutorialController from "./TutorialController/TutorialController";
 import TutorialPointerInstruction from "./TutorialPointerInstruction/TutorialPointerInstruction";
-import styles from "./TutorialViewer.module.css";
 
 export default function TutorialViewer(props) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "TutorialViewer")
+    .styles;
+  
   const imgContainerRef = useRef();
   const pointerCanvas = useRef();
   const pointerRef = useRef();

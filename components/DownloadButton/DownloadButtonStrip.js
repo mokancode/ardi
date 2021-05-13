@@ -1,7 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import StylesContext from "../../store/styles-context";
 import { DownloadArrowDown } from "./DownloadArrowDown";
-import styles from "./DownloadButtonStrip.module.css";
+
 export function DownloadButtonStrip(props) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "DownloadButtonStrip")
+    .styles;
+  
   const stripRef = useRef();
   const [showChildComponents, setShowChildComponents] = useState(false);
   const [show, setShow] = useState(false);

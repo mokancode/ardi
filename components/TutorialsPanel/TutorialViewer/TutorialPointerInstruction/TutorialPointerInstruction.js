@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import StylesContext from "../../../../store/styles-context";
 import isEmpty from "../../../../utils/validation/is-empty";
-import styles from "./TutorialPointerInstruction.module.css";
 
 export default function TutorialPointerInstruction({
   currentTutorial,
@@ -11,6 +11,10 @@ export default function TutorialPointerInstruction({
   pointerCoordinates,
   setPointerInPosition,
 }) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "TutorialPointerInstruction")
+    .styles;
+
   const wrapperRef = useRef();
   const [instruction, setInstruction] = useState("");
   const [animateOut, setAnimateOut] = useState(false);
@@ -55,7 +59,8 @@ export default function TutorialPointerInstruction({
   // }, [pointerCoordinates.current.x, pointerCoordinates.current.y, currentImgIndexRef.current]);
 
   useEffect(() => {
-    if (isEmpty(instruction)) setInstruction(currentTutorialRef.current.images[currentImgIndexRef.current].instruction);
+    if (isEmpty(instruction))
+      setInstruction(currentTutorialRef.current.images[currentImgIndexRef.current].instruction);
     else if (
       !animateOut &&
       !animOutFinished &&
@@ -105,11 +110,17 @@ export default function TutorialPointerInstruction({
         // x close to right perimeter but window wide enough so keep on right side
         // console.log("wide enough");
         return updateRightSide(true);
-      } else if (windowTooNarrow && currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55) {
+      } else if (
+        windowTooNarrow &&
+        currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55
+      ) {
         // x close to right side but window is too narrow, force left side
         // console.log("too narrow for right");
         return updateRightSide(false);
-      } else if (windowTooNarrow && currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.45) {
+      } else if (
+        windowTooNarrow &&
+        currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.45
+      ) {
         // x close to left side but window is too narrow, force right side
         // console.log("too narrow for left");
         return updateRightSide(true);
@@ -143,11 +154,14 @@ export default function TutorialPointerInstruction({
       if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.55) {
         // console.log("1", currentImgIndexRef.current);
         return updateRightSide(true);
-      }
-      else if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55) {
+      } else if (
+        currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x > 0.55
+      ) {
         // console.log("2", currentImgIndexRef.current, currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x);
         return updateRightSide(false);
-      } else if (currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.45) {
+      } else if (
+        currentTutorialRef.current.images[currentImgIndexRef.current].coordinates.x < 0.45
+      ) {
         // console.log("3");
         return updateRightSide(true);
       }
@@ -158,7 +172,8 @@ export default function TutorialPointerInstruction({
     if (window.innerWidth <= 1325 && !windowTooNarowRef.current) {
       updateWindowTooNarrowHandler(true);
       threeCriticalConditionsOfPointerSide();
-    } else if (window.innerWidth > 1325 && windowTooNarowRef.current) updateWindowTooNarrowHandler(false);
+    } else if (window.innerWidth > 1325 && windowTooNarowRef.current)
+      updateWindowTooNarrowHandler(false);
 
     function resizeFuncHandler() {
       // console.log("resize");
@@ -172,7 +187,9 @@ export default function TutorialPointerInstruction({
 
         try {
           // console.log("bool", currentTutorialRef.current.images[currentImgIndexRef.current].rightSide), currentImgIndexRef.current+1);
-          return updateRightSide(currentTutorialRef.current.images[currentImgIndexRef.current].rightSide); // return to original condition
+          return updateRightSide(
+            currentTutorialRef.current.images[currentImgIndexRef.current].rightSide
+          ); // return to original condition
         } catch (err) {}
       }
     }
@@ -193,7 +210,8 @@ export default function TutorialPointerInstruction({
           currentTutorial.images[currentImgIndex].coordinates.y < 0.05 &&
           styles.marginTop,
         rightSide && styles.rightSide,
-        currentTutorial.images[currentImgIndex].pointerSize && styles[currentTutorial.images[currentImgIndex].pointerSize],
+        currentTutorial.images[currentImgIndex].pointerSize &&
+          styles[currentTutorial.images[currentImgIndex].pointerSize],
       ].join(" ")}
       onTransitionEnd={(e) => {
         if (e.target === wrapperRef.current) {

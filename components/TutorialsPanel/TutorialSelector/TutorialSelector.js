@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import styles from "./TutorialSelector.module.css";
+import { useContext, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../../../utils/validation/is-empty";
 import classNames from "classnames";
+import StylesContext from "../../../store/styles-context";
 
 export default function TutorialSelector({
   tutorials,
@@ -12,6 +12,10 @@ export default function TutorialSelector({
   directToMenu,
   setDirectToMenu,
 }) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "TutorialSelector")
+    .styles;
+  
   const tutorialsListRefs = useRef([]);
   const [tutorialsListOpen, setTutorialListOpen] = useState(null);
   const tutorialsListOpenRef = useRef(tutorialsListOpen);

@@ -1,11 +1,15 @@
 import classNames from "classnames";
-import styles from "./NavbarMenuButton.module.css";
 import isEmpty from "../../../utils/validation/is-empty";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import StylesContext from "../../../store/styles-context";
 
 export default function NavbarMenuButton({ index, menuItem, open, setOpen, link }) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "NavbarMenuButton")
+    .styles;
+
   const [hovering, setHovering] = useState(false);
   const router = useRouter();
 

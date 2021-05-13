@@ -11,6 +11,17 @@ import VideoContainerStyles from "../components/VideosContainer/VideoContainer.m
 import ScrollDownButtonStyles from "../components/ScrollDownButton/ScrollDownButton.module.css";
 import IsometricProgrammerStyles from "../components/SVGs/IsometricProgrammer/IsometricProgrammer.module.css";
 import GlowOrbStyles from "../components/SVGs/IsometricProgrammer/GlowOrb/GlowOrb.module.css";
+import DownloadArrowDownStyles from "../components/DownloadButton/DownloadArrowDown.module.css";
+import DownloadButtonStripStyles from "../components/DownloadButton/DownloadButtonStrip.module.css";
+import LinkButtonStyles from "../components/LinkButton/LinkButton.module.css";
+import NavbarButtonsContainerStyles from "../components/MobileNavbarClip/NavbarButtonsContainer/NavbarButtonsContainer.module.css";
+import NavbarMenuButtonStyles from "../components/MobileNavbarClip/NavbarButtonsContainer/NavbarMenuButton.module.css";
+import SwiperContainerStyles from "../components/SwiperContainer/SwiperContainer.module.css";
+import TutorialsPanelStyles from "../components/TutorialsPanel/TutorialsPanel.module.css";
+import TutorialSelectorStyles from "../components/TutorialsPanel/TutorialSelector/TutorialSelector.module.css";
+import TutorialControllerStyles from "../components/TutorialsPanel/TutorialViewer/TutorialController/TutorialController.module.css";
+import TutorialViewerStyles from "../components/TutorialsPanel/TutorialViewer/TutorialViewer.module.css";
+import TutorialPointerInstructionStyles from "../components/TutorialsPanel/TutorialViewer/TutorialPointerInstruction/TutorialPointerInstruction.module.css";
 
 import HomeStyles from "../styles/Home.module.css";
 import DownloadPageStyles from "../styles/DownloadPage.module.css";
@@ -44,6 +55,17 @@ export function StylesContextProvider(props) {
     { name: "ScrollDownButton", styles: ScrollDownButtonStyles },
     { name: "IsometricProgrammer", styles: IsometricProgrammerStyles },
     { name: "GlowOrb", styles: GlowOrbStyles },
+    { name: "DownloadArrowDown", styles: DownloadArrowDownStyles },
+    { name: "DownloadButtonStrip", styles: DownloadButtonStripStyles },
+    { name: "LinkButton", styles: LinkButtonStyles },
+    { name: "NavbarButtonsContainer", styles: NavbarButtonsContainerStyles },
+    { name: "NavbarMenuButton", styles: NavbarMenuButtonStyles },
+    { name: "SwiperContainer", styles: SwiperContainerStyles },
+    { name: "TutorialsPanel", styles: TutorialsPanelStyles },
+    { name: "TutorialSelector", styles: TutorialSelectorStyles },
+    { name: "TutorialController", styles: TutorialControllerStyles },
+    { name: "TutorialViewer", styles: TutorialViewerStyles },
+    { name: "TutorialPointerInstruction", styles: TutorialPointerInstructionStyles },
 
     { name: "Home", styles: HomeStyles },
     { name: "DownloadPage", styles: DownloadPageStyles },

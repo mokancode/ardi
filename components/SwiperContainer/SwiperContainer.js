@@ -1,14 +1,18 @@
 import SwiperCore, { Navigation, EffectCoverflow } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./SwiperContainer.module.css";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../../utils/validation/is-empty";
 import ReactVisibilitySensor from "react-visibility-sensor";
+import StylesContext from "../../store/styles-context";
 
 SwiperCore.use([Navigation, EffectCoverflow]);
 
 export default function SwiperContainer(props) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "SwiperContainer")
+    .styles;
+  
   var swiperRef = useRef();
 
   const [children, setChildren] = useState([]);

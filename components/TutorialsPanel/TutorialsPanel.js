@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import StylesContext from "../../store/styles-context";
 import isEmpty from "../../utils/validation/is-empty";
 import TutorialSelector from "./TutorialSelector/TutorialSelector";
-import styles from "./TutorialsPanel.module.css";
 import TutorialViewer from "./TutorialViewer/TutorialViewer";
 
 export default function TutorialsPanel({ tutorials }) {
+  const stylesContext = useContext(StylesContext);
+  const styles = stylesContext.styles.find((styleSheet) => styleSheet.name === "TutorialsPanel")
+    .styles;
+  
   const [currentTutorial, setCurrentTutorial] = useState(null);
   const [currentCategory, setCurrentCategory] = useState(null);
 

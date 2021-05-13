@@ -11,7 +11,7 @@ import MobileNavbarClip from "../components/MobileNavbarClip/MobileNavbarClip";
 import classNames from "classnames";
 import { Element, animateScroll as scroll, scroller, Events } from "react-scroll";
 
-const appVersion = "1.2.7";
+const appVersion = "1.2.8";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -35,9 +35,7 @@ export default function Layout(props) {
       mainGradientShapeRef.current.style.top = `-${window.innerWidth - 1440}px`;
     else mainGradientShapeRef.current.style.top = `${1440 - window.innerWidth}px`;
 
-    console.log(
-      "Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/"
-    );
+    console.log("Website designed and developed by MoKanCode https://myportfolio-77b3c.web.app/");
 
     window.addEventListener("resize", () => {
       if (window.innerWidth <= 1400) {
@@ -58,17 +56,16 @@ export default function Layout(props) {
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.${
           window.innerWidth > 1400 ? "1" : "3"
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-    }
-    if (router.pathname === "/download") {
-      // console.log("/download");
-      if (window.innerWidth <= 800)
+    } else if (router.pathname === "/download") {
+      // console.log("/download", window.innerWidth);
+      if (window.innerWidth <= 800) {
+        console.log("yes");
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.2, 1.2) translateY(-100px)`;
-      else
+      } else
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(45deg) scale(1.${
           window.innerWidth > 1400 ? "1" : "3"
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-    }
-    if (router.pathname === "/support") {
+    } else if (router.pathname === "/support") {
       // console.log("/support");
       if (window.innerWidth <= 800)
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.2, 1.2) translateY(-100px)`;
@@ -76,8 +73,7 @@ export default function Layout(props) {
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(35deg) scale(1.${
           window.innerWidth > 1400 ? "1" : "3"
         }, ${window.innerWidth <= 1400 ? "1.1" : "1"})`;
-    }
-    if (router.pathname === "/demo") {
+    } else if (router.pathname === "/demo") {
       // console.log("/demo");
       if (window.innerWidth <= 800)
         mainGradientShapeRef.current.childNodes[0].style.transform = `rotate(40deg) scale(1.2, 1.2) translateY(-100px)`;
