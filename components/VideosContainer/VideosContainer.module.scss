@@ -46,9 +46,9 @@
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
-}
 
-.header:hover {
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.99);
+  & :hover {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.99);
+  }
 }

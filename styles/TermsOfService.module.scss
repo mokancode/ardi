@@ -1,17 +1,14 @@
 .list {
   /* border: 2px solid red; */
-}
 
-.list li {
-  margin-top: 10px;
+  li {
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .list {
     padding: 0px;
-  }
-
-  .list {
     font-size: 15px;
   }
 }

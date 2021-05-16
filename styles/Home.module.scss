@@ -1,5 +1,11 @@
 .homePage {
   padding-bottom: 30px;
+
+  > div:nth-of-type(1) {
+    margin-top: 50px;
+    margin-bottom: 200px;
+    max-width: 550px;
+  }
 }
 
 .mainHeader {
@@ -12,10 +18,10 @@
   margin-top: 100px;
   width: 100%;
   justify-content: center;
-}
 
-.links a:not(:first-of-type) {
-  margin-left: 20px;
+  a:not(:first-of-type) {
+    margin-left: 20px;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -23,22 +29,16 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-  }
 
-  .links a {
-    width: 250px;
-  }
+    a {
+      width: 250px;
 
-  .links a:not(:first-of-type) {
-    margin-left: 0px;
-    margin-top: 20px;
+      &:not(:first-of-type) {
+        margin-left: 0px;
+        margin-top: 20px;
+      }
+    }
   }
-}
-
-.homePage > div:nth-of-type(1) {
-  margin-top: 50px;
-  margin-bottom: 200px;
-  max-width: 550px;
 }
 
 .parallaxHexagonWrapper {
@@ -49,11 +49,12 @@
   height: 100%;
   pointer-events: none;
   /* border: 2px solid red; */
-}
-.parallaxHexagonWrapper > div {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+
+  > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
 }
 
 .paragraphsWrapper {
@@ -61,22 +62,10 @@
   justify-content: space-around;
   flex-wrap: wrap;
   z-index: 2;
-}
 
-.paragraphsWrapper > div {
-  flex-basis: 33%;
-}
-
-.paragraphsWrapper > div > div {
-  /* opacity: 1 !important;
-  transform: unset !important;
-  margin: 0px !important;
-  margin-left: 0px !important;
-  margin-right: 0px !important; */
-}
-
-.paragraphsWrapper > div:not(:first-of-type) > div {
-  /* margin-left: 20px; */
+  > div {
+    flex-basis: 33%;
+  }
 }
 
 @media screen and (max-width: 1000px) {

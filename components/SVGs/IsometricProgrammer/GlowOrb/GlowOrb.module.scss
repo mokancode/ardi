@@ -5,28 +5,28 @@
   bottom: 55px;
   right: 116px;
   pointer-events: none;
-}
 
-.glowOrb:nth-of-type(2) {
-  right: 79px;
-  bottom: 40px;
-}
-
-.glowOrb:nth-of-type(3) {
-  right: 93.5px;
-  bottom: 215px;
-}
-
-.glowOrb:nth-of-type(4) {
-  right: unset;
-  left: 97px;
-  bottom: 180px;
-}
-
-.glowOrb:nth-of-type(5) {
-  right: unset;
-  left: 104px;
-  bottom: 290px;
+  &:nth-of-type(2) {
+    right: 79px;
+    bottom: 40px;
+  }
+  
+  &:nth-of-type(3) {
+    right: 93.5px;
+    bottom: 215px;
+  }
+  
+  &:nth-of-type(4) {
+    right: unset;
+    left: 97px;
+    bottom: 180px;
+  }
+  
+  &:nth-of-type(5) {
+    right: unset;
+    left: 104px;
+    bottom: 290px;
+  }
 }
 
 .orb {

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import ReactVisibilitySensor from "react-visibility-sensor";
-import styles from "./LinkButton.module.css";
 import Link from "next/link";
 import StylesContext from "../../store/styles-context";
 

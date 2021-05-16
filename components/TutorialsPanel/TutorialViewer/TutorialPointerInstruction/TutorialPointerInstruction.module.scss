@@ -7,41 +7,41 @@
   display: flex;
   justify-content: flex-end;
   /* transition: .2s transform, .2s opacity, .2s margin-top .2s, .2s margin-left .2s, .2s margin-right .2s, .2s left .2s, .2s right .2s; */
-  transition: .2s;
+  transition: 0.2s;
   /* border: 4px solid red; */
-}
 
-.pointerInstructionWrapper.animateOut {
-  transform: translateX(-5px);
-  /* transform: scale(.97); */
-  /* transform: scale(1.2); */
-  opacity: 0.0;
-}
+  &.animateOut {
+    transform: translateX(-5px);
+    /* transform: scale(.97); */
+    /* transform: scale(1.2); */
+    opacity: 0;
+  }
 
-.pointerInstructionWrapper.marginTop {
-  margin-top: 40px;
-}
+  &.marginTop {
+    margin-top: 40px;
+  }
 
-.pointerInstructionWrapper.rightSide {
-  left: 90px;
-  margin-left: 30px;
-  justify-content: flex-start;
-}
+  &.rightSide {
+    left: 90px;
+    margin-left: 30px;
+    justify-content: flex-start;
+  }
 
-.pointerInstructionWrapper.s.rightSide {
-  left: 70px;
-}
+  &.s {
+    margin-right: unset;
 
-.pointerInstructionWrapper.m.rightSide {
-  left: 70px;
-}
+    &.rightSide {
+      left: 70px;
+    }
+  }
 
-.pointerInstructionWrapper.s {
-  margin-right: unset;
-}
+  &.m {
+    margin-right: unset;
 
-.pointerInstructionWrapper.m {
-  margin-right: unset;
+    &.rightSide {
+      left: 70px;
+    }
+  }
 }
 
 .pointerInstruction {
@@ -58,5 +58,3 @@
   width: 100%;
   width: fit-content;
 }
-
-

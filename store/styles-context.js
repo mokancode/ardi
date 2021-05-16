@@ -1,43 +1,43 @@
 import { createContext, useState } from "react";
 
 // import all css modules
-import ParagraphWithHeaderStyles from "../components/ParagraphWithHeader/ParagraphWithHeader.module.css";
-import NavbarStyles from "../components/Navbar/Navbar.module.css";
-import FooterStyles from "../components/Footer/Footer.module.css";
-import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.module.css";
-import ParallaxHexagonStyles from "../components/ParallaxHexagon/ParallaxHexagon.module.css";
-import VideosContainerStyles from "../components/VideosContainer/VideosContainer.module.css";
-import VideoContainerStyles from "../components/VideosContainer/VideoContainer.module.css";
-import ScrollDownButtonStyles from "../components/ScrollDownButton/ScrollDownButton.module.css";
-import IsometricProgrammerStyles from "../components/SVGs/IsometricProgrammer/IsometricProgrammer.module.css";
-import GlowOrbStyles from "../components/SVGs/IsometricProgrammer/GlowOrb/GlowOrb.module.css";
-import DownloadArrowDownStyles from "../components/DownloadButton/DownloadArrowDown.module.css";
-import DownloadButtonStripStyles from "../components/DownloadButton/DownloadButtonStrip.module.css";
-import LinkButtonStyles from "../components/LinkButton/LinkButton.module.css";
-import NavbarButtonsContainerStyles from "../components/MobileNavbarClip/NavbarButtonsContainer/NavbarButtonsContainer.module.css";
-import NavbarMenuButtonStyles from "../components/MobileNavbarClip/NavbarButtonsContainer/NavbarMenuButton.module.css";
-import SwiperContainerStyles from "../components/SwiperContainer/SwiperContainer.module.css";
+import ParagraphWithHeaderStyles from "../components/ParagraphWithHeader/ParagraphWithHeader.module.scss";
+import NavbarStyles from "../components/Navbar/Navbar.module.scss";
+import FooterStyles from "../components/Footer/Footer.module.scss";
+import DownloadButtonStyles from "../components/DownloadButton/DownloadButton.module.scss";
+import ParallaxHexagonStyles from "../components/ParallaxHexagon/ParallaxHexagon.module.scss";
+import VideosContainerStyles from "../components/VideosContainer/VideosContainer.module.scss";
+import VideoContainerStyles from "../components/VideosContainer/VideoContainer.module.scss";
+import ScrollDownButtonStyles from "../components/ScrollDownButton/ScrollDownButton.module.scss";
+import IsometricProgrammerStyles from "../components/SVGs/IsometricProgrammer/IsometricProgrammer.module.scss";
+import GlowOrbStyles from "../components/SVGs/IsometricProgrammer/GlowOrb/GlowOrb.module.scss";
+import DownloadArrowDownStyles from "../components/DownloadButton/DownloadArrowDown.module.scss";
+import DownloadButtonStripStyles from "../components/DownloadButton/DownloadButtonStrip.module.scss";
+import LinkButtonStyles from "../components/LinkButton/LinkButton.module.scss";
+import NavbarButtonsContainerStyles from "../components/MobileNavbarClip/NavbarButtonsContainer/NavbarButtonsContainer.module.scss";
+import NavbarMenuButtonStyles from "../components/MobileNavbarClip/NavbarButtonsContainer/NavbarMenuButton.module.scss";
+import SwiperContainerStyles from "../components/SwiperContainer/SwiperContainer.module.scss";
 import TutorialsPanelStyles from "../components/TutorialsPanel/TutorialsPanel.module.css";
-import TutorialSelectorStyles from "../components/TutorialsPanel/TutorialSelector/TutorialSelector.module.css";
-import TutorialControllerStyles from "../components/TutorialsPanel/TutorialViewer/TutorialController/TutorialController.module.css";
-import TutorialViewerStyles from "../components/TutorialsPanel/TutorialViewer/TutorialViewer.module.css";
-import TutorialPointerInstructionStyles from "../components/TutorialsPanel/TutorialViewer/TutorialPointerInstruction/TutorialPointerInstruction.module.css";
+import TutorialSelectorStyles from "../components/TutorialsPanel/TutorialSelector/TutorialSelector.module.scss";
+import TutorialControllerStyles from "../components/TutorialsPanel/TutorialViewer/TutorialController/TutorialController.module.scss";
+import TutorialViewerStyles from "../components/TutorialsPanel/TutorialViewer/TutorialViewer.module.scss";
+import TutorialPointerInstructionStyles from "../components/TutorialsPanel/TutorialViewer/TutorialPointerInstruction/TutorialPointerInstruction.module.scss";
 
-import HomeStyles from "../styles/Home.module.css";
-import DownloadPageStyles from "../styles/DownloadPage.module.css";
+import HomeStyles from "../styles/Home.module.scss";
+import DownloadPageStyles from "../styles/DownloadPage.module.scss";
 import SupportPageStyles from "../styles/SupportPage.module.css";
-import PrivacyPolicyStyles from "../styles/PrivacyPolicy.module.css";
+import PrivacyPolicyStyles from "../styles/PrivacyPolicy.module.scss";
 import DemoStyles from "../styles/Demo.module.css";
-import TermsOfServicePageStyles from "../styles/TermsOfService.module.css";
+import TermsOfServicePageStyles from "../styles/TermsOfService.module.scss";
 
-import IconContainerStyles from "../icons/IconContainer.module.css";
+import IconContainerStyles from "../icons/IconContainer.module.scss";
 import BlackboardIconStyles from "../icons/BlackboardIcon/BlackboardIcon.module.css";
-import OutlinerIconStyles from "../icons/OutlinerIcon.module.css";
-import SyncIconStyles from "../icons/SyncIcon.module.css";
-import NotesIconStyles from "../icons/NotesIcon.module.css";
+import OutlinerIconStyles from "../icons/OutlinerIcon.module.scss";
+import SyncIconStyles from "../icons/SyncIcon.module.scss";
+import NotesIconStyles from "../icons/NotesIcon.module.scss";
 import DiagramIconStyles from "../icons/DiagramIcon/DiagramIcon.module.css";
-import ToDoManagerIconStyles from "../icons/ToDoManagerIcon.module.css";
-import WindowsLogoStyles from "../icons/WindowsLogo/WindowsLogo.module.css";
+import ToDoManagerIconStyles from "../icons/ToDoManagerIcon.module.scss";
+import WindowsLogoStyles from "../icons/WindowsLogo/WindowsLogo.module.scss";
 
 const StylesContext = createContext({
   styles: [],

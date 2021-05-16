@@ -15,27 +15,24 @@
   position: relative;
   padding-right: 70px;
   /* width: fit-content; */
+
+  &.show {
+    opacity: 1;
+    transform: unset;
+  }
+
+  p {
+    /* border: 2px solid black; */
+    /* background-color: white; */
+    padding: 10px 10px;
+    font-size: 20px;
+    white-space: pre;
+    color: white;
+    text-align: center;
+  }
 }
 
-.wrapper.show {
-  opacity: 1;
-  transform: unset;
-}
-
-.wrapper p {
-  /* border: 2px solid black; */
-  /* background-color: white; */
-  padding: 10px 10px;
-  font-size: 20px;
-  white-space: pre;
-  color: white;
-  text-align: center;
-}
-
-.wrapper:hover p {
-}
-
-.wrapper .iconContainer {
+.iconContainer {
   position: relative;
   height: 100%;
   width: 100%;
@@ -57,7 +54,7 @@
   /* border: 2px solid red; */
 }
 
-.wrapper .whiteSpaceWrapper::before {
+.whiteSpaceWrapper::before {
   position: absolute;
   content: "";
   top: 0px;
@@ -70,12 +67,7 @@
   box-shadow: 0 0 20px 0 black;
 }
 
-.wrapper:hover .whiteSpaceWrapper::before {
-  transform: skewX(-10deg) translateX(-0px) scaleX(1.3);
-  box-shadow: -1px 0 2px aquamarine, -5px 0 40px aquamarine, 0 0 10px blue;
-}
-
-.wrapper .whiteSpaceWrapper::after {
+.whiteSpaceWrapper::after {
   position: absolute;
   content: "";
   right: 10px;
@@ -87,12 +79,21 @@
   z-index: 2;
   opacity: 0;
   animation-duration: 0.5s;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
   animation-fill-mode: forwards;
 }
 
-.wrapper:hover .whiteSpaceWrapper::after {
-  animation-name: arrowRightAnim;
+.wrapper:hover {
+  .whiteSpaceWrapper {
+    &::before {
+      transform: skewX(-10deg) translateX(-0px) scaleX(1.3);
+      box-shadow: -1px 0 2px aquamarine, -5px 0 40px aquamarine, 0 0 10px blue;
+    }
+
+    &::after {
+      animation-name: arrowRightAnim;
+    }
+  }
 }
 
 @keyframes arrowRightAnim {

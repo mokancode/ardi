@@ -1,0 +1,75 @@
+.wrapper {
+  position: absolute;
+  right: 30px;
+  top: 1000px;
+  z-index: -1;
+  /* display: none; */
+  /* transition: .2s; */
+  /* border: 4px solid red; */
+
+  &.lowerOpacity {
+    opacity: 0.1;
+
+    /* Lower Opacity & Regular Fill Type*/
+    &:nth-of-type(1) .parallaxHexagon {
+      fill: rgb(92, 136, 255);
+    }
+    &:nth-of-type(2) .parallaxHexagon {
+      fill: rgb(78, 183, 209);
+      width: 300px;
+    }
+    &:nth-of-type(3) .parallaxHexagon {
+      fill: rgb(78, 183, 209);
+      width: 300px;
+    }
+  }
+
+  /* Positions */
+
+  /* Lower Opacity & Regular Fill Type*/
+  &.lowerOpacity:nth-of-type(1) {
+    right: 110px;
+    top: 800px;
+    /* transform: unset !important; */
+  }
+
+  &.lowerOpacity:nth-of-type(2) {
+    right: -100px;
+    top: 1150px;
+    opacity: 0.05;
+  }
+
+  &.lowerOpacity:nth-of-type(3) {
+    left: -100px;
+    top: 1770px;
+    opacity: 0.1;
+  }
+
+  /* Gradient Type */
+  &.gradient:nth-of-type(1) {
+    left: -40px;
+    top: 1600px;
+  }
+
+  &.gradient:nth-of-type(2) {
+    right: -30px;
+    top: 850px;
+    /* transform: unset !important; */
+  }
+
+  /* Styles */
+  /* Gradient Type */
+  &.gradient {
+    filter: drop-shadow(0 0 30px rgba(128, 128, 128, 0.1))
+      drop-shadow(0 0 10px rgba(128, 128, 128, 0.3));
+
+    .parallaxHexagon {
+      width: 150px;
+    }
+  }
+}
+
+.parallaxHexagon {
+  transition: 4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 400px;
+}
