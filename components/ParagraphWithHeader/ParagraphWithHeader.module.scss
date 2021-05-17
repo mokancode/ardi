@@ -83,7 +83,8 @@
   width: 100%;
   /* border: 1px solid red; */
 
-  &.paragraphAlignLeft p {
+  &.paragraphAlignLeft {
+    // border: 2px solid red;
     text-align: left;
   }
 }
