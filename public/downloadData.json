@@ -1,16 +1,16 @@
 {
   "windows": {
-    "version": "6.49 beta",
+    "version": "6.60",
     "windowsOS": "32 or 64 bit Windows 7, 10",
-    "fileName": "ardi6-59.msi",
+    "fileName": "ardi6-60.msi",
     "fileSize": "50.8 MB",
-    "url": "http://www.prokarpaty.net/ard_download/ardi6-59.msi"
+    "url": "http://www.prokarpaty.net/ard_download/ardi6-60.msi"
   },
   "mac": {
     "version": "6.48 beta",
     "macOS": "Requires MacOS 10.14 or better",
     "fileName": "ardi6-58.dmg",
-    "fileSize": "50.8 MB",
+    "fileSize": "92.3 MB",
     "url": "http://www.prokarpaty.net/ard_download/ardi6-58.dmg"
   },
   "changelog": [
