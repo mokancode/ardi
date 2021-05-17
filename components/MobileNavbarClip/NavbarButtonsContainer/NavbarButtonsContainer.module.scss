@@ -1,12 +1,9 @@
 .navigationButtonsContainer {
   width: 100%;
   height: fit-content;
-  /* background-color: darkgrey; */
-  /* background: linear-gradient(navy, crimson); */
   position: relative;
   overflow: hidden;
   transform: rotateY(180deg);
-  /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4); */
   filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0));
   border-bottom-left-radius: 50px;
   transition: 1s 0.5s;

@@ -12,8 +12,6 @@
 
   &.animateOut {
     transform: translateX(-5px);
-    /* transform: scale(.97); */
-    /* transform: scale(1.2); */
     opacity: 0;
   }
 
@@ -45,16 +43,14 @@
 }
 
 .pointerInstruction {
-  /* white-space: pre; */
   color: black;
-  /* background-color: rgb(236, 246, 255); */
   background-color: rgb(246, 251, 255);
   padding: 10px;
   border-radius: 20px;
   box-shadow: -10px 10px 15px 0 rgba(0, 0, 0, 0.3);
   border: 2px solid grey;
-  /* border: 2px solid red; */
   max-width: 100%;
   width: 100%;
   width: fit-content;
+  /* border: 2px solid red; */
 }

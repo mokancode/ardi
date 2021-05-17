@@ -23,10 +23,10 @@
   height: 35%;
   background-color: white;
   margin-right: 3px;
-  /* border: 1px solid red; */
   transition: 0.8s ease-in-out;
   opacity: 0;
   transform: translateX(3px);
+  /* border: 1px solid red; */
 
   &:nth-of-type(2) {
     transition-delay: 0.1s;

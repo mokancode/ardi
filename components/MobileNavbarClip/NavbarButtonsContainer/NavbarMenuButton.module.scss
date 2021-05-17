@@ -4,9 +4,7 @@
   width: 100%;
   transition-duration: 1s;
   transition-property: all;
-  /* transform: translateY(-200px) !important; */
   /* border: 3px solid black; */
-  /* opacity: 0; */
 
   &:nth-child(1),
   &:nth-child(2) {
@@ -58,8 +56,6 @@
   transform: unset;
 }
 
-/* ABeeZee|Allura|Italiana|Montserrat|Philosopher|Playball|
-  Poiret+One|Quicksand|Sofia|Cormorant+Garamond */
 .menuListItem p {
   margin: 0px;
   position: relative;

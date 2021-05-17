@@ -1,5 +1,4 @@
 .wrapper {
-  /* background-color: white; */
   background: linear-gradient(rgba(187, 187, 236, 0.99), rgba(108, 191, 206, 0.9));
   width: 100%;
   height: 100%;
@@ -33,7 +32,6 @@
     height: 100%;
     max-height: 100%;
     max-width: 100%;
-    /* box-shadow: -10px 5px 20px 0 rgba(49, 49, 49, 0.4); */
     filter: drop-shadow(-10px 5px 20px rgba(49, 49, 49, 0.4));
     z-index: 1;
     /* border: 2px solid red; */
@@ -158,7 +156,6 @@
   left: 0px;
   padding: 10px 15px;
   border-radius: 20px;
-  /* background-color: rgba(255, 255, 255, 0.8); */
   background: linear-gradient(130deg, rgba(255, 255, 255, 0.9), rgba(137, 181, 207, 0.9));
   border: 1px solid grey;
   box-shadow: -5px 5px 10px 0 rgba(0, 0, 0, 0.7);
@@ -175,12 +172,10 @@
 }
 
 .instructionalHeader {
-  /* color: rgb(255, 255, 255); */
   color: darkslategrey;
   font-family: Quicksand;
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   margin-top: 50px;
-  /* background-color: rgba(255, 255, 255, 0.7); */
   background: linear-gradient(125deg, #ffe9d380, rgba(175, 183, 255, 0.99) 120%);
   padding: 30px;
   border-radius: 20px;
