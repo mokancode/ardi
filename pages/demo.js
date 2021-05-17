@@ -1,7 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import TutorialsPanel from "../components/TutorialsPanel/TutorialsPanel";
 import StylesContext from "../store/styles-context";
-import tutorialsImport from "../public/tutorials";
+import tutorialsImport from "../public/tutorialsData";
 import { v4 as uuidv4 } from "uuid";
 import isEmpty from "../utils/validation/is-empty";
 import VideosContainer from "../components/VideosContainer/VideosContainer";
